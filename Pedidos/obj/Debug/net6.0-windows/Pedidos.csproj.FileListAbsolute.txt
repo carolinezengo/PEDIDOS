@@ -1,0 +1,16 @@
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\Pedidos.exe
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\Pedidos.deps.json
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\Pedidos.runtimeconfig.json
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\Pedidos.dll
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\Pedidos.pdb
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Pedidos.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.csproj.GenerateResource.cache
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.AssemblyInfoInputs.cache
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.AssemblyInfo.cs
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.dll
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\refint\Pedidos.dll
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.pdb
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.genruntimeconfig.cache
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\ref\Pedidos.dll
