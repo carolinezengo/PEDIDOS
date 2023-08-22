@@ -50,7 +50,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem, cadastroToolStripMenuItem, pedidosToolStripMenuItem, relatoriosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(509, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +64,7 @@
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(180, 22);
+            sairToolStripMenuItem.Size = new Size(93, 22);
             sairToolStripMenuItem.Text = "Sair";
             // 
             // cadastroToolStripMenuItem
@@ -85,6 +85,7 @@
             cadastroDeClienteToolStripMenuItem.Name = "cadastroDeClienteToolStripMenuItem";
             cadastroDeClienteToolStripMenuItem.Size = new Size(203, 22);
             cadastroDeClienteToolStripMenuItem.Text = "Cadastro de Cliente";
+            cadastroDeClienteToolStripMenuItem.Click += cadastroDeClienteToolStripMenuItem_Click;
             // 
             // cadastroDeFornecedorToolStripMenuItem
             // 
@@ -102,7 +103,7 @@
             // faturarToolStripMenuItem
             // 
             faturarToolStripMenuItem.Name = "faturarToolStripMenuItem";
-            faturarToolStripMenuItem.Size = new Size(180, 22);
+            faturarToolStripMenuItem.Size = new Size(111, 22);
             faturarToolStripMenuItem.Text = "Faturar";
             // 
             // relatoriosToolStripMenuItem
@@ -140,11 +141,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(509, 320);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Pedidos";
-            Text = "Form1";
+            Text = "Pedidos";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
