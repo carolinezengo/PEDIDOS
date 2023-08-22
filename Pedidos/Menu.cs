@@ -1,8 +1,8 @@
 namespace Pedidos
 {
-    public partial class Pedidos : Form
+    public partial class Menu : Form
     {
-        public Pedidos()
+        public Menu()
         {
             InitializeComponent();
         }
@@ -12,6 +12,11 @@ namespace Pedidos
             CadClientes tela = new CadClientes();
             // Cria um objeto do Form2, chamado tela
             tela.Show();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -46,7 +46,7 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            button1 = new Button();
+            btnNovo = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -199,14 +199,15 @@
             label9.TabIndex = 17;
             label9.Text = "TEL";
             // 
-            // button1
+            // btnNovo
             // 
-            button1.Location = new Point(12, 500);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 18;
-            button1.Text = "NOVO";
-            button1.UseVisualStyleBackColor = true;
+            btnNovo.Location = new Point(12, 500);
+            btnNovo.Name = "btnNovo";
+            btnNovo.Size = new Size(75, 23);
+            btnNovo.TabIndex = 18;
+            btnNovo.Text = "NOVO";
+            btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += button1_Click;
             // 
             // button2
             // 
@@ -243,6 +244,7 @@
             button5.TabIndex = 22;
             button5.Text = "SAIR";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // label10
             // 
@@ -271,7 +273,7 @@
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnNovo);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -291,7 +293,7 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Name = "CadClientes";
-            Text = "CadClientes";
+            Text = "Cadastro de Clientes";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -316,7 +318,7 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Button button1;
+        private Button btnNovo;
         private Button button2;
         private Button button3;
         private Button button4;

@@ -10,21 +10,18 @@ using System.Windows.Forms;
 
 namespace Pedidos
 {
-    public partial class CadClientes : Form
+    public partial class Login : Form
     {
-        public CadClientes()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BntEntrar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Close();
+           Menu tela = new Menu();
+            // Cria um objeto do Form2, chamado tela
+            tela.Show();
         }
     }
 }

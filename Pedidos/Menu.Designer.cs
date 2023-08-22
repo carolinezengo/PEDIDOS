@@ -1,6 +1,6 @@
 ﻿namespace Pedidos
 {
-    partial class Pedidos
+    partial class Menu
     {
         /// <summary>
         ///  Required designer variable.
@@ -64,8 +64,9 @@
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(93, 22);
+            sairToolStripMenuItem.Size = new Size(180, 22);
             sairToolStripMenuItem.Text = "Sair";
+            sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
             // cadastroToolStripMenuItem
             // 
