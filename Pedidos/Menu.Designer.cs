@@ -64,7 +64,7 @@
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(180, 22);
+            sairToolStripMenuItem.Size = new Size(93, 22);
             sairToolStripMenuItem.Text = "Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
@@ -138,15 +138,16 @@
             relatorioDeVendasToolStripMenuItem.Size = new Size(200, 22);
             relatorioDeVendasToolStripMenuItem.Text = "Relatorio de Vendas";
             // 
-            // Pedidos
+            // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(509, 320);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Pedidos";
+            Name = "Menu";
             Text = "Pedidos";
+            Load += Menu_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
