@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,13 @@ namespace Pedidos.DAO
     {
         SqlCommand command = new SqlCommand();
         ConexaoDAO conexao = new ConexaoDAO();
-        public int InserirCliente(Cliente cliente)
+        SqlDataReader reader;
+        public String mensagem = "";
+        public String InserirCliente(Cliente cliente)
         {
-            try
+            if (cliente.Equals(cliente))
             {
-
-                command.Connection = conexao.Conectar();
-                command.CommandText = @"INSERT INTO[dbo].[cliente]
+                command.CommandText = @"INSERT INTO[dbo].[tabcliente]
                                        ([nome]
                                        ,[data_nasc]
                                        ,[endereco]
@@ -29,39 +30,49 @@ namespace Pedidos.DAO
                                        ,[cpf]
                                        ,[tel])
                                   VALUES
-                                      (nome, 
-                                      data_nasc
-                                      ,endereco
-                                      ,bairro
-                                      ,complemento
-                                      ,cidade
-                                      ,cep
-                                     ,cpf
-                                     ,tel)";
+                                      (@nome, 
+                                      @data_nasc
+                                      ,@endereco
+                                      ,@bairro
+                                      ,@complemento
+                                      ,@cidade
+                                      ,@cep
+                                     ,@cpf
+                                     ,@tel)";
                 command.Parameters.AddWithValue("@nome", cliente.Nome);
                 command.Parameters.AddWithValue("@data_nasc", cliente.DataNasc);
-                command.Parameters.AddWithValue("@endereco", cliente.Endereco.Rua);
-                command.Parameters.AddWithValue("@bairro", cliente.Endereco.Bairro);
-                command.Parameters.AddWithValue("@complemento", cliente.Endereco.Complemento);
-                command.Parameters.AddWithValue("@cidade", cliente.Endereco.Cidade);
-                command.Parameters.AddWithValue("@cep", cliente.Endereco.CEP);
+                command.Parameters.AddWithValue("@endereco", cliente.Rua);
+                command.Parameters.AddWithValue("@bairro", cliente.Bairro);
+                command.Parameters.AddWithValue("@complemento", cliente.Complemento);
+                command.Parameters.AddWithValue("@cidade", cliente.Cidade);
+                command.Parameters.AddWithValue("@cep", cliente.CEP);
                 command.Parameters.AddWithValue("@cpf", cliente.CPF);
                 command.Parameters.AddWithValue("@tel", cliente.tel);
 
-             
+                try
+                {
 
-                return command.ExecuteNonQuery();
+                    command.Connection = conexao.Conectar();
+                    command.ExecuteNonQuery();
+                    conexao.Desconectar();
 
+
+                    this.mensagem = "Cadastrado com sucesso";
+
+                }
+                catch (SqlException)
+                {
+                    this.mensagem = "Erro Banco de dados";
+                }
 
             }
-            catch (Exception)
+            else
             {
-                throw;
+                this.mensagem = "Cliente nao corresponde!";          
             }
-            finally
-            {
-               conexao.Desconectar();   
-            }
+
+            return mensagem;
+
         }
     }
 }   

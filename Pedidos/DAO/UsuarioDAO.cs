@@ -11,7 +11,7 @@ namespace Pedidos.DAO
 {
      class UsuarioDAO
     {
-        SqlCommand obj = new SqlCommand();
+        SqlCommand command = new SqlCommand();
         ConexaoDAO conexao = new ConexaoDAO();
         SqlDataReader reader ;
 
@@ -20,15 +20,15 @@ namespace Pedidos.DAO
         public bool verficarLogin(String usuario, String senha)
         {
 
-            obj.CommandText = "Select * FROM tablogin WHERE Usuario = @Usuario And  Senha= @Senha";
-            obj.Parameters.AddWithValue("@Usuario", usuario);
-            obj.Parameters.AddWithValue("@Senha", senha);
+           command.CommandText = "Select * FROM tablogin WHERE Usuario = @Usuario And  Senha= @Senha";
+            command.Parameters.AddWithValue("@Usuario", usuario);
+           command.Parameters.AddWithValue("@Senha", senha);
             
            
             try
             {
-                obj.Connection = conexao.Conectar();
-                reader = obj.ExecuteReader();
+               command.Connection = conexao.Conectar();
+                reader = command.ExecuteReader();
 
                 if(reader.HasRows ) 
                 {

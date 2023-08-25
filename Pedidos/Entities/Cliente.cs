@@ -14,7 +14,10 @@ namespace Pedidos.Entities
         public string CPF { get; set; }
 
         public  string tel { get; set; }
-        public Endereco Endereco { get; set; }
-
+        public string Rua { get; set; }
+        public string Cidade { get; set; }
+        public string CEP { get; set; }
+        public string Bairro { get; set; }
+        public string Complemento { get; set; }
     }
 }

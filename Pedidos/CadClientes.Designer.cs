@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
+            TxtCodigo = new TextBox();
+            TxtNome = new TextBox();
+            TxtEndereco = new TextBox();
+            TxtDataNasc = new TextBox();
+            TxtCep = new TextBox();
+            TxtBairro = new TextBox();
+            TxtCidade = new TextBox();
+            TxtCpf = new TextBox();
+            TxtTel = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -47,76 +47,77 @@
             label8 = new Label();
             label9 = new Label();
             btnNovo = new Button();
-            button2 = new Button();
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
             label10 = new Label();
-            textBox10 = new TextBox();
+            TxtComp = new TextBox();
+            BtnGrava = new Button();
+            label11 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // TxtCodigo
             // 
-            textBox1.Location = new Point(66, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            TxtCodigo.Location = new Point(66, 12);
+            TxtCodigo.Name = "TxtCodigo";
+            TxtCodigo.Size = new Size(100, 23);
+            TxtCodigo.TabIndex = 0;
             // 
-            // textBox2
+            // TxtNome
             // 
-            textBox2.Location = new Point(66, 62);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(350, 23);
-            textBox2.TabIndex = 1;
+            TxtNome.Location = new Point(66, 62);
+            TxtNome.Name = "TxtNome";
+            TxtNome.Size = new Size(350, 23);
+            TxtNome.TabIndex = 1;
             // 
-            // textBox3
+            // TxtEndereco
             // 
-            textBox3.Location = new Point(66, 161);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(350, 23);
-            textBox3.TabIndex = 2;
+            TxtEndereco.Location = new Point(66, 161);
+            TxtEndereco.Name = "TxtEndereco";
+            TxtEndereco.Size = new Size(350, 23);
+            TxtEndereco.TabIndex = 2;
             // 
-            // textBox4
+            // TxtDataNasc
             // 
-            textBox4.Location = new Point(78, 118);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(137, 23);
-            textBox4.TabIndex = 3;
+            TxtDataNasc.Location = new Point(78, 118);
+            TxtDataNasc.Name = "TxtDataNasc";
+            TxtDataNasc.Size = new Size(137, 23);
+            TxtDataNasc.TabIndex = 3;
             // 
-            // textBox5
+            // TxtCep
             // 
-            textBox5.Location = new Point(66, 283);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 4;
+            TxtCep.Location = new Point(66, 283);
+            TxtCep.Name = "TxtCep";
+            TxtCep.Size = new Size(100, 23);
+            TxtCep.TabIndex = 4;
             // 
-            // textBox6
+            // TxtBairro
             // 
-            textBox6.Location = new Point(66, 199);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(100, 23);
-            textBox6.TabIndex = 5;
+            TxtBairro.Location = new Point(66, 199);
+            TxtBairro.Name = "TxtBairro";
+            TxtBairro.Size = new Size(100, 23);
+            TxtBairro.TabIndex = 5;
             // 
-            // textBox7
+            // TxtCidade
             // 
-            textBox7.Location = new Point(66, 239);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(182, 23);
-            textBox7.TabIndex = 6;
+            TxtCidade.Location = new Point(66, 239);
+            TxtCidade.Name = "TxtCidade";
+            TxtCidade.Size = new Size(182, 23);
+            TxtCidade.TabIndex = 6;
             // 
-            // textBox8
+            // TxtCpf
             // 
-            textBox8.Location = new Point(66, 332);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(190, 23);
-            textBox8.TabIndex = 7;
+            TxtCpf.Location = new Point(66, 332);
+            TxtCpf.Name = "TxtCpf";
+            TxtCpf.Size = new Size(190, 23);
+            TxtCpf.TabIndex = 7;
             // 
-            // textBox9
+            // TxtTel
             // 
-            textBox9.Location = new Point(66, 388);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(149, 23);
-            textBox9.TabIndex = 8;
+            TxtTel.Location = new Point(66, 388);
+            TxtTel.Name = "TxtTel";
+            TxtTel.Size = new Size(149, 23);
+            TxtTel.TabIndex = 8;
             // 
             // label1
             // 
@@ -209,16 +210,6 @@
             btnNovo.UseVisualStyleBackColor = true;
             btnNovo.Click += button1_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(107, 500);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 19;
-            button2.Text = "GRAVAR";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // button3
             // 
             button3.Location = new Point(204, 500);
@@ -256,24 +247,44 @@
             label10.TabIndex = 24;
             label10.Text = "Complemento";
             // 
-            // textBox10
+            // TxtComp
             // 
-            textBox10.Location = new Point(274, 199);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(275, 23);
-            textBox10.TabIndex = 23;
+            TxtComp.Location = new Point(274, 199);
+            TxtComp.Name = "TxtComp";
+            TxtComp.Size = new Size(275, 23);
+            TxtComp.TabIndex = 23;
+            // 
+            // BtnGrava
+            // 
+            BtnGrava.Location = new Point(107, 500);
+            BtnGrava.Name = "BtnGrava";
+            BtnGrava.Size = new Size(75, 23);
+            BtnGrava.TabIndex = 25;
+            BtnGrava.Text = "GRAVAR";
+            BtnGrava.UseVisualStyleBackColor = true;
+            BtnGrava.Click += BtnGrava_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(28, 561);
+            label11.Name = "label11";
+            label11.Size = new Size(44, 15);
+            label11.TabIndex = 26;
+            label11.Text = "label11";
             // 
             // CadClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(561, 606);
+            Controls.Add(label11);
+            Controls.Add(BtnGrava);
             Controls.Add(label10);
-            Controls.Add(textBox10);
+            Controls.Add(TxtComp);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(btnNovo);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -284,15 +295,15 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox9);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(TxtTel);
+            Controls.Add(TxtCpf);
+            Controls.Add(TxtCidade);
+            Controls.Add(TxtBairro);
+            Controls.Add(TxtCep);
+            Controls.Add(TxtDataNasc);
+            Controls.Add(TxtEndereco);
+            Controls.Add(TxtNome);
+            Controls.Add(TxtCodigo);
             Name = "CadClientes";
             Text = "Cadastro de Clientes";
             ResumeLayout(false);
@@ -301,15 +312,15 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
+        private TextBox TxtCodigo;
+        private TextBox TxtNome;
+        private TextBox TxtEndereco;
+        private TextBox TxtDataNasc;
+        private TextBox TxtCep;
+        private TextBox TxtBairro;
+        private TextBox TxtCidade;
+        private TextBox TxtCpf;
+        private TextBox TxtTel;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -320,11 +331,13 @@
         private Label label8;
         private Label label9;
         private Button btnNovo;
-        private Button button2;
+        private Button BtnGravar;
         private Button button3;
         private Button button4;
         private Button button5;
         private Label label10;
-        private TextBox textBox10;
+        private TextBox TxtComp;
+        private Button BtnGrava;
+        private Label label11;
     }
 }
