@@ -30,8 +30,8 @@
         {
             Usuario = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            TxtUsuario = new TextBox();
+            TxtSenha = new TextBox();
             BntEntrar = new Button();
             BntSair = new Button();
             SuspendLayout();
@@ -54,19 +54,19 @@
             label2.TabIndex = 1;
             label2.Text = "Senha :";
             // 
-            // textBox1
+            // TxtUsuario
             // 
-            textBox1.Location = new Point(106, 47);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
+            TxtUsuario.Location = new Point(106, 47);
+            TxtUsuario.Name = "TxtUsuario";
+            TxtUsuario.Size = new Size(100, 23);
+            TxtUsuario.TabIndex = 2;
             // 
-            // textBox2
+            // TxtSenha
             // 
-            textBox2.Location = new Point(106, 89);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
+            TxtSenha.Location = new Point(106, 89);
+            TxtSenha.Name = "TxtSenha";
+            TxtSenha.Size = new Size(100, 23);
+            TxtSenha.TabIndex = 3;
             // 
             // BntEntrar
             // 
@@ -86,6 +86,7 @@
             BntSair.TabIndex = 5;
             BntSair.Text = "Sair";
             BntSair.UseVisualStyleBackColor = true;
+            BntSair.Click += BntSair_Click;
             // 
             // Login
             // 
@@ -94,8 +95,8 @@
             ClientSize = new Size(475, 258);
             Controls.Add(BntSair);
             Controls.Add(BntEntrar);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(TxtSenha);
+            Controls.Add(TxtUsuario);
             Controls.Add(label2);
             Controls.Add(Usuario);
             Name = "Login";
@@ -108,8 +109,8 @@
 
         private Label Usuario;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox TxtUsuario;
+        private TextBox TxtSenha;
         private Button BntEntrar;
         private Button BntSair;
     }

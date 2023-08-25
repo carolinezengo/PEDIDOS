@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Pedidos.BLL;
+using Pedidos.DAO;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Pedidos
 {
     public partial class Login : Form
     {
+
+        public String menssagem = "";
         public Login()
         {
             InitializeComponent();
@@ -20,15 +17,33 @@ namespace Pedidos
 
         private void BntEntrar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            UsuarioBo usuario = new UsuarioBo();
+            usuario.acessar(TxtUsuario.Text, TxtSenha.Text);
 
-            Menu tela = new Menu();
-            // Cria um objeto do Form2, chamado tela
-            tela.Show();
+            if (usuario.login)
+            {
+                this.Hide();
+                MessageBox.Show("Logado com sucesso", "Entrando",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Menu tela = new Menu();
+                // Cria um objeto do Form2, chamado tela
+                tela.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Verificar usuario e senha", "Erro", MessageBoxButtons.OK);
+                //todo : Login ou Senha Invalida
+            }
+            // command.Close();
+
+
 
 
         }
-      
 
+        private void BntSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

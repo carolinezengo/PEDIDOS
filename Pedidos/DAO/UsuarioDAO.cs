@@ -1,52 +1,49 @@
-﻿using Pedidos.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pedidos.DAO
 {
-    public class UsuarioDAO
+     class UsuarioDAO
     {
-        public Usuario ObterUsuarioPeloUsuarioESenha(string nomeUsuario, string senha)
+        SqlCommand obj = new SqlCommand();
+        ConexaoDAO conexao = new ConexaoDAO();
+        SqlDataReader reader ;
+
+        public String mensagem = "";
+        public bool login;
+        public bool verficarLogin(String usuario, String senha)
         {
+
+            obj.CommandText = "Select * FROM tablogin WHERE Usuario = @Usuario And  Senha= @Senha";
+            obj.Parameters.AddWithValue("@Usuario", usuario);
+            obj.Parameters.AddWithValue("@Senha", senha);
+            
+           
             try
             {
+                obj.Connection = conexao.Conectar();
+                reader = obj.ExecuteReader();
 
-                var command = new SqlCommand();
-                command.Connection = ConexaoDAO.connection;
-                command.CommandText = "SELECT * FROM tablogin WHERE usuario = @USUARIO AND senha = @SENHA";
-                command.Parameters.AddWithValue("@USUARIO", nomeUsuario);
-                command.Parameters.AddWithValue("@SENHA", senha);
-
-               ConexaoDAO.Conectar();
-
-
-                var reader = command.ExecuteReader();
-
-                Usuario usuarios = null;
-
-                while (reader.Read())
+                if(reader.HasRows ) 
                 {
-                    usuarios = new Usuario();
-                    usuarios.Id = Convert.ToInt32(reader["id"]);
-                    usuarios.NomeUsuario = reader["usuario"].ToString();
-                    usuarios.Senha = reader["senha"].ToString();
-                    usuarios.Perfil = Convert.ToChar(reader["perfil"]);
+                login = true;
                 }
-                return usuarios;
             }
-            catch (Exception)
+
+            catch (SqlException)
             {
-                throw;
+                this.mensagem = "Erro com Banco de Dados!";
             }
-            finally
-            {
-                ConexaoDAO.Desconectar();
-            }
+
+            return login;
         }
+
+       
     }
 }
-

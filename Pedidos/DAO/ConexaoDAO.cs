@@ -1,21 +1,29 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Configuration.Provider;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Pedidos.DAO
 {
+
     public class ConexaoDAO
     {
-
-        public static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConexaoSql"].ConnectionString;
-        public static SqlConnection connection = new SqlConnection(connectionString);
-
+       
+        SqlConnection connection = new SqlConnection();
 
 
-        public static void Conectar()
+        public ConexaoDAO()
+        {
+           connection.ConnectionString = @"Data Source=desktop-k3imdmf\sqlexpress;Initial Catalog=Faturamento;Persist Security Info=True;User ID=sa;Password=050404";
+
+        }
+        public SqlConnection  Conectar()
         {
 
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -24,8 +32,9 @@ namespace Pedidos.DAO
                 connection.Open();
 
             }
+            return connection;
         }
-        public static void Desconectar()
+        public  void Desconectar()
         {
 
             if (connection.State == System.Data.ConnectionState.Open)

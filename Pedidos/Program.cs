@@ -1,3 +1,5 @@
+using System.Data.SqlClient;
+
 namespace Pedidos
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace Pedidos
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
+           
         }
     }
 }
