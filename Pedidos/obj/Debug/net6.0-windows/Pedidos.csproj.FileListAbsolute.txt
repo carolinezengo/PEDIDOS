@@ -13,9 +13,6 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\refint\Pe
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.pdb
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.genruntimeconfig.cache
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\ref\Pedidos.dll
-C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.CadClientes.resources
-C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Login.resources
-C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Menu.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.csproj.AssemblyReference.cache
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
@@ -24,3 +21,8 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\runtimes\
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.csproj.CopyComplete
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmBuscaCliente.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadClientes.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmMenu.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmLogin.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Properties.Resources.resources

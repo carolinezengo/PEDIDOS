@@ -9,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Pedidos
 {
-    public partial class CadClientes : Form
+    public partial class FrmCadClientes : Form
     {
+        public String mesagemDeSucesso = "";
         private ClienteBo _clienteBo;
-        public CadClientes()
+        public FrmCadClientes()
         {
             InitializeComponent();
         }
@@ -28,6 +30,8 @@ namespace Pedidos
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+            FrmMenu menu = new FrmMenu();
+            menu.Show();
         }
 
         private void BtnGrava_Click(object sender, EventArgs e)
@@ -37,11 +41,11 @@ namespace Pedidos
 
             try
             {
-                var mesagemDeSucesso = "";
+
                 _clienteBo.Cadastrar(cliente);
                 mesagemDeSucesso = "Cliente Cadastrado com sucesso!";
                 BtnGrava.Enabled = false;
-                label11.Text = mesagemDeSucesso;    
+                label11.Text = mesagemDeSucesso;
             }
             catch
             {
@@ -67,27 +71,49 @@ namespace Pedidos
 
             return cliente;
         }
+        public void CarregarDadosParaEdicao()
+        {
+            _clienteBo = new ClienteBo();
 
-        // public int ObterIdDoCliente()
-        // {
-        //    var id = 0;
-        //   var idQueryString =
-        //       Request.QueryString["id"];
-        ////  if (int.TryParse(idQueryString, out id))
-        //  {
-        //     if (id <= 0)
-        //     {
-        //        throw new Exception("ID invalido");
-        //   }
+            var nome = TxtNome.Text;
+            var cliente = _clienteBo.ObterClientePeloNome(nome);
+            TxtCodigo.Text = cliente.Id.ToString();
+            TxtNome.Text = cliente.Nome;
+            TxtDataNasc.Text = cliente.DataNasc.HasValue ? cliente.DataNasc.Value.ToString("yyy-MM-dd") : string.Empty;
+            TxtEndereco.Text = cliente.Rua;
+            TxtBairro.Text = cliente.Bairro;
+            TxtComp.Text = cliente.Complemento;
+            TxtCidade.Text = cliente.Cidade;
+            TxtCep.Text = cliente.CEP;
+            TxtCpf.Text = cliente.CPF;
+            TxtTel.Text = cliente.tel;
 
-        //     return id;
-        // }
-        //    else
-        //   {
-        //    throw new Exception("ID invalido");
-        // }
-        //}
+        }
 
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            _clienteBo = new ClienteBo();
+            var nome = TxtNome.Text;
+
+            if (nome != null)
+            {
+                _clienteBo.ObterClientePeloNome(nome);
+                CarregarDadosParaEdicao();
+                mesagemDeSucesso = "Cadastro de Cliente encontrado";
+                label11.Text = mesagemDeSucesso;
+            }
+            else
+            {
+                MessageBox.Show("Deu erro");
+            }
+
+        }
+
+        private void FrmCadClientes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

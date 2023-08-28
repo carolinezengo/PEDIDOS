@@ -1,6 +1,6 @@
 ﻿namespace Pedidos
 {
-    partial class CadClientes
+    partial class FrmCadClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,7 @@
             TxtComp = new TextBox();
             BtnGrava = new Button();
             label11 = new Label();
+            BtnBuscar = new Button();
             SuspendLayout();
             // 
             // TxtCodigo
@@ -212,7 +213,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(204, 500);
+            button3.Location = new Point(285, 500);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 20;
@@ -221,7 +222,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(299, 500);
+            button4.Location = new Point(366, 500);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 21;
@@ -230,7 +231,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(395, 500);
+            button5.Location = new Point(461, 500);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 22;
@@ -269,15 +270,25 @@
             label11.AutoSize = true;
             label11.Location = new Point(28, 561);
             label11.Name = "label11";
-            label11.Size = new Size(44, 15);
+            label11.Size = new Size(0, 15);
             label11.TabIndex = 26;
-            label11.Text = "label11";
             // 
-            // CadClientes
+            // BtnBuscar
+            // 
+            BtnBuscar.Location = new Point(193, 500);
+            BtnBuscar.Name = "BtnBuscar";
+            BtnBuscar.Size = new Size(75, 23);
+            BtnBuscar.TabIndex = 27;
+            BtnBuscar.Text = "BUSCAR";
+            BtnBuscar.UseVisualStyleBackColor = true;
+            BtnBuscar.Click += BtnBuscar_Click;
+            // 
+            // FrmCadClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(561, 606);
+            Controls.Add(BtnBuscar);
             Controls.Add(label11);
             Controls.Add(BtnGrava);
             Controls.Add(label10);
@@ -304,8 +315,9 @@
             Controls.Add(TxtEndereco);
             Controls.Add(TxtNome);
             Controls.Add(TxtCodigo);
-            Name = "CadClientes";
+            Name = "FrmCadClientes";
             Text = "Cadastro de Clientes";
+            Load += FrmCadClientes_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -339,5 +351,6 @@
         private TextBox TxtComp;
         private Button BtnGrava;
         private Label label11;
+        private Button BtnBuscar;
     }
 }
