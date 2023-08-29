@@ -3,6 +3,7 @@ using Pedidos.DAO;
 using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -22,32 +23,13 @@ namespace Pedidos.BLL
            this.mensagem = clienteDAO.InserirCliente(cliente);
             return mensagem;
         }
-        // public List<Cliente> BuscarporNome(String nome)
+        public List<Cliente> ObterTodosOsClientes()
+        {
+            _clienteDao = new ClienteDAO();
+            return _clienteDao.BuscarTodosOsCliente();
 
-        //  {
-        //    _clienteDao = new ClienteDAO();
-        //   var cliente = _clienteDao.BuscarNomeCliente(nome) ;
-        //   if (cliente == null)
-        //   {
-        //       this.mensagem = ("cliente não existe");
-        //   }
-
-
-        //               return cliente;
-        //  }
-        //  public bool BuscarPorNome(String nome)
-
-        //    {
-        //      ClienteDAO clienteDao = new ClienteDAO();
-        //      cliente = clienteDao.BuscarPorNomeCliente(nome);
-        //
-        ///    if (!clienteDao.mensagem.Equals(""))
-        //     {
-        //       this.mensagem = clienteDao.mensagem;
-        //  }
-
-        /// return cliente;
-        //}
+        }
+      
 
         public Cliente ObterClientePeloNome(String nome)
         {
@@ -88,7 +70,11 @@ namespace Pedidos.BLL
 
             }
         }
+
+
+       
     }
+
 
 }
     

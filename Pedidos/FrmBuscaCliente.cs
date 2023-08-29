@@ -1,9 +1,11 @@
 ﻿using Pedidos.BLL;
+using Pedidos.DAO;
 using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,8 @@ namespace Pedidos
 {
     public partial class FrmBuscaCliente : Form
     {
+        
+        ConexaoDAO conexao = new ConexaoDAO();
         private ClienteBo _clienteBo;
         public FrmBuscaCliente()
         {
@@ -22,42 +26,41 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //try
-            //  {
-            //      _clienteBo = new ClienteBo();
-            //
-            //    String nome = TxtNome.Text;
 
-            //     if (_clienteBo.cliente)
-            //    {
-            //       MessageBox.Show("Cleinte Encontrado!", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //     FrmMenu menu = new FrmMenu();
-            //        dgCliente.DataSource = _clienteBo.BuscarPorNome(nome);
+           
+            var nome = TxtNome.Text;
 
+            SqlCommand command = new SqlCommand("Select * from tabcliente where nome = @nome");
+            command.Parameters.AddWithValue("@nome", nome);
+            command.Connection = conexao.Conectar();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            DgCliente.DataSource = dt;
 
-            //    }
-            //     else
-            //    {
-            //         MessageBox.Show("Não ha cadastro desse cliente!", "Atenção", MessageBoxButtons.OK);
-            //      }
-            //
-            // }
-            // catch (Exception erro)
-            //  {
-
-            //     throw erro;
-            // }
-
-            _clienteBo = new ClienteBo();
-          
-       
         }
 
+        private void FrmBuscaCliente_Load(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("Select * from tabcliente");
+            command.Connection = conexao.Conectar();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable dt = new DataTable(); 
+            adapter.Fill(dt);
+            DgCliente.DataSource = dt;
 
-      
-        //    private void textBox1_TextChanged(object sender, EventArgs e)
-        // {
+        }
 
-        // }
     }
+
+
 }
+
+
+
+
+
+
+

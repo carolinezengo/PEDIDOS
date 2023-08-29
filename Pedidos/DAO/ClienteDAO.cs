@@ -3,6 +3,7 @@ using Pedidos.BLL;
 using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -122,56 +123,58 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
         }
+        public List<Cliente> BuscarTodosOsCliente()
+        {
+            try
+            {
 
+                command.CommandText = "Select * FROM tabcliente";
+
+
+                command.Connection = conexao.Conectar();
+                reader = command.ExecuteReader();
+
+                var clientes = new List<Cliente>();
+
+                while (reader.Read())
+                {
+                    var cliente = new Cliente();
+
+                    cliente.Id = Convert.ToInt32(reader["id"]);
+                    cliente.Nome = reader["nome"].ToString();
+                    cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
+                    cliente.Rua = reader["endereco"].ToString();
+                    cliente.Bairro = reader["bairro"].ToString();
+                    cliente.Complemento = reader["complemento"].ToString();
+                    cliente.Cidade = reader["cidade"].ToString();
+                    cliente.CEP = reader["cep"].ToString();
+                    cliente.CPF = reader["cpf"].ToString();
+                    cliente.tel = reader["tel"].ToString();
+
+                }
+
+                return clientes;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+
+
+        }
 
        
-
-           
-
-
-
-        
-        //public List<Cliente> BuscarNomeCliente(String nome)
-        //{
-        //  command.CommandText = "Select * FROM tabcliente WHERE Nome = @Nome";
-        // command.Parameters.AddWithValue("@Nome", nome);
-
-
-
-
-        //   command.Connection = conexao.Conectar();
-        // reader = command.ExecuteReader();
-
-        //var  clientes = new List<Cliente>();
-
-        //while (reader.Read())
-        //{
-        //var cliente = new Cliente();
-
-        //cliente.Id = Convert.ToInt32(reader["id"]);
-        //cliente.Nome = reader["titulo"].ToString();
-        //cliente.DataNasc = reader["data_compra"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_compra"]);
-        // cliente.Rua = reader["titulo"].ToString();
-        // cliente.Bairro = reader["titulo"].ToString();
-        //cliente.Complemento = reader["titulo"].ToString();
-        //cliente.Cidade = reader["titulo"].ToString();
-        //cliente.CEP = reader["titulo"].ToString();
-        //cliente.CPF = reader["titulo"].ToString();
-        //cliente.tel = reader["titulo"].ToString();
-        //  }
-
-        //return clientes;
-        //   }
-
-
-        
-
         public Cliente ObterClientePeloNome(String nome)
         {
             try
             {
 
-                             
+
                 command.CommandText = "Select * FROM tabcliente where nome = @nome";
                 command.Parameters.AddWithValue("@nome", nome);
 
@@ -183,19 +186,19 @@ namespace Pedidos.DAO
 
                 while (reader.Read())
                 {
-                     cliente = new Cliente();
+                    cliente = new Cliente();
 
                     cliente.Id = Convert.ToInt32(reader["id"]);
                     cliente.Nome = reader["nome"].ToString();
                     cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
-                     cliente.Rua = reader["endereco"].ToString();
-                     cliente.Bairro = reader["bairro"].ToString();
+                    cliente.Rua = reader["endereco"].ToString();
+                    cliente.Bairro = reader["bairro"].ToString();
                     cliente.Complemento = reader["complemento"].ToString();
                     cliente.Cidade = reader["cidade"].ToString();
                     cliente.CEP = reader["cep"].ToString();
                     cliente.CPF = reader["cpf"].ToString();
                     cliente.tel = reader["tel"].ToString();
-                    
+
                 }
 
                 return cliente;
@@ -211,8 +214,8 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
 
-        }
 
+        }
 
     }
 
