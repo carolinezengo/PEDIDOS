@@ -24,6 +24,16 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
+            TxtCodigo.Text = " ";
+            TxtNome.Text = " ";
+            TxtDataNasc.Text = " ";
+            TxtEndereco.Text = " ";
+            TxtBairro.Text = " ";
+            TxtComp.Text = " ";
+            TxtCidade.Text = " ";
+            TxtCep.Text = " ";
+            TxtCpf.Text = " ";
+            TxtTel.Text = " ";
 
         }
 
@@ -45,7 +55,8 @@ namespace Pedidos
                 _clienteBo.Cadastrar(cliente);
                 mesagemDeSucesso = "Cliente Cadastrado com sucesso!";
                 BtnGrava.Enabled = false;
-                label11.Text = mesagemDeSucesso;
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
             }
             catch
             {
@@ -101,7 +112,8 @@ namespace Pedidos
                 _clienteBo.ObterClientePeloNome(nome);
                 CarregarDadosParaEdicao();
                 mesagemDeSucesso = "Cadastro de Cliente encontrado";
-                label11.Text = mesagemDeSucesso;
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
             }
             else
             {
@@ -113,6 +125,18 @@ namespace Pedidos
         private void FrmCadClientes_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+
+        {
+            var cliente = ObterModeloPreenchido();
+            _clienteBo.AlterarCliente(cliente);
+
+            mesagemDeSucesso = "Cadastro de cliente alterado com Sucesso!";
+
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = mesagemDeSucesso;
         }
     }
 

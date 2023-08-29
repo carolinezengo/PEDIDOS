@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Pedidos.DAO
         ConexaoDAO conexao = new ConexaoDAO();
         SqlDataReader reader;
         public String mensagem = "";
-        public bool nome;
+    
         public String InserirCliente(Cliente cliente)
         {
             if (cliente.Equals(cliente))
@@ -76,33 +77,28 @@ namespace Pedidos.DAO
 
             return mensagem;
 
-            
+
 
         }
-        public String AtualizarCliente(Cliente cliente)
+        public int AtualizarCliente(Cliente cliente)
         {
-            if (cliente.Equals(cliente.Id))
+            try
             {
-                command.CommandText = @"UPDATE INTO[dbo].[tabcliente]
-                                       ([nome]
-                                       ,[data_nasc]
-                                       ,[endereco]
-                                       ,[bairro]
-                                       ,[complemento]
-                                       ,[cidade]
-                                       ,[cep]
-                                       ,[cpf]
-                                       ,[tel])
-                                  VALUES
-                                      (@nome, 
-                                      @data_nasc
-                                      ,@endereco
-                                      ,@bairro
-                                      ,@complemento
-                                      ,@cidade
-                                      ,@cep
-                                     ,@cpf
-                                     ,@tel)";
+
+                command.CommandText = @"UPDATE[dbo].[tabcliente]
+                                        SET[nome] = @nome
+                                       ,[data_nasc] = @data_nasc
+                                       ,[endereco] = @endereco
+	                                   ,[bairro] = @bairro
+                                       ,[complemento] = @complemento
+                                       ,[cidade] = @cidade
+                                       ,[cep] = @cep
+                                       ,[cpf] = @cpf
+                                       ,[tel] = @tel
+                                      WHERE id = @id";
+
+
+                command.Parameters.AddWithValue("@id", cliente.Id);
                 command.Parameters.AddWithValue("@nome", cliente.Nome);
                 command.Parameters.AddWithValue("@data_nasc", cliente.DataNasc);
                 command.Parameters.AddWithValue("@endereco", cliente.Rua);
@@ -113,34 +109,28 @@ namespace Pedidos.DAO
                 command.Parameters.AddWithValue("@cpf", cliente.CPF);
                 command.Parameters.AddWithValue("@tel", cliente.tel);
 
-
-                try
-                {
-
-                    command.Connection = conexao.Conectar();
-                    command.ExecuteNonQuery();
-                    conexao.Desconectar();
-
-
-                    this.mensagem = "Atualizado com sucesso!";
-
-                }
-                catch (SqlException)
-                {
-                    this.mensagem = "Erro Banco de dados";
-                }
-
+                command.Connection = conexao.Conectar();
+                return command.ExecuteNonQuery();
+                
             }
-            else
+              catch (Exception)
             {
-                this.mensagem = "Cliente nao corresponde!";
+                throw;
             }
-
-            return mensagem;
-
-
-
+            finally
+            {
+                conexao.Desconectar();
+            }
         }
+
+
+       
+
+           
+
+
+
+        
         //public List<Cliente> BuscarNomeCliente(String nome)
         //{
         //  command.CommandText = "Select * FROM tabcliente WHERE Nome = @Nome";
@@ -174,32 +164,7 @@ namespace Pedidos.DAO
         //   }
 
 
-        public bool cliente;
-        public bool BuscarPorNomeCliente(String nome)
-        {
-            command.Connection = conexao.Conectar();
-            command.CommandText = "Select * FROM tabcliente WHERE nome = @nome";
-            command.Parameters.AddWithValue("@nome", nome);
-
-
-            try
-            {                
-                reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    cliente = true;
-
-                }
-            }
-
-            catch (SqlException)
-            {
-                this.mensagem = "Erro com Banco de Dados!";
-            }
-
-            return cliente;
-        }
+        
 
         public Cliente ObterClientePeloNome(String nome)
         {

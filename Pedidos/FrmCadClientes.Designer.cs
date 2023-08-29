@@ -46,14 +46,14 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            btnNovo = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            BtnNovo = new Button();
+            BtnAlterar = new Button();
+            BtnDeletar = new Button();
+            BtnSair = new Button();
             label10 = new Label();
             TxtComp = new TextBox();
-            BtnGrava = new Button();
-            label11 = new Label();
+            BtnGravar = new Button();
+            lblMensagem = new Label();
             BtnBuscar = new Button();
             SuspendLayout();
             // 
@@ -201,43 +201,44 @@
             label9.TabIndex = 17;
             label9.Text = "TEL";
             // 
-            // btnNovo
+            // BtnNovo
             // 
-            btnNovo.Location = new Point(12, 500);
-            btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(75, 23);
-            btnNovo.TabIndex = 18;
-            btnNovo.Text = "NOVO";
-            btnNovo.UseVisualStyleBackColor = true;
-            btnNovo.Click += button1_Click;
+            BtnNovo.Location = new Point(12, 500);
+            BtnNovo.Name = "BtnNovo";
+            BtnNovo.Size = new Size(75, 23);
+            BtnNovo.TabIndex = 18;
+            BtnNovo.Text = "NOVO";
+            BtnNovo.UseVisualStyleBackColor = true;
+            BtnNovo.Click += button1_Click;
             // 
-            // button3
+            // BtnAlterar
             // 
-            button3.Location = new Point(285, 500);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 20;
-            button3.Text = "ALTERAR";
-            button3.UseVisualStyleBackColor = true;
+            BtnAlterar.Location = new Point(285, 500);
+            BtnAlterar.Name = "BtnAlterar";
+            BtnAlterar.Size = new Size(75, 23);
+            BtnAlterar.TabIndex = 20;
+            BtnAlterar.Text = "ALTERAR";
+            BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += button3_Click;
             // 
-            // button4
+            // BtnDeletar
             // 
-            button4.Location = new Point(366, 500);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 21;
-            button4.Text = "DELETAR";
-            button4.UseVisualStyleBackColor = true;
+            BtnDeletar.Location = new Point(366, 500);
+            BtnDeletar.Name = "BtnDeletar";
+            BtnDeletar.Size = new Size(75, 23);
+            BtnDeletar.TabIndex = 21;
+            BtnDeletar.Text = "DELETAR";
+            BtnDeletar.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // BtnSair
             // 
-            button5.Location = new Point(461, 500);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 22;
-            button5.Text = "SAIR";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            BtnSair.Location = new Point(461, 500);
+            BtnSair.Name = "BtnSair";
+            BtnSair.Size = new Size(75, 23);
+            BtnSair.TabIndex = 22;
+            BtnSair.Text = "SAIR";
+            BtnSair.UseVisualStyleBackColor = true;
+            BtnSair.Click += button5_Click;
             // 
             // label10
             // 
@@ -255,23 +256,23 @@
             TxtComp.Size = new Size(275, 23);
             TxtComp.TabIndex = 23;
             // 
-            // BtnGrava
+            // BtnGravar
             // 
-            BtnGrava.Location = new Point(107, 500);
-            BtnGrava.Name = "BtnGrava";
-            BtnGrava.Size = new Size(75, 23);
-            BtnGrava.TabIndex = 25;
-            BtnGrava.Text = "GRAVAR";
-            BtnGrava.UseVisualStyleBackColor = true;
-            BtnGrava.Click += BtnGrava_Click;
+            BtnGravar.Location = new Point(107, 500);
+            BtnGravar.Name = "BtnGravar";
+            BtnGravar.Size = new Size(75, 23);
+            BtnGravar.TabIndex = 25;
+            BtnGravar.Text = "GRAVAR";
+            BtnGravar.UseVisualStyleBackColor = true;
+            BtnGravar.Click += BtnGrava_Click;
             // 
-            // label11
+            // lblMensagem
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(28, 561);
-            label11.Name = "label11";
-            label11.Size = new Size(0, 15);
-            label11.TabIndex = 26;
+            lblMensagem.AutoSize = true;
+            lblMensagem.Location = new Point(28, 561);
+            lblMensagem.Name = "lblMensagem";
+            lblMensagem.Size = new Size(0, 15);
+            lblMensagem.TabIndex = 26;
             // 
             // BtnBuscar
             // 
@@ -289,14 +290,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(561, 606);
             Controls.Add(BtnBuscar);
-            Controls.Add(label11);
-            Controls.Add(BtnGrava);
+            Controls.Add(lblMensagem);
+            Controls.Add(BtnGravar);
             Controls.Add(label10);
             Controls.Add(TxtComp);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(btnNovo);
+            Controls.Add(BtnSair);
+            Controls.Add(BtnDeletar);
+            Controls.Add(BtnAlterar);
+            Controls.Add(BtnNovo);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -342,15 +343,15 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Button btnNovo;
+        private Button BtnNovo;
         private Button BtnGravar;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button BtnAlterar;
+        private Button BtnDeletar;
+        private Button BtnSair;
         private Label label10;
         private TextBox TxtComp;
         private Button BtnGrava;
-        private Label label11;
+        private Label lblMensagem;
         private Button BtnBuscar;
     }
 }

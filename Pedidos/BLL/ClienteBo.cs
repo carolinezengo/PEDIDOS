@@ -35,19 +35,19 @@ namespace Pedidos.BLL
 
         //               return cliente;
         //  }
-      //  public bool BuscarPorNome(String nome)
+        //  public bool BuscarPorNome(String nome)
 
-    //    {
-      //      ClienteDAO clienteDao = new ClienteDAO();
-      //      cliente = clienteDao.BuscarPorNomeCliente(nome);
-//
+        //    {
+        //      ClienteDAO clienteDao = new ClienteDAO();
+        //      cliente = clienteDao.BuscarPorNomeCliente(nome);
+        //
         ///    if (!clienteDao.mensagem.Equals(""))
-       //     {
-         //       this.mensagem = clienteDao.mensagem;
-          //  }
+        //     {
+        //       this.mensagem = clienteDao.mensagem;
+        //  }
 
-           /// return cliente;
-//}
+        /// return cliente;
+        //}
 
         public Cliente ObterClientePeloNome(String nome)
         {
@@ -63,7 +63,33 @@ namespace Pedidos.BLL
             return cliente;
 
         }
+        public void AlterarCliente(Cliente cliente)
+        {
+            _clienteDao = new ClienteDAO();
 
+           ValidarCliente(cliente); 
+            var linhasAfetadas = _clienteDao.AtualizarCliente(cliente);
+
+            if (linhasAfetadas == 0)
+            {
+                MessageBox.Show("Cliente Nao encontrado");
+            }
+
+
+
+
+        }
+        public void ValidarCliente(Cliente cliente)
+        {
+            if (string.IsNullOrWhiteSpace(cliente.Nome) ||
+                cliente.Id == 0 )
+            {
+               MessageBox.Show("Cliente nao existe");
+
+            }
+        }
     }
-    }
+
+}
+    
 
