@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace Pedidos.DAO
         ConexaoDAO conexao = new ConexaoDAO();
         SqlDataReader reader;
         public String mensagem = "";
-    
+
         public String InserirCliente(Cliente cliente)
         {
             if (cliente.Equals(cliente))
@@ -112,48 +113,6 @@ namespace Pedidos.DAO
 
                 command.Connection = conexao.Conectar();
                 return command.ExecuteNonQuery();
-                
-            }
-              catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                conexao.Desconectar();
-            }
-        }
-        public List<Cliente> BuscarTodosOsCliente()
-        {
-            try
-            {
-
-                command.CommandText = "Select * FROM tabcliente";
-
-
-                command.Connection = conexao.Conectar();
-                reader = command.ExecuteReader();
-
-                var clientes = new List<Cliente>();
-
-                while (reader.Read())
-                {
-                    var cliente = new Cliente();
-
-                    cliente.Id = Convert.ToInt32(reader["id"]);
-                    cliente.Nome = reader["nome"].ToString();
-                    cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
-                    cliente.Rua = reader["endereco"].ToString();
-                    cliente.Bairro = reader["bairro"].ToString();
-                    cliente.Complemento = reader["complemento"].ToString();
-                    cliente.Cidade = reader["cidade"].ToString();
-                    cliente.CEP = reader["cep"].ToString();
-                    cliente.CPF = reader["cpf"].ToString();
-                    cliente.tel = reader["tel"].ToString();
-
-                }
-
-                return clientes;
 
             }
             catch (Exception)
@@ -164,17 +123,65 @@ namespace Pedidos.DAO
             {
                 conexao.Desconectar();
             }
-
-
         }
+        public List<Cliente> CarregarGrid(string strWhere)
+        {
+            List<Cliente> listacliente = new List<Cliente>();
+               Cliente cliente = null;
 
-       
+
+            if (!string.IsNullOrWhiteSpace(strWhere))
+                strWhere = " WHERE " + strWhere;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select * from tabcliente ")
+             .Append("" + strWhere + " ")
+             .Append("ORDER BY nome");
+            SqlCommand cmd = new SqlCommand(sb.ToString());
+
+            try
+            {
+                cmd.Connection = conexao.Conectar();
+                reader = cmd.ExecuteReader();
+
+               while (reader.Read())
+                {
+                    cliente = new Cliente();
+                                       
+                        cliente.Id = Convert.ToInt32(reader["id"]);
+                        cliente.Nome = reader["nome"].ToString();
+                        cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
+                        cliente.Rua = reader["endereco"].ToString();
+                        cliente.Bairro = reader["bairro"].ToString();
+                       cliente.Complemento = reader["complemento"].ToString();
+                       cliente.Cidade = reader["cidade"].ToString();
+                       cliente.CEP = reader["cep"].ToString();
+                       cliente.CPF = reader["cpf"].ToString();
+                       cliente.tel = reader["tel"].ToString();
+
+                    if (listacliente == null)
+                        listacliente = new List<Cliente>();
+
+                    listacliente.Add(cliente);
+
+                }
+
+                return listacliente;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
         public Cliente ObterClientePeloNome(String nome)
         {
             try
             {
-
-
                 command.CommandText = "Select * FROM tabcliente where nome = @nome";
                 command.Parameters.AddWithValue("@nome", nome);
 
@@ -218,10 +225,4 @@ namespace Pedidos.DAO
         }
 
     }
-
-
 }
-    
-
-
-

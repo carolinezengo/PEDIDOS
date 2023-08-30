@@ -11,6 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Sql;
+using System.Reflection;
+using System.Data.Common;
 
 namespace Pedidos
 {
@@ -28,30 +31,18 @@ namespace Pedidos
         {
 
            
-            var nome = TxtNome.Text;
-
-            SqlCommand command = new SqlCommand("Select * from tabcliente where nome = @nome");
-            command.Parameters.AddWithValue("@nome", nome);
-            command.Connection = conexao.Conectar();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = command;
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            DgCliente.DataSource = dt;
 
         }
 
         private void FrmBuscaCliente_Load(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("Select * from tabcliente");
-            command.Connection = conexao.Conectar();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = command;
-            DataTable dt = new DataTable(); 
-            adapter.Fill(dt);
-            DgCliente.DataSource = dt;
+            string strWhere = "";
+          List<Cliente> listacliente = new BLL.ClienteBo().CarregarGrid(strWhere);
+          DgCliente.DataSource = listacliente;  
+
 
         }
+       
 
     }
 

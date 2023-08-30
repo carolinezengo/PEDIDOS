@@ -4,10 +4,13 @@ using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pedidos.BLL
 {
@@ -23,12 +26,12 @@ namespace Pedidos.BLL
            this.mensagem = clienteDAO.InserirCliente(cliente);
             return mensagem;
         }
-        public List<Cliente> ObterTodosOsClientes()
-        {
-            _clienteDao = new ClienteDAO();
-            return _clienteDao.BuscarTodosOsCliente();
+        //public List<Cliente> ObterTodosOsClientes()
+        //{
+        //    _clienteDao = new ClienteDAO();
+        //    return _clienteDao.BuscarTodosOsCliente();
 
-        }
+    //    }
       
 
         public Cliente ObterClientePeloNome(String nome)
@@ -66,13 +69,25 @@ namespace Pedidos.BLL
             if (string.IsNullOrWhiteSpace(cliente.Nome) ||
                 cliente.Id == 0 )
             {
-               MessageBox.Show("Cliente nao existe");
+                MessageBox.Show("Cliente nao existe");
 
             }
         }
 
 
-       
+        public List<Cliente> CarregarGrid(string strWhere)
+        {
+            try
+            {
+                _clienteDao = new ClienteDAO();
+                return _clienteDao.CarregarGrid(strWhere);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 
 
