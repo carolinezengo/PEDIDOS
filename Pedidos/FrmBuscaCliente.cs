@@ -19,7 +19,7 @@ namespace Pedidos
 {
     public partial class FrmBuscaCliente : Form
     {
-        
+
         ConexaoDAO conexao = new ConexaoDAO();
         private ClienteBo _clienteBo;
         public FrmBuscaCliente()
@@ -29,21 +29,41 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
+            _clienteBo = new ClienteBo();
+            var nome = TxtNome.Text;
 
-           
+            if (nome != null)
+            {
+
+
+                DgCliente.DataSource = new BLL.ClienteBo().ObterClientePeloNome(nome);
+            }
+            else
+            {
+                MessageBox.Show("Cliente nao cadastrado!");
+            }
+
+
+
 
         }
+
 
         private void FrmBuscaCliente_Load(object sender, EventArgs e)
         {
             string strWhere = "";
-          List<Cliente> listacliente = new BLL.ClienteBo().CarregarGrid(strWhere);
-          DgCliente.DataSource = listacliente;  
+            List<Cliente> listacliente = new BLL.ClienteBo().CarregarGrid(strWhere);
+            DgCliente.DataSource = listacliente;
 
 
         }
-       
 
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+            FrmMenu tela = new FrmMenu();   
+            tela.Show();
+        }
     }
 
 

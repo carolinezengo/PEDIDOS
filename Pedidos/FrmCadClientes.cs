@@ -138,6 +138,32 @@ namespace Pedidos
             lblMensagem.ForeColor = System.Drawing.Color.Green;
             lblMensagem.Text = mesagemDeSucesso;
         }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {  
+            
+
+             _clienteBo.DeletarCliente(Convert.ToInt32(TxtCodigo.Text));
+            LimparTela();
+                
+                
+            
+        }
+        private void LimparTela()
+        {
+          
+            TxtCodigo.Text = "";
+            TxtNome.Text = "";
+            TxtDataNasc.Text = "";
+            TxtEndereco.Text = "";
+            TxtBairro.Text = "";
+            TxtComp.Text = "";
+            TxtCidade.Text = "";
+            TxtCep.Text = "";
+            TxtCpf.Text = "";
+            TxtTel.Text = "";
+
+        }
     }
 
 }

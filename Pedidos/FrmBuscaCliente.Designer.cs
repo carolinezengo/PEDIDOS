@@ -81,6 +81,7 @@
             BtnSair.TabIndex = 3;
             BtnSair.Text = "Sair";
             BtnSair.UseVisualStyleBackColor = true;
+            BtnSair.Click += BtnSair_Click;
             // 
             // BtnPesquisar
             // 

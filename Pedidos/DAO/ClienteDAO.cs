@@ -224,5 +224,33 @@ namespace Pedidos.DAO
 
         }
 
+
+        public void DeletarCliente(int id)
+        {
+            try
+            {  
+
+              
+
+                command.CommandText = @"Delete from tabcliente                  
+                                      WHERE id = @id";
+                
+                command.Parameters.AddWithValue("@id", id);
+                command.Connection = conexao.Conectar();
+
+                command.ExecuteNonQuery();
+            
+             
+            
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
     }
 }

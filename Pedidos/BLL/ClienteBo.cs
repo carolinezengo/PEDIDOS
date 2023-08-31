@@ -26,13 +26,14 @@ namespace Pedidos.BLL
            this.mensagem = clienteDAO.InserirCliente(cliente);
             return mensagem;
         }
-        //public List<Cliente> ObterTodosOsClientes()
-        //{
-        //    _clienteDao = new ClienteDAO();
-        //    return _clienteDao.BuscarTodosOsCliente();
 
-    //    }
-      
+        public void DeletarCliente(int id)
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.DeletarCliente(id);
+           
+        }
+
 
         public Cliente ObterClientePeloNome(String nome)
         {
