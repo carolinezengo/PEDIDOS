@@ -43,7 +43,15 @@ namespace Pedidos
         private void buscarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBuscaCliente cliente = new FrmBuscaCliente();
-            cliente.Show(); 
+            cliente.Show();
+            Close();
+        }
+
+        private void cadastroFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadFornecedor fornecedor = new FrmCadFornecedor();
+            fornecedor.Show();
+
             Close();
         }
     }

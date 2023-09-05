@@ -26,3 +26,4 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.F
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmMenu.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmLogin.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Properties.Resources.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadFornecedor.resources

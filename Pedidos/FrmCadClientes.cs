@@ -24,16 +24,8 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TxtCodigo.Text = " ";
-            TxtNome.Text = " ";
-            TxtDataNasc.Text = " ";
-            TxtEndereco.Text = " ";
-            TxtBairro.Text = " ";
-            TxtComp.Text = " ";
-            TxtCidade.Text = " ";
-            TxtCep.Text = " ";
-            TxtCpf.Text = " ";
-            TxtTel.Text = " ";
+            LimparTela();
+            BtnNovo.Enabled = false;    
 
         }
 
@@ -48,13 +40,15 @@ namespace Pedidos
         {
             _clienteBo = new ClienteBo();
             var cliente = ObterModeloPreenchido();
-
+            LimparTela();
+          
+            BtnNovo.Enabled = true;
             try
             {
 
                 _clienteBo.Cadastrar(cliente);
                 mesagemDeSucesso = "Cliente Cadastrado com sucesso!";
-                BtnGrava.Enabled = false;
+         
                 lblMensagem.ForeColor = System.Drawing.Color.Green;
                 lblMensagem.Text = mesagemDeSucesso;
             }
@@ -140,18 +134,18 @@ namespace Pedidos
         }
 
         private void BtnDeletar_Click(object sender, EventArgs e)
-        {  
-            
+        {
 
-             _clienteBo.DeletarCliente(Convert.ToInt32(TxtCodigo.Text));
+
+            _clienteBo.DeletarCliente(Convert.ToInt32(TxtCodigo.Text));
             LimparTela();
-                
-                
-            
+
+
+
         }
         private void LimparTela()
         {
-          
+
             TxtCodigo.Text = "";
             TxtNome.Text = "";
             TxtDataNasc.Text = "";
