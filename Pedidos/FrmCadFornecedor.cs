@@ -124,7 +124,7 @@ namespace Pedidos
         {
             Close();
             FrmMenu menu = new FrmMenu();   
-            menu.Show(this);    
+            menu.Show();    
         }
     }
 }

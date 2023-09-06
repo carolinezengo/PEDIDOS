@@ -58,8 +58,22 @@ namespace Pedidos
         private void buscarFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBuscarFornecedor fornecedor = new FrmBuscarFornecedor();
-            fornecedor.Show();  
-            Close() ;
+            fornecedor.Show();
+            Close();
+        }
+
+        private void cadastroProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadProduto produto = new FrmCadProduto();
+            produto.Show();
+            Close();
+        }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCalculadora calc = new FrmCalculadora();
+            calc.Show();
+            Close();
         }
     }
 }

@@ -28,3 +28,5 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.F
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.Properties.Resources.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadFornecedor.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmBuscarFornecedor.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadProduto.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCalculadora.resources

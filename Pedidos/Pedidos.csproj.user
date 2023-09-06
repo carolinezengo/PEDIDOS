@@ -13,6 +13,12 @@
     <Compile Update="FrmCadFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmCadProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmCalculadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -25,7 +25,7 @@ namespace Pedidos
         private void button1_Click(object sender, EventArgs e)
         {
             LimparTela();
-            BtnNovo.Enabled = false;    
+            BtnNovo.Enabled = false;
 
         }
 
@@ -40,14 +40,14 @@ namespace Pedidos
         {
             _clienteBo = new ClienteBo();
             var cliente = ObterModeloPreenchido();
-          
-           
+
+
             try
             {
 
                 _clienteBo.Cadastrar(cliente);
                 mesagemDeSucesso = "Cliente Cadastrado com sucesso!";
-         
+
                 lblMensagem.ForeColor = System.Drawing.Color.Green;
                 lblMensagem.Text = mesagemDeSucesso;
             }
@@ -145,17 +145,98 @@ namespace Pedidos
         private void LimparTela()
         {
 
-            TxtCodigo.Text = "";
-            TxtNome.Text = "";
-            TxtDataNasc.Text = "";
-            TxtEndereco.Text = "";
-            TxtBairro.Text = "";
-            TxtComp.Text = "";
-            TxtCidade.Text = "";
-            TxtCep.Text = "";
-            TxtCpf.Text = "";
-            TxtTel.Text = "";
+            TxtCodigo.Clear();
+            TxtNome.Clear();
+            TxtDataNasc.Clear();
+            TxtEndereco.Clear();
+            TxtBairro.Clear();
+            TxtComp.Clear();
+            TxtCidade.Clear();
+            TxtCep.Clear();
+            TxtCpf.Clear();
+            TxtTel.Clear();
 
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtComp_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtTel_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtCpf_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtCidade_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtBairro_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtCep_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtDataNasc_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtEndereco_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtNome_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void TxtCodigo_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 
