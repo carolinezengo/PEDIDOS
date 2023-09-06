@@ -30,20 +30,23 @@ namespace Pedidos
         private void button1_Click(object sender, EventArgs e)
         {
             _clienteBo = new ClienteBo();
+           
+
+            
+
+                Carregargrid();
+          
+
+            
+
+
+        }
+        public void Carregargrid()
+        {
             var nome = TxtNome.Text;
 
-            if (nome != null)
-            {
-
-
-                DgCliente.DataSource = new BLL.ClienteBo().ObterClientePeloNome(nome);
-            }
-            else
-            {
-                MessageBox.Show("Cliente nao cadastrado!");
-            }
-
-
+            List<Cliente> listacliente = new BLL.ClienteBo().SelecionarClientePorNome(nome);
+            DgCliente.DataSource = listacliente;
 
 
         }

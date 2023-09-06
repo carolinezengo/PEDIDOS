@@ -125,6 +125,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+
         private TextBox TxtUsuario;
         private TextBox TxtSenha;
         private GroupBox groupBox1;

@@ -138,6 +138,6 @@
         private BindingSource clienteDAOBindingSource;
         private BindingSource clienteDAOBindingSource1;
         public DataGridView DgCliente;
-        private DataGridView dataGridView1;
+        
     }
 }

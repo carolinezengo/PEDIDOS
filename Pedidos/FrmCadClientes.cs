@@ -40,9 +40,8 @@ namespace Pedidos
         {
             _clienteBo = new ClienteBo();
             var cliente = ObterModeloPreenchido();
-            LimparTela();
           
-            BtnNovo.Enabled = true;
+           
             try
             {
 

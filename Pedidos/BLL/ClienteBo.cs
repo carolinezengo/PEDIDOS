@@ -89,6 +89,21 @@ namespace Pedidos.BLL
                 throw;
             }
         }
+
+        public List<Cliente> SelecionarClientePorNome(string nome)
+        {
+            try
+            {
+                _clienteDao = new ClienteDAO();
+                return _clienteDao.SelecionarClientePorNome(nome);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 
 

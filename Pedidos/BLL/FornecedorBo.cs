@@ -13,11 +13,13 @@ namespace Pedidos.BLL
         public bool fornecedor;
         public String mensagem = "";
         private FornecedorDao _fornecedorDao;
+        
+      
 
         public String Cadastrar(Fornecedor fornecedor)
         {
             FornecedorDao fornecedorDao = new FornecedorDao();
-            this.mensagem = fornecedorDao.InserirFornecedor(fornecedor);
+            this.mensagem = fornecedorDao.InserirFornecedor(fornecedor) ;
             return mensagem;
         }
 

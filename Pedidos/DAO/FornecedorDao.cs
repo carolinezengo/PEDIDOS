@@ -19,42 +19,43 @@ namespace Pedidos.DAO
         {
             if (fornecedor.Equals(fornecedor))
             {
-                command.CommandText = @"INSERT INTO[dbo].[tabfornecedor]
-                                       ([nome]
-                                       ,[data_comp]
-                                       ,[endereco]
-                                       ,[bairro]
-                                       ,[complemento]
-                                       ,[cidade]
-                                       ,[cep]
-                                       ,[CNPJ]
-                                       ,[tel])
-                                  VALUES
-                                      (@nome, 
-                                      @data_comp
-                                      ,@endereco
-                                      ,@bairro
-                                      ,@complemento
-                                      ,@cidade
-                                      ,@cep
-                                     ,@cnpj
-                                     ,@tel)";
+                command.CommandText = @"INSERT INTO [dbo].[tabfornecedor]
+                                                ([nome]
+                                                ,[data_comp]
+                                                ,[cnpj]
+                                                ,[tel]
+                                                ,[rua]
+                                                ,[cidade]
+                                                ,[cep]
+                                                ,[bairro]
+                                                ,[compl])
+                                        VALUES
+                                           (@nome
+                                           ,@data_comp
+                                           ,@cnpj
+                                           ,@tel
+                                           ,@rua
+                                           ,@cidade
+                                           ,@cep
+                                           ,@bairro
+                                           ,@compl)";
                 command.Parameters.AddWithValue("@nome", fornecedor.Nome);
                 command.Parameters.AddWithValue("@data_comp", fornecedor.DataComp);
-                command.Parameters.AddWithValue("@endereco", fornecedor.Rua);
-                command.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
-                command.Parameters.AddWithValue("@complemento", fornecedor.Complemento);
-                command.Parameters.AddWithValue("@cidade", fornecedor.Cidade);
-                command.Parameters.AddWithValue("@cep", fornecedor.CEP);
                 command.Parameters.AddWithValue("@cnpj", fornecedor.CNPJ);
                 command.Parameters.AddWithValue("@tel", fornecedor.tel);
+                command.Parameters.AddWithValue("@rua", fornecedor.Rua);
+                command.Parameters.AddWithValue("@cidade", fornecedor.Cidade);
+                command.Parameters.AddWithValue("@cep", fornecedor.CEP);
+                command.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
+                command.Parameters.AddWithValue("@compl", fornecedor.Complemento);
+                                        
 
                 try
                 {
 
-                    command.Connection = conexao.Conectar();
+                    command.Connection = conexao.Conectar() ;
                     command.ExecuteNonQuery();
-                    conexao.Desconectar();
+                   
 
 
                     this.mensagem = "Cadastrado com sucesso";
@@ -64,6 +65,9 @@ namespace Pedidos.DAO
                 {
                     this.mensagem = "Erro Banco de dados";
                 }
+                finally 
+                { conexao.Desconectar();
+                } 
 
             }
             else
@@ -145,12 +149,12 @@ namespace Pedidos.DAO
                     fornecedor.Id = Convert.ToInt32(reader["id"]);
                     fornecedor.Nome = reader["nome"].ToString();
                     fornecedor.DataComp = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
-                    fornecedor.Rua = reader["endereco"].ToString();
+                    fornecedor.Rua = reader["rua"].ToString();
                     fornecedor.Bairro = reader["bairro"].ToString();
-                    fornecedor.Complemento = reader["complemento"].ToString();
+                    fornecedor.Complemento = reader["compl"].ToString();
                     fornecedor.Cidade = reader["cidade"].ToString();
                     fornecedor.CEP = reader["cep"].ToString();
-                    fornecedor.CNPJ = reader["cpf"].ToString();
+                    fornecedor.CNPJ = reader["cnpj"].ToString();
                     fornecedor.tel = reader["tel"].ToString();
 
                     if (listaFornecedor == null)
@@ -192,9 +196,9 @@ namespace Pedidos.DAO
                     fornecedor.Id = Convert.ToInt32(reader["id"]);
                     fornecedor.Nome = reader["nome"].ToString();
                     fornecedor.DataComp = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
-                    fornecedor.Rua = reader["endereco"].ToString();
+                    fornecedor.Rua = reader["rua"].ToString();
                     fornecedor.Bairro = reader["bairro"].ToString();
-                    fornecedor.Complemento = reader["complemento"].ToString();
+                    fornecedor.Complemento = reader["compl"].ToString();
                     fornecedor.Cidade = reader["cidade"].ToString();
                     fornecedor.CEP = reader["cep"].ToString();
                     fornecedor.CNPJ = reader["cnpj"].ToString();
@@ -246,6 +250,55 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
         }
+
+
+        public List<Fornecedor> SelecionarfornecedorPorNome(string nome)
+        {
+            try
+            {
+                command.CommandText = "Select * FROM tabfornecedor where nome = @nome";
+                command.Parameters.AddWithValue("@nome", nome);
+
+                command.Connection = conexao.Conectar();
+                var reader = command.ExecuteReader();
+
+                List<Fornecedor> listafornecedor = new List<Fornecedor>();
+
+
+                while (reader.Read())
+                {
+                    Fornecedor fornecedor = new Fornecedor();
+
+                    fornecedor.Id = Convert.ToInt32(reader["id"]);
+                    fornecedor.Nome = reader["nome"].ToString();
+                    fornecedor.DataComp = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
+                    fornecedor.Rua = reader["endereco"].ToString();
+                    fornecedor.Bairro = reader["bairro"].ToString();
+                    fornecedor.Complemento = reader["compl"].ToString();
+                    fornecedor.Cidade = reader["cidade"].ToString();
+                    fornecedor.CEP = reader["cep"].ToString();
+                    fornecedor.CNPJ = reader["cnpj"].ToString();
+                    fornecedor.tel = reader["tel"].ToString();
+                    listafornecedor.Add(fornecedor);
+
+                }
+
+                return listafornecedor;
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+
+
+        }
+
     }
 }
 

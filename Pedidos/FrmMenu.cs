@@ -54,5 +54,12 @@ namespace Pedidos
 
             Close();
         }
+
+        private void buscarFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscarFornecedor fornecedor = new FrmBuscarFornecedor();
+            fornecedor.Show();  
+            Close() ;
+        }
     }
 }

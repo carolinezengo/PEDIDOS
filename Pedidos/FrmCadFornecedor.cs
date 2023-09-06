@@ -16,6 +16,9 @@ namespace Pedidos
     {
         public String mesagemDeSucesso = "";
         private FornecedorBo _fornecedorBo;
+
+       
+
         public FrmCadFornecedor()
         {
             InitializeComponent();
@@ -23,7 +26,21 @@ namespace Pedidos
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            _fornecedorBo = new FornecedorBo();
+            var nome = TxtNome.Text;
 
+            if (nome != null)
+            {
+                _fornecedorBo.ObterFornecedorPeloNome(nome);
+                CarregarDadosParaEdicao();
+                mesagemDeSucesso = "Cadastro de Fornecedor encontrado";
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
+            else
+            {
+                MessageBox.Show("Deu erro");
+            }
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -51,14 +68,12 @@ namespace Pedidos
         {
             _fornecedorBo = new FornecedorBo();
             var fornecedor = ObterModeloPreenchido();
-            LimparTela();
-
-            BtnNovo.Enabled = true;
+      
             try
             {
 
                 _fornecedorBo.Cadastrar(fornecedor);
-                mesagemDeSucesso = "fornecedor Cadastrado com sucesso!";
+                mesagemDeSucesso = "Fornecedor Cadastrado com sucesso!";
 
                 lblMensagem.ForeColor = System.Drawing.Color.Green;
                 lblMensagem.Text = mesagemDeSucesso;
@@ -68,15 +83,13 @@ namespace Pedidos
                 MessageBox.Show("Erro ao gravar!");
             }
 
-
-
         }
         private Fornecedor ObterModeloPreenchido()
         {
             var fornecedor = new Fornecedor();
-            fornecedor.Id = Convert.ToInt32(TxtCodigo.Text);
+           // fornecedor.Id = Convert.ToInt32(TxtCodigo.Text);
             fornecedor.Nome = TxtNome.Text;
-            fornecedor.DataComp = string.IsNullOrWhiteSpace(TxtComp.Text) ? (DateTime?)null : Convert.ToDateTime(TxtComp.Text);
+            fornecedor.DataComp = string.IsNullOrWhiteSpace(TxtDataComp.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataComp.Text);
             fornecedor.Rua = TxtEndereco.Text;
             fornecedor.Bairro = TxtBairro.Text;
             fornecedor.Complemento = TxtComp.Text;
@@ -86,6 +99,24 @@ namespace Pedidos
             fornecedor.tel = TxtTel.Text;
 
             return fornecedor;
+        }
+        public void CarregarDadosParaEdicao()
+        {
+            _fornecedorBo = new FornecedorBo();
+
+            var nome = TxtNome.Text;
+            var fornecedor = _fornecedorBo.ObterFornecedorPeloNome(nome);
+            TxtCodigo.Text = fornecedor.Id.ToString();
+            TxtNome.Text = fornecedor.Nome;
+            TxtDataComp.Text = fornecedor.DataComp.HasValue ? fornecedor.DataComp.Value.ToString("yyy-MM-dd") : string.Empty;
+            TxtEndereco.Text = fornecedor.Rua;
+            TxtBairro.Text = fornecedor.Bairro;
+            TxtComp.Text = fornecedor.Complemento;
+            TxtCidade.Text = fornecedor.Cidade;
+            TxtCep.Text = fornecedor.CEP;
+            TxtCnpj.Text = fornecedor.CNPJ;
+            TxtTel.Text = fornecedor.tel;
+
         }
     }
 }

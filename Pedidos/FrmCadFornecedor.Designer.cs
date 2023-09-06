@@ -54,6 +54,7 @@
             TxtEndereco = new TextBox();
             TxtNome = new TextBox();
             TxtCodigo = new TextBox();
+            lblMensagem = new Label();
             SuspendLayout();
             // 
             // BtnBuscar
@@ -282,11 +283,20 @@
             TxtCodigo.Size = new Size(100, 23);
             TxtCodigo.TabIndex = 28;
             // 
+            // lblMensagem
+            // 
+            lblMensagem.AutoSize = true;
+            lblMensagem.Location = new Point(22, 550);
+            lblMensagem.Name = "lblMensagem";
+            lblMensagem.Size = new Size(0, 15);
+            lblMensagem.TabIndex = 54;
+            // 
             // FrmCadFornecedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(744, 574);
+            Controls.Add(lblMensagem);
             Controls.Add(BtnBuscar);
             Controls.Add(BtnGravar);
             Controls.Add(label10);
@@ -347,5 +357,6 @@
         private TextBox TxtEndereco;
         private TextBox TxtNome;
         private TextBox TxtCodigo;
+        private Label lblMensagem;
     }
 }

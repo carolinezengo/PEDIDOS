@@ -43,8 +43,8 @@ namespace Pedidos.DAO
                                       ,@complemento
                                       ,@cidade
                                       ,@cep
-                                     ,@cpf
-                                     ,@tel)";
+                                      ,@cpf
+                                      ,@tel)";
                 command.Parameters.AddWithValue("@nome", cliente.Nome);
                 command.Parameters.AddWithValue("@data_nasc", cliente.DataNasc);
                 command.Parameters.AddWithValue("@endereco", cliente.Rua);
@@ -127,7 +127,7 @@ namespace Pedidos.DAO
         public List<Cliente> CarregarGrid(string strWhere)
         {
             List<Cliente> listacliente = new List<Cliente>();
-               Cliente cliente = null;
+            Cliente cliente = null;
 
 
             if (!string.IsNullOrWhiteSpace(strWhere))
@@ -144,20 +144,20 @@ namespace Pedidos.DAO
                 cmd.Connection = conexao.Conectar();
                 reader = cmd.ExecuteReader();
 
-               while (reader.Read())
+                while (reader.Read())
                 {
                     cliente = new Cliente();
-                                       
-                        cliente.Id = Convert.ToInt32(reader["id"]);
-                        cliente.Nome = reader["nome"].ToString();
-                        cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
-                        cliente.Rua = reader["endereco"].ToString();
-                        cliente.Bairro = reader["bairro"].ToString();
-                       cliente.Complemento = reader["complemento"].ToString();
-                       cliente.Cidade = reader["cidade"].ToString();
-                       cliente.CEP = reader["cep"].ToString();
-                       cliente.CPF = reader["cpf"].ToString();
-                       cliente.tel = reader["tel"].ToString();
+
+                    cliente.Id = Convert.ToInt32(reader["id"]);
+                    cliente.Nome = reader["nome"].ToString();
+                    cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
+                    cliente.Rua = reader["endereco"].ToString();
+                    cliente.Bairro = reader["bairro"].ToString();
+                    cliente.Complemento = reader["complemento"].ToString();
+                    cliente.Cidade = reader["cidade"].ToString();
+                    cliente.CEP = reader["cep"].ToString();
+                    cliente.CPF = reader["cpf"].ToString();
+                    cliente.tel = reader["tel"].ToString();
 
                     if (listacliente == null)
                         listacliente = new List<Cliente>();
@@ -228,20 +228,20 @@ namespace Pedidos.DAO
         public void DeletarCliente(int id)
         {
             try
-            {  
+            {
 
-              
+
 
                 command.CommandText = @"Delete from tabcliente                  
                                       WHERE id = @id";
-                
+
                 command.Parameters.AddWithValue("@id", id);
                 command.Connection = conexao.Conectar();
 
                 command.ExecuteNonQuery();
-            
-             
-            
+
+
+
             }
             catch (Exception)
             {
@@ -252,5 +252,54 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
         }
+
+        public List<Cliente> SelecionarClientePorNome(string nome)
+        {
+            try
+            {
+                command.CommandText = "Select * FROM tabcliente where nome = @nome";
+                command.Parameters.AddWithValue("@nome", nome);
+
+                command.Connection = conexao.Conectar();
+                var reader = command.ExecuteReader();
+
+                List<Cliente> listaCliente = new List<Cliente>();   
+
+
+                while (reader.Read())
+                {
+                    Cliente cliente = new Cliente();    
+
+                    cliente.Id = Convert.ToInt32(reader["id"]);
+                    cliente.Nome = reader["nome"].ToString();
+                    cliente.DataNasc = reader["data_nasc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_nasc"]);
+                    cliente.Rua = reader["endereco"].ToString();
+                    cliente.Bairro = reader["bairro"].ToString();
+                    cliente.Complemento = reader["complemento"].ToString();
+                    cliente.Cidade = reader["cidade"].ToString();
+                    cliente.CEP = reader["cep"].ToString();
+                    cliente.CPF = reader["cpf"].ToString();
+                    cliente.tel = reader["tel"].ToString();
+                    listaCliente.Add(cliente);
+
+                }
+
+                return listaCliente;
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+
+
+        }
     }
+
+
 }
