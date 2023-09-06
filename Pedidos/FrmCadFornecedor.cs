@@ -17,7 +17,7 @@ namespace Pedidos
         public String mesagemDeSucesso = "";
         private FornecedorBo _fornecedorBo;
 
-       
+
 
         public FrmCadFornecedor()
         {
@@ -68,26 +68,27 @@ namespace Pedidos
         {
             _fornecedorBo = new FornecedorBo();
             var fornecedor = ObterModeloPreenchido();
-      
-            try
-            {
 
-                _fornecedorBo.Cadastrar(fornecedor);
-                mesagemDeSucesso = "Fornecedor Cadastrado com sucesso!";
+            //  try
+            //  {
+            _fornecedorBo.Cadastrar(fornecedor);
+            mesagemDeSucesso = "Fornecedor Cadastrado com sucesso!";
 
-                lblMensagem.ForeColor = System.Drawing.Color.Green;
-                lblMensagem.Text = mesagemDeSucesso;
-            }
-            catch
-            {
-                MessageBox.Show("Erro ao gravar!");
-            }
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = mesagemDeSucesso;
+            //  }
+            //  catch
+            // {
+            //     mesagemDeSucesso = "Erro ao Salvar!";
+            //     lblMensagem.ForeColor = System.Drawing.Color.Red;
+            //     lblMensagem.Text = mesagemDeSucesso;
+            //}
 
         }
         private Fornecedor ObterModeloPreenchido()
         {
             var fornecedor = new Fornecedor();
-           // fornecedor.Id = Convert.ToInt32(TxtCodigo.Text);
+
             fornecedor.Nome = TxtNome.Text;
             fornecedor.DataComp = string.IsNullOrWhiteSpace(TxtDataComp.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataComp.Text);
             fornecedor.Rua = TxtEndereco.Text;
@@ -117,6 +118,13 @@ namespace Pedidos
             TxtCnpj.Text = fornecedor.CNPJ;
             TxtTel.Text = fornecedor.tel;
 
+        }
+
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+            FrmMenu menu = new FrmMenu();   
+            menu.Show(this);    
         }
     }
 }

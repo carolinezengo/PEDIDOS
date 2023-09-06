@@ -19,7 +19,7 @@ namespace Pedidos.DAO
         {
             if (fornecedor.Equals(fornecedor))
             {
-                command.CommandText = @"INSERT INTO [dbo].[tabfornecedor]
+                command.CommandText = @"INSERT INTO[dbo].[tabfornecedor]
                                                 ([nome]
                                                 ,[data_comp]
                                                 ,[cnpj]
@@ -48,15 +48,11 @@ namespace Pedidos.DAO
                 command.Parameters.AddWithValue("@cep", fornecedor.CEP);
                 command.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
                 command.Parameters.AddWithValue("@compl", fornecedor.Complemento);
-                                        
+                command.Connection = conexao.Conectar();
+                command.ExecuteNonQuery();
 
                 try
                 {
-
-                    command.Connection = conexao.Conectar() ;
-                    command.ExecuteNonQuery();
-                   
-
 
                     this.mensagem = "Cadastrado com sucesso";
 

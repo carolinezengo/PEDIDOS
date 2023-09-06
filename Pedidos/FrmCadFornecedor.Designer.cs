@@ -106,6 +106,7 @@
             BtnSair.Size = new Size(69, 73);
             BtnSair.TabIndex = 49;
             BtnSair.UseVisualStyleBackColor = true;
+            BtnSair.Click += BtnSair_Click;
             // 
             // BtnDeletar
             // 
@@ -278,6 +279,7 @@
             // 
             // TxtCodigo
             // 
+            TxtCodigo.Enabled = false;
             TxtCodigo.Location = new Point(78, 24);
             TxtCodigo.Name = "TxtCodigo";
             TxtCodigo.Size = new Size(100, 23);
