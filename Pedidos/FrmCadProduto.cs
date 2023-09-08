@@ -75,5 +75,54 @@ namespace Pedidos
             menu.Show();
 
         }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            _produtoBo = new ProdutoBo();
+            var nome = TxtNome.Text;
+
+            if (nome != null)
+            {
+                _produtoBo.ObterprodutoPeloNome(nome);
+                CarregarDadosParaEdicao();
+                mesagemDeSucesso = "Cadastro de Produto encontrado";
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
+            else
+            {
+                MessageBox.Show("Deu erro");
+            }
+
+        }
+        public void CarregarDadosParaEdicao()
+        {
+            _produtoBo = new ProdutoBo();
+
+            var nome = TxtNome.Text;
+            var cliente = _produtoBo.ObterprodutoPeloNome(nome);
+            TxtCodigo.Text = cliente.Id.ToString();
+            TxtNome.Text = cliente.Nome;
+            Txtquant.Text = cliente.quantida.ToString();
+            TxtCodFornec.Text = cliente.codFornecedor.ToString();
+
+        }
+
+        private void BtnAlterar_Click(object sender, EventArgs e)
+        {
+            var produto = ObterModeloPreenchido();
+            _produtoBo.Alterarproduto(produto);
+
+            mesagemDeSucesso = "Cadastro de produto alterado com Sucesso!";
+
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = mesagemDeSucesso;
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            _produtoBo.Deletarproduto(Convert.ToInt32(TxtCodigo.Text));
+            LimparTela();
+        }
     }
 }

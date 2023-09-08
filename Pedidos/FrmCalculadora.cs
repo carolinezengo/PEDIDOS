@@ -14,8 +14,8 @@ namespace Pedidos
 {
     public partial class FrmCalculadora : Form
     {
-        decimal valor = 0;
-        decimal valor2 = 0;
+        double valor = 0;
+        double valor2 = 0;
         string operacao = "";
 
         public FrmCalculadora()
@@ -25,7 +25,7 @@ namespace Pedidos
 
         private void btnigual_Click(object sender, EventArgs e)
         {
-            valor2 = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor2 = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             if (operacao == "Soma")
             {
                 TxtResultado.Text = Convert.ToString(valor + valor2);
@@ -101,7 +101,7 @@ namespace Pedidos
 
         private void btnmais_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             TxtResultado.Text = "";
             operacao = "Soma";
 
@@ -116,21 +116,21 @@ namespace Pedidos
 
         private void btnmenos_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             TxtResultado.Text = "";
             operacao = "Subtracao";
         }
 
         private void btnmult_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             TxtResultado.Text = "";
             operacao = "Multiplicacao";
         }
 
         private void btndivisao_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             TxtResultado.Text = "";
             operacao = "Divisao";
 
@@ -138,8 +138,8 @@ namespace Pedidos
 
         private void btnmaisoumenos_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
-            valor2 = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor2 = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             if (valor >= 0)
             {
                 valor = (valor * (-1));
@@ -183,7 +183,7 @@ namespace Pedidos
 
         private void btnquadrado_Click(object sender, EventArgs e)
         {
-            valor = decimal.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
             valor = valor * valor;
             TxtResultado.Text = Convert.ToString(valor);
 
@@ -191,6 +191,10 @@ namespace Pedidos
 
         private void btnraizquarada_Click(object sender, EventArgs e)
         {
+            double resultado;
+            valor = double.Parse(TxtResultado.Text, CultureInfo.InvariantCulture);
+            resultado = Convert.ToSingle(Math.Sqrt(valor));
+            TxtResultado.Text = resultado.ToString();
 
         }
 

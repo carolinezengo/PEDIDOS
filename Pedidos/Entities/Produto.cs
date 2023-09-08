@@ -12,6 +12,6 @@ namespace Pedidos.Entities
         public int quantida { get; set; }
         public int codFornecedor { get; set; }
 
-       
+        public double valor_unitario { get; set; }
     }
 }

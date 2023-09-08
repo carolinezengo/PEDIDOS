@@ -75,5 +75,12 @@ namespace Pedidos
             calc.Show();
             Close();
         }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadPedido pedido = new FrmCadPedido();
+            pedido.Show();
+        }
+
     }
 }

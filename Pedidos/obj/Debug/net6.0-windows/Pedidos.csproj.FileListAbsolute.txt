@@ -30,3 +30,5 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.F
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmBuscarFornecedor.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadProduto.resources
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCalculadora.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmBuscaProduto.resources
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmCadPedido.resources

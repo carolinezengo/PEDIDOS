@@ -30,14 +30,14 @@ namespace Pedidos
         private void button1_Click(object sender, EventArgs e)
         {
             _clienteBo = new ClienteBo();
-           
 
-            
 
-                Carregargrid();
-          
 
-            
+
+            Carregargrid();
+
+
+
 
 
         }
@@ -64,8 +64,13 @@ namespace Pedidos
         private void BtnSair_Click(object sender, EventArgs e)
         {
             Close();
-            FrmMenu tela = new FrmMenu();   
+            FrmMenu tela = new FrmMenu();
             tela.Show();
+        }
+
+        private void DgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

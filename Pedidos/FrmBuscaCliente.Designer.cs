@@ -109,6 +109,7 @@
             DgCliente.RowTemplate.Height = 25;
             DgCliente.Size = new Size(642, 216);
             DgCliente.TabIndex = 1;
+            DgCliente.CellContentClick += DgCliente_CellContentClick;
             // 
             // FrmBuscaCliente
             // 
@@ -138,6 +139,6 @@
         private BindingSource clienteDAOBindingSource;
         private BindingSource clienteDAOBindingSource1;
         public DataGridView DgCliente;
-        
+
     }
 }
