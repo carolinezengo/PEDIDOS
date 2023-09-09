@@ -101,9 +101,9 @@ namespace Pedidos.DAO
                 strWhere = " WHERE " + strWhere;
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select * from tabproduto ")
+            sb.Append("Select * from tabproduto")
              .Append("" + strWhere + " ")
-             .Append("ORDER BY descricao");
+             .Append("ORDER BY id");
             SqlCommand cmd = new SqlCommand(sb.ToString());
 
             try
@@ -119,6 +119,7 @@ namespace Pedidos.DAO
                     produto.Nome = reader["descricao"].ToString();
                     produto.quantida = Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedor"]);
+                    produto.valor_unitario = Convert.ToDouble(reader["valor_unitario"]);
 
 
                     if (listaproduto == null)
@@ -161,6 +162,7 @@ namespace Pedidos.DAO
                     produto.Nome = reader["descricao"].ToString();
                     produto.quantida = Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedor"]);
+                    produto.valor_unitario = Convert.ToDouble(reader["valor_unitario"]);
                 }
 
                 return produto;
@@ -229,7 +231,8 @@ namespace Pedidos.DAO
                     produto.Nome = reader["nome"].ToString();
                     produto.quantida= Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedir"]);
-                    
+                    produto.valor_unitario = Convert.ToDouble(reader["valor_unitario"]);
+
                     listaProduto.Add(produto);
 
                 }

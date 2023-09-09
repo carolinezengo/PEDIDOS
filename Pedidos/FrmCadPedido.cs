@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,17 @@ namespace Pedidos
     {
 
         private ProdutoBo _produtoBo;
+        double total = 0, total1 = 0;
+        int quant = 0;
+        double valoruni = 0;
+        string operacao = "", operacao1 = "";
+
+        DataTable dt = new DataTable();
         public FrmCadPedido()
         {
             InitializeComponent();
             Carregargrid();
+            CarregarDados();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -55,19 +63,27 @@ namespace Pedidos
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                if (DgProduto.SelectedRows.Count >= 0)
+                {
+                    TxtProduto.Text = DgProduto.SelectedRows[0].Cells[0].Value.ToString();
+                    TxtValorUnitario.Text = DgProduto.SelectedRows[0].Cells[3].Value.ToString();
 
-       
-
-           
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Campo Invalido");
+            }
         }
-
         public void Carregargrid()
         {
             _produtoBo = new ProdutoBo();
             string strWhere = "";
 
             List<Produto> listaProduto = new BLL.ProdutoBo().CarregarGrid(strWhere);
-            GDProdutos.DataSource = listaProduto;
+            DgProduto.DataSource = listaProduto;
 
         }
 
@@ -86,11 +102,110 @@ namespace Pedidos
             var produto = _produtoBo.ObterprodutoPeloNome(nome);
 
             TxtProduto.Text = produto.Nome;
-           
+
             Txtquat.Text = Convert.ToString(produto.quantida);
             TxtValorUnitario.Text = Convert.ToString(produto.valor_unitario);
-            
 
+
+        }
+        private void CarregarDados()
+        {
+            DgPDV.ColumnCount = 4;
+            DgPDV.Columns[0].Name = "Produto";
+            DgPDV.Columns[1].Name = "Quantidade";
+            DgPDV.Columns[2].Name = "Valor Unitario";
+            DgPDV.Columns[3].Name = "Valor Total";
+
+            DgPDV.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DgPDV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DgPDV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DgPDV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            quant = Convert.ToInt32(Txtquat.Text);
+            valoruni = Convert.ToDouble(TxtValorUnitario.Text);
+
+
+
+            if (operacao == "adicionar")
+            {
+                total1 = (quant * valoruni);
+                total = total + total1;
+                TxtTotal.Text = total.ToString();
+                DgPDV.Rows.Add(TxtProduto.Text, Txtquat.Text, TxtValorUnitario.Text, TxtTotal.Text);
+            }
+            else
+
+            if (operacao == "deletar")
+
+            {
+                DgPDV.Rows.RemoveAt(DgPDV.CurrentRow.Index);
+                total = total - total1;
+                TxtTotal.Text = total.ToString();
+            }
+
+            if (operacao1 == "Faturado")
+            {
+                TxtSituacao.ForeColor = System.Drawing.Color.Red;
+                TxtSituacao.Text = "Faturado";
+            }
+            else
+            if (operacao1 == "Orcamento")
+
+            {
+                TxtSituacao.ForeColor = System.Drawing.Color.Green;
+                TxtSituacao.Text = "Orçamento";
+            }
+
+
+
+        }
+
+        private void TxtTotal_TextChanged(object sender, EventArgs e)
+        {
+            ;
+        }
+
+        private void DgPDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Rbtnmais_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtTotal.Text = "";
+            operacao = "adicionar";
+        }
+
+        private void Rbtnmenos_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtTotal.Text = "";
+            operacao = "deletar";
+        }
+
+        private void RbtnFat_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtSituacao.Text = "";
+            operacao1 = "Faturado";
+        }
+
+        private void RBtnOrc_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtSituacao.Text = "";
+            operacao1 = "Orcamento";
+        }
+
+        private void TxtSituacao_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
