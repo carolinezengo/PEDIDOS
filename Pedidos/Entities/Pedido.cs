@@ -10,15 +10,19 @@ namespace Pedidos.Entities
 
     {
 
-        public string NomeCliente { get; set; }
+       
         public DateTime? DataCompra { get; set; }
-        public string Produto { get; set; }
+       
 
         public int Quantidade { get; set; }
         public Double ValorUnitario { get; set; }
         public Double ValorTotal { get; set; }
         public string Situacao { get; set; }
-       
+        public int IdProduto { get; set; }
+        public Produto Produto { get; set; }
+        public int IdCliente { get; set; }
+        public Cliente Cliente { get; set; }
+
 
     }
 }

@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             TxtNumero = new TextBox();
-            TxtCliente = new TextBox();
             label2 = new Label();
             TxtDataCompra = new TextBox();
             label3 = new Label();
@@ -59,6 +58,7 @@
             RbtnFat = new RadioButton();
             RBtnOrc = new RadioButton();
             lblMensagem = new Label();
+            CboCliente = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)DgProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DgPDV).BeginInit();
             SuspendLayout();
@@ -80,13 +80,6 @@
             TxtNumero.Size = new Size(88, 23);
             TxtNumero.TabIndex = 1;
             TxtNumero.TabStop = false;
-            // 
-            // TxtCliente
-            // 
-            TxtCliente.Location = new Point(72, 67);
-            TxtCliente.Name = "TxtCliente";
-            TxtCliente.Size = new Size(479, 23);
-            TxtCliente.TabIndex = 3;
             // 
             // label2
             // 
@@ -372,11 +365,20 @@
             lblMensagem.Size = new Size(0, 15);
             lblMensagem.TabIndex = 55;
             // 
+            // CboCliente
+            // 
+            CboCliente.FormattingEnabled = true;
+            CboCliente.Location = new Point(62, 67);
+            CboCliente.Name = "CboCliente";
+            CboCliente.Size = new Size(460, 23);
+            CboCliente.TabIndex = 56;
+            // 
             // FrmCadPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(694, 562);
+            Controls.Add(CboCliente);
             Controls.Add(lblMensagem);
             Controls.Add(RBtnOrc);
             Controls.Add(RbtnFat);
@@ -404,7 +406,6 @@
             Controls.Add(label4);
             Controls.Add(TxtDataCompra);
             Controls.Add(label3);
-            Controls.Add(TxtCliente);
             Controls.Add(label2);
             Controls.Add(TxtNumero);
             Controls.Add(label1);
@@ -421,7 +422,6 @@
 
         private Label label1;
         private TextBox TxtNumero;
-        private TextBox TxtCliente;
         private Label label2;
         private TextBox TxtDataCompra;
         private Label label3;
@@ -450,5 +450,6 @@
         private RadioButton RbtnFat;
         private RadioButton RBtnOrc;
         private Label lblMensagem;
+        private ComboBox CboCliente;
     }
 }

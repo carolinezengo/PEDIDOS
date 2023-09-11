@@ -37,6 +37,7 @@
             clienteDAOBindingSource = new BindingSource(components);
             clienteDAOBindingSource1 = new BindingSource(components);
             DgCliente = new DataGridView();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)clienteDAOBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteDAOBindingSource1).BeginInit();
@@ -45,6 +46,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(TxtNome);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(BtnSair);
@@ -75,7 +77,7 @@
             // 
             // BtnSair
             // 
-            BtnSair.Location = new Point(551, 57);
+            BtnSair.Location = new Point(551, 66);
             BtnSair.Name = "BtnSair";
             BtnSair.Size = new Size(75, 23);
             BtnSair.TabIndex = 3;
@@ -85,7 +87,7 @@
             // 
             // BtnPesquisar
             // 
-            BtnPesquisar.Location = new Point(551, 28);
+            BtnPesquisar.Location = new Point(551, 10);
             BtnPesquisar.Name = "BtnPesquisar";
             BtnPesquisar.Size = new Size(75, 23);
             BtnPesquisar.TabIndex = 2;
@@ -110,6 +112,16 @@
             DgCliente.Size = new Size(642, 216);
             DgCliente.TabIndex = 1;
             DgCliente.CellContentClick += DgCliente_CellContentClick;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(551, 37);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Cadastrar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // FrmBuscaCliente
             // 
@@ -139,6 +151,6 @@
         private BindingSource clienteDAOBindingSource;
         private BindingSource clienteDAOBindingSource1;
         public DataGridView DgCliente;
-
+        private Button button1;
     }
 }

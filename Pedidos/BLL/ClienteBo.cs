@@ -104,9 +104,27 @@ namespace Pedidos.BLL
             }
 
         }
+
+
+
+        public List<Cliente> ObterClientes()
+        {
+            try
+            {
+                _clienteDao = new ClienteDAO();
+                return _clienteDao.ObterTodosNomesClientes();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
+    
+
 
 
 }
-    
+
 

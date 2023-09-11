@@ -29,7 +29,7 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
 
 
 
@@ -71,6 +71,12 @@ namespace Pedidos
         private void DgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FrmCadClientes cliente = new FrmCadClientes();  
+            cliente.Show(); 
         }
     }
 

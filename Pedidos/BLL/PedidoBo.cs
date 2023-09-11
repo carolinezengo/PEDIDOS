@@ -11,6 +11,7 @@ namespace Pedidos.BLL
     public class PedidoBo
     {
         private PedidosDAO _pedidoDao;
+        private ClienteDAO _clienteDAO;
 
         public void AlterarPedido(Pedido pedido)
         {
@@ -28,15 +29,33 @@ namespace Pedidos.BLL
 
 
         }
-        public void ValidarPedido(Pedido pedido)
+       public void ValidarPedido(Pedido pedido)
         {
-            if (string.IsNullOrWhiteSpace(pedido.NomeCliente) ||
+            if (string.IsNullOrWhiteSpace(pedido.Situacao) ||
                 pedido.Id == 0)
             {
                 MessageBox.Show("Pedido nao existe");
 
+           }
+        }
+        public List<Pedido> CarregarGrid(string strWhere)
+        {
+            try
+            {
+                _pedidoDao = new PedidosDAO();
+                return _pedidoDao.CarregarGrid(strWhere);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
-
+    
+    
+    
+    
+    
     }
+
 }

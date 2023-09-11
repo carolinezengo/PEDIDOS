@@ -263,12 +263,12 @@ namespace Pedidos.DAO
                 command.Connection = conexao.Conectar();
                 var reader = command.ExecuteReader();
 
-                List<Cliente> listaCliente = new List<Cliente>();   
+                List<Cliente> listaCliente = new List<Cliente>();
 
 
                 while (reader.Read())
                 {
-                    Cliente cliente = new Cliente();    
+                    Cliente cliente = new Cliente();
 
                     cliente.Id = Convert.ToInt32(reader["id"]);
                     cliente.Nome = reader["nome"].ToString();
@@ -299,7 +299,57 @@ namespace Pedidos.DAO
 
 
         }
-    }
+        public List<Cliente> ObterTodosNomesClientes()
 
+        {
+            List<Cliente> listacliente = new List<Cliente>();
+            listacliente = null;
+            Cliente cliente = null;
+
+
+           
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select nome from tabcliente");
+              
+            SqlCommand cmd = new SqlCommand(sb.ToString());
+
+            try
+            {
+
+                cmd.Connection = conexao.Conectar();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {    if (listacliente == null)
+                    { 
+                    listacliente= new List<Cliente>();  
+                    }
+                    cliente = new Cliente();
+
+                    if (reader["nome"] != DBNull.Value) 
+                    cliente.Nome = reader["nome"].ToString();
+                    
+
+                    
+
+                    listacliente.Add(cliente);
+
+                }
+                
+
+                return listacliente;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
+    }
 
 }

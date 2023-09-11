@@ -17,7 +17,9 @@ namespace Pedidos
     public partial class FrmCadPedido : Form
     {
         private string mesagemDeSucesso = "";
-        public PedidoBo _pedidoBo;
+        private PedidoBo _pedidoBo;
+        private ClienteBo _clienteBo;
+
 
         public ProdutoBo _produtoBo;
         double total = 0, total1 = 0;
@@ -31,6 +33,7 @@ namespace Pedidos
             InitializeComponent();
             Carregargrid();
             CarregarDados();
+            CarregarClientes();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -218,7 +221,7 @@ namespace Pedidos
         {
 
             TxtNumero.Clear();
-            TxtCliente.Clear();
+            CboCliente.Items.Clear();
             TxtDataCompra.Clear();
             Txtquat.Clear();
             TxtSituacao.Clear();
@@ -232,30 +235,55 @@ namespace Pedidos
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            var pedido = ObterModeloPreenchido();
-            _pedidoBo.AlterarPedido(pedido);
+            string operacao = "";
+            operacao = TxtSituacao.Text;
+            if (operacao == "Orcamento")
+            {
+                var pedido = ObterModeloPreenchido();
+                _pedidoBo.AlterarPedido(pedido);
 
-            mesagemDeSucesso = "Cadastro de cliente alterado com Sucesso!";
+                mesagemDeSucesso = "Pedido do cliente alterado com Sucesso!";
 
-            lblMensagem.ForeColor = System.Drawing.Color.Green;
-            lblMensagem.Text = mesagemDeSucesso;
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
+            else
+            if (operacao == "Faturamento")
+            {
+                BtnAlterar.Enabled = false;
+            }
         }
         private Pedido ObterModeloPreenchido()
         {
             var pedido = new Pedido();
             pedido.Id = Convert.ToInt32(TxtNumero.Text);
-            pedido.NomeCliente = TxtCliente.Text;
+            pedido.IdCliente = Convert.ToInt32(TxtNumero.Text);
+            pedido.IdProduto = Convert.ToInt32(TxtNumero.Text);
             pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
             pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
             pedido.ValorTotal = Convert.ToDouble(TxtTotal.Text);
             pedido.Situacao = TxtSituacao.Text;
-          
+
             return pedido;
         }
 
         private void TxtData_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void CarregarClientes()
+        {
+            
+           
+            _clienteBo = new ClienteBo();
+            List<Cliente> listacliente = new BLL.ClienteBo().ObterClientes();
+            CboCliente.DisplayMember = "nome";
+            CboCliente.DataSource = listacliente;
+        
+            
+
 
         }
     }
