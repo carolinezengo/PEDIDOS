@@ -32,7 +32,7 @@
             TxtNumero = new TextBox();
             TxtCliente = new TextBox();
             label2 = new Label();
-            TxtData = new TextBox();
+            TxtDataCompra = new TextBox();
             label3 = new Label();
             label4 = new Label();
             button1 = new Button();
@@ -58,6 +58,7 @@
             Rbtnmenos = new RadioButton();
             RbtnFat = new RadioButton();
             RBtnOrc = new RadioButton();
+            lblMensagem = new Label();
             ((System.ComponentModel.ISupportInitialize)DgProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DgPDV).BeginInit();
             SuspendLayout();
@@ -96,12 +97,13 @@
             label2.TabIndex = 2;
             label2.Text = "Cliente";
             // 
-            // TxtData
+            // TxtDataCompra
             // 
-            TxtData.Location = new Point(547, 12);
-            TxtData.Name = "TxtData";
-            TxtData.Size = new Size(100, 23);
-            TxtData.TabIndex = 5;
+            TxtDataCompra.Location = new Point(547, 12);
+            TxtDataCompra.Name = "TxtDataCompra";
+            TxtDataCompra.Size = new Size(100, 23);
+            TxtDataCompra.TabIndex = 5;
+            TxtDataCompra.TextChanged += TxtData_TextChanged;
             // 
             // label3
             // 
@@ -183,6 +185,7 @@
             BtnAlterar.Size = new Size(69, 73);
             BtnAlterar.TabIndex = 29;
             BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += BtnAlterar_Click;
             // 
             // BtnNovo
             // 
@@ -194,6 +197,7 @@
             BtnNovo.Size = new Size(69, 73);
             BtnNovo.TabIndex = 28;
             BtnNovo.UseVisualStyleBackColor = true;
+            BtnNovo.Click += BtnNovo_Click;
             // 
             // Txtquat
             // 
@@ -213,6 +217,7 @@
             // 
             // DgProduto
             // 
+            DgProduto.BackgroundColor = SystemColors.Control;
             DgProduto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgProduto.Location = new Point(12, 155);
             DgProduto.Name = "DgProduto";
@@ -299,6 +304,7 @@
             // 
             // DgPDV
             // 
+            DgPDV.BackgroundColor = SystemColors.Control;
             DgPDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgPDV.Location = new Point(12, 293);
             DgPDV.Name = "DgPDV";
@@ -358,11 +364,20 @@
             RBtnOrc.UseVisualStyleBackColor = true;
             RBtnOrc.CheckedChanged += RBtnOrc_CheckedChanged;
             // 
+            // lblMensagem
+            // 
+            lblMensagem.AutoSize = true;
+            lblMensagem.Location = new Point(12, 459);
+            lblMensagem.Name = "lblMensagem";
+            lblMensagem.Size = new Size(0, 15);
+            lblMensagem.TabIndex = 55;
+            // 
             // FrmCadPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(694, 562);
+            Controls.Add(lblMensagem);
             Controls.Add(RBtnOrc);
             Controls.Add(RbtnFat);
             Controls.Add(Rbtnmenos);
@@ -387,7 +402,7 @@
             Controls.Add(BtnNovo);
             Controls.Add(button1);
             Controls.Add(label4);
-            Controls.Add(TxtData);
+            Controls.Add(TxtDataCompra);
             Controls.Add(label3);
             Controls.Add(TxtCliente);
             Controls.Add(label2);
@@ -408,7 +423,7 @@
         private TextBox TxtNumero;
         private TextBox TxtCliente;
         private Label label2;
-        private TextBox TxtData;
+        private TextBox TxtDataCompra;
         private Label label3;
         private Label label4;
         private Button button1;
@@ -434,5 +449,6 @@
         private RadioButton Rbtnmenos;
         private RadioButton RbtnFat;
         private RadioButton RBtnOrc;
+        private Label lblMensagem;
     }
 }

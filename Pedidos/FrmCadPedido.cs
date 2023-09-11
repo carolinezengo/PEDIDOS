@@ -16,8 +16,10 @@ namespace Pedidos
 {
     public partial class FrmCadPedido : Form
     {
+        private string mesagemDeSucesso = "";
+        public PedidoBo _pedidoBo;
 
-        private ProdutoBo _produtoBo;
+        public ProdutoBo _produtoBo;
         double total = 0, total1 = 0;
         int quant = 0;
         double valoruni = 0;
@@ -205,7 +207,57 @@ namespace Pedidos
 
         private void TxtSituacao_TextChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void BtnNovo_Click(object sender, EventArgs e)
+        {
+            LimparTela();
+        }
+        private void LimparTela()
+        {
+
+            TxtNumero.Clear();
+            TxtCliente.Clear();
+            TxtDataCompra.Clear();
+            Txtquat.Clear();
+            TxtSituacao.Clear();
+            TxtTotal.Clear();
+            TxtTotal.Clear();
+            TxtProduto.Clear();
+            DgPDV.Rows.Clear();
+            DgProduto.Rows.Clear();
+
+        }
+
+        private void BtnAlterar_Click(object sender, EventArgs e)
+        {
+            var pedido = ObterModeloPreenchido();
+            _pedidoBo.AlterarPedido(pedido);
+
+            mesagemDeSucesso = "Cadastro de cliente alterado com Sucesso!";
+
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = mesagemDeSucesso;
+        }
+        private Pedido ObterModeloPreenchido()
+        {
+            var pedido = new Pedido();
+            pedido.Id = Convert.ToInt32(TxtNumero.Text);
+            pedido.NomeCliente = TxtCliente.Text;
+            pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
+            pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
+            pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
+            pedido.ValorTotal = Convert.ToDouble(TxtTotal.Text);
+            pedido.Situacao = TxtSituacao.Text;
+          
+            return pedido;
+        }
+
+        private void TxtData_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
+
 }
