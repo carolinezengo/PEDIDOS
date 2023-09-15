@@ -56,24 +56,7 @@ namespace Pedidos
 
         }
 
-        /* private void BtnPesquisar_Click(object sender, EventArgs e)
-         {
-             if(operacao == "Numero")
-             {
-                 var nome = TxtNumero.Text;
-                 List<Pedido> listapedido = new BLL.PedidoBo().SelecionarPedidoClientePorNome(nome);
-                 DGPDV.DataSource = listapedido;
-             }
-             else
-                 if(operacao == "Nome")
-             {
-                 var nome = TxtNome.Text;
-                 List<Pedido> listapedido = new BLL.PedidoBo().SelecionarPedidoClientePorNome(nome);
-                DGPDV.DataSource = listapedido;
-             }
-
-         }*/
-
+       
         private void FormatDG()
         {
             DGPDV.Columns[0].HeaderText = "Numero Pedido";
@@ -81,9 +64,39 @@ namespace Pedidos
             DGPDV.Columns[2].HeaderText = "Valor Total";
             DGPDV.Columns[3].HeaderText = "Data Compra";
             DGPDV.Columns[4].HeaderText = "Situacao";
-               
+
+            DGPDV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            DGPDV.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            DGPDV.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DGPDV.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DGPDV.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+            FrmMenu menu = new FrmMenu();
+            menu.Show();
+        }
+
+        private void BtnPesquisar_Click_1(object sender, EventArgs e)
+        {
+            if (operacao == "Numero")
+            {
+               int numero = Convert.ToInt32(TxtNumero.Text);
+                List<Entities.Pedidos> listapedido = new BLL.PedidoBo().SelecionarClientePorNumero(numero);
+                DGPDV.DataSource = listapedido;
+                FormatDG();
+            }
+            else
+     if (operacao == "Nome")
+            {
+                var nome = TxtNome.Text;
+                List<Entities.Pedidos> listapedido = new BLL.PedidoBo().SelecionarClientePorNome(nome);
+                DGPDV.DataSource = listapedido;
+                FormatDG();
+            }
+        }
     }
 }

@@ -123,6 +123,7 @@
             BtnSair.TabIndex = 5;
             BtnSair.Text = "Sair";
             BtnSair.UseVisualStyleBackColor = true;
+            BtnSair.Click += BtnSair_Click;
             // 
             // BtnPesquisar
             // 
@@ -132,6 +133,7 @@
             BtnPesquisar.TabIndex = 4;
             BtnPesquisar.Text = "Pesquisar";
             BtnPesquisar.UseVisualStyleBackColor = true;
+            BtnPesquisar.Click += BtnPesquisar_Click_1;
             // 
             // DGPDV
             // 

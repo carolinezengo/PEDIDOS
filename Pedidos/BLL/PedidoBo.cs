@@ -57,6 +57,35 @@ namespace Pedidos.BLL
 
         }
 
+        public List<Entities.Pedidos> SelecionarClientePorNome(string nome)
+        {
+            try
+            {
+                _pedidoDao = new PedidosDAO();
+                return _pedidoDao.SelecionarClientePorNome(nome);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        public List<Entities.Pedidos> SelecionarClientePorNumero(int numero)
+        {
+            try
+            {
+                _pedidoDao = new PedidosDAO();
+                return _pedidoDao.SelecionarClientePorNumero(numero);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 
 }

@@ -172,5 +172,94 @@ namespace Pedidos.DAO
 
         }
 
+
+        public List<Entities.Pedidos> SelecionarClientePorNome(string nome)
+        {
+
+
+            Entities.Pedidos pedido = null;
+            try
+            {
+                command.CommandText = @"SELECT tp.idpedido, tc.nome, tp.valortotal, tp.situacao, tp.data_comp  
+               FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id where tc.nome = @nome";
+                command.Parameters.AddWithValue("@nome", nome);
+
+                command.Connection = conexao.Conectar();
+                var reader = command.ExecuteReader();
+
+                List<Entities.Pedidos> listapedido = new List<Entities.Pedidos>();
+
+
+                while (reader.Read())
+                {
+                    pedido = new Entities.Pedidos();
+
+
+                    pedido.NumeroPedido = Convert.ToInt32(reader["idpedido"]);
+                    pedido.DataCompra = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
+                    pedido.Situacao = reader["situacao"].ToString();
+                    pedido.NomeCliente = reader["nome"].ToString();
+                    pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
+                    listapedido.Add(pedido);
+
+                }
+
+                return listapedido;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
+
+            public List<Entities.Pedidos> SelecionarClientePorNumero(int numero)
+            {
+
+
+                Entities.Pedidos pedido = null;
+                try
+                {
+                    command.CommandText = @"SELECT tp.idpedido, tc.nome, tp.valortotal, tp.situacao, tp.data_comp  
+               FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id where tp.idpedido = @id";
+                    command.Parameters.AddWithValue("@id", numero);
+
+                    command.Connection = conexao.Conectar();
+                    var reader = command.ExecuteReader();
+
+                    List<Entities.Pedidos> listapedido = new List<Entities.Pedidos>();
+
+
+                    while (reader.Read())
+                    {
+                        pedido = new Entities.Pedidos();
+
+
+                        pedido.NumeroPedido = Convert.ToInt32(reader["idpedido"]);
+                        pedido.DataCompra = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
+                        pedido.Situacao = reader["situacao"].ToString();
+                        pedido.NomeCliente = reader["nome"].ToString();
+                        pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
+                        listapedido.Add(pedido);
+
+                    }
+
+                    return listapedido;
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    conexao.Desconectar();
+                }
+            }
+
     }
 }
