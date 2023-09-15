@@ -280,7 +280,7 @@
             // 
             // TxtProduto
             // 
-            TxtProduto.Location = new Point(75, 119);
+            TxtProduto.Location = new Point(62, 123);
             TxtProduto.Name = "TxtProduto";
             TxtProduto.Size = new Size(447, 23);
             TxtProduto.TabIndex = 48;

@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pedidos.Entities
 {
-   public class Pedido : IntId
-
+      public class Pedido : IntId
     {
 
-       
         public DateTime? DataCompra { get; set; }
-       
+
 
         public int Quantidade { get; set; }
         public Double ValorUnitario { get; set; }
@@ -22,7 +20,6 @@ namespace Pedidos.Entities
         public Produto Produto { get; set; }
         public int IdCliente { get; set; }
         public Cliente Cliente { get; set; }
-
-
+        public string NomeCliente { get; set; }
     }
 }

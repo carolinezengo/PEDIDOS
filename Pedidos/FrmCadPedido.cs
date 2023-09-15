@@ -98,21 +98,6 @@ namespace Pedidos
             FrmBuscaCliente cliente = new FrmBuscaCliente();
             cliente.Show();
         }
-
-        public void CarregarDadosParaEdicao()
-        {
-            _produtoBo = new ProdutoBo();
-            string nome = TxtProduto.Text;
-
-            var produto = _produtoBo.ObterprodutoPeloNome(nome);
-
-            TxtProduto.Text = produto.Nome;
-
-            Txtquat.Text = Convert.ToString(produto.quantida);
-            TxtValorUnitario.Text = Convert.ToString(produto.valor_unitario);
-
-
-        }
         private void CarregarDados()
         {
             DgPDV.ColumnCount = 4;
@@ -235,7 +220,7 @@ namespace Pedidos
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            string operacao = "";
+           /* string operacao = "";
             operacao = TxtSituacao.Text;
             if (operacao == "Orcamento")
             {
@@ -251,11 +236,11 @@ namespace Pedidos
             if (operacao == "Faturamento")
             {
                 BtnAlterar.Enabled = false;
-            }
+            }*/
         }
-        private Pedido ObterModeloPreenchido()
+        private Entities.Pedido ObterModeloPreenchido()
         {
-            var pedido = new Pedido();
+            var pedido = new Entities.Pedido();
             pedido.Id = Convert.ToInt32(TxtNumero.Text);
             pedido.IdCliente = Convert.ToInt32(TxtNumero.Text);
             pedido.IdProduto = Convert.ToInt32(TxtNumero.Text);
@@ -263,7 +248,7 @@ namespace Pedidos
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
             pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
             pedido.ValorTotal = Convert.ToDouble(TxtTotal.Text);
-            pedido.Situacao = TxtSituacao.Text;
+            pedido.Situacao = TxtSituacao.Text.ToString();
 
             return pedido;
         }
@@ -275,14 +260,12 @@ namespace Pedidos
 
         private void CarregarClientes()
         {
-            
-           
+
+
             _clienteBo = new ClienteBo();
             List<Cliente> listacliente = new BLL.ClienteBo().ObterClientes();
             CboCliente.DisplayMember = "nome";
             CboCliente.DataSource = listacliente;
-        
-            
 
 
         }

@@ -75,8 +75,13 @@ namespace Pedidos
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            FrmCadClientes cliente = new FrmCadClientes();  
-            cliente.Show(); 
+            FrmCadClientes cliente = new FrmCadClientes();
+            cliente.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

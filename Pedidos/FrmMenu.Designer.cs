@@ -43,6 +43,7 @@
             buscaDeProdutoToolStripMenuItem = new ToolStripMenuItem();
             relatorioToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
+            pedidosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -116,7 +117,7 @@
             // 
             // buscaToolStripMenuItem
             // 
-            buscaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buscarClienteToolStripMenuItem, buscarFornecedorToolStripMenuItem, buscaDeProdutoToolStripMenuItem });
+            buscaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { buscarClienteToolStripMenuItem, buscarFornecedorToolStripMenuItem, buscaDeProdutoToolStripMenuItem, pedidosToolStripMenuItem });
             buscaToolStripMenuItem.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             buscaToolStripMenuItem.Name = "buscaToolStripMenuItem";
             buscaToolStripMenuItem.Size = new Size(57, 20);
@@ -159,6 +160,13 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
+            // pedidosToolStripMenuItem
+            // 
+            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            pedidosToolStripMenuItem.Size = new Size(180, 22);
+            pedidosToolStripMenuItem.Text = "Pedidos";
+            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -193,5 +201,6 @@
         private ToolStripMenuItem cadastroProdutoToolStripMenuItem;
         private ToolStripMenuItem calculadoraToolStripMenuItem;
         private ToolStripMenuItem buscaDeProdutoToolStripMenuItem;
+        private ToolStripMenuItem pedidosToolStripMenuItem;
     }
 }

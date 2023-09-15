@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
+            button1 = new Button();
             TxtNome = new TextBox();
             label1 = new Label();
             BtnSair = new Button();
@@ -37,7 +38,6 @@
             clienteDAOBindingSource = new BindingSource(components);
             clienteDAOBindingSource1 = new BindingSource(components);
             DgCliente = new DataGridView();
-            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)clienteDAOBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteDAOBindingSource1).BeginInit();
@@ -57,6 +57,17 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(551, 37);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Cadastrar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // TxtNome
             // 
@@ -112,16 +123,6 @@
             DgCliente.Size = new Size(642, 216);
             DgCliente.TabIndex = 1;
             DgCliente.CellContentClick += DgCliente_CellContentClick;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(551, 37);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 6;
-            button1.Text = "Cadastrar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
             // 
             // FrmBuscaCliente
             // 

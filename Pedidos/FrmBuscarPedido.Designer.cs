@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            RbtNumero = new RadioButton();
+            RbtNome = new RadioButton();
+            TxtNumero = new TextBox();
+            TxtNome = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
             BtnSair = new Button();
             BtnPesquisar = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
             DGPDV = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGPDV).BeginInit();
@@ -42,8 +44,10 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(RbtNumero);
+            groupBox1.Controls.Add(RbtNome);
+            groupBox1.Controls.Add(TxtNumero);
+            groupBox1.Controls.Add(TxtNome);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(BtnSair);
@@ -54,6 +58,62 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // RbtNumero
+            // 
+            RbtNumero.AutoSize = true;
+            RbtNumero.Location = new Point(313, 62);
+            RbtNumero.Name = "RbtNumero";
+            RbtNumero.Size = new Size(69, 19);
+            RbtNumero.TabIndex = 9;
+            RbtNumero.TabStop = true;
+            RbtNumero.Text = "Numero";
+            RbtNumero.UseVisualStyleBackColor = true;
+            RbtNumero.CheckedChanged += RbtNumero_CheckedChanged;
+            // 
+            // RbtNome
+            // 
+            RbtNome.AutoSize = true;
+            RbtNome.Location = new Point(249, 62);
+            RbtNome.Name = "RbtNome";
+            RbtNome.Size = new Size(58, 19);
+            RbtNome.TabIndex = 8;
+            RbtNome.TabStop = true;
+            RbtNome.Text = "Nome";
+            RbtNome.UseVisualStyleBackColor = true;
+            RbtNome.CheckedChanged += RbtNome_CheckedChanged;
+            // 
+            // TxtNumero
+            // 
+            TxtNumero.Location = new Point(120, 53);
+            TxtNumero.Name = "TxtNumero";
+            TxtNumero.Size = new Size(100, 23);
+            TxtNumero.TabIndex = 7;
+            // 
+            // TxtNome
+            // 
+            TxtNome.Location = new Point(50, 19);
+            TxtNome.Name = "TxtNome";
+            TxtNome.Size = new Size(309, 23);
+            TxtNome.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 56);
+            label2.Name = "label2";
+            label2.Size = new Size(111, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Numero do Pedido:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(43, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Nome:";
             // 
             // BtnSair
             // 
@@ -73,38 +133,6 @@
             BtnPesquisar.Text = "Pesquisar";
             BtnPesquisar.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(43, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Nome:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(111, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Numero do Pedido:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(50, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(309, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(120, 53);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 7;
-            // 
             // DGPDV
             // 
             DGPDV.BackgroundColor = SystemColors.Control;
@@ -114,6 +142,7 @@
             DGPDV.RowTemplate.Height = 25;
             DGPDV.Size = new Size(610, 209);
             DGPDV.TabIndex = 1;
+            DGPDV.CellContentClick += DGPDV_CellContentClick;
             // 
             // FrmBuscarPedido
             // 
@@ -136,10 +165,15 @@
         private GroupBox groupBox1;
         private Button BtnSair;
         private Button BtnPesquisar;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox TxtNumero;
+        private TextBox TxtNome;
         private Label label2;
         private Label label1;
         private DataGridView DGPDV;
+        private RadioButton RbtNumero;
+        private RadioButton RbtNome;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn nome;
+        private DataGridViewTextBoxColumn NomeCliente;
     }
 }

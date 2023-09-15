@@ -82,5 +82,11 @@ namespace Pedidos
             pedido.Show();
         }
 
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscarPedido pedido = new FrmBuscarPedido();
+            pedido.Show();  
+
+        }
     }
 }

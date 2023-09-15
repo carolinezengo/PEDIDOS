@@ -72,7 +72,7 @@ namespace Pedidos.DAO
                                        WHERE id = @id";
 
 
-                command.Parameters.AddWithValue("@id", produto.Id);
+                command.Parameters.AddWithValue("@idproduto", produto.Id);
                 command.Parameters.AddWithValue("@descricao", produto.Nome);
                 command.Parameters.AddWithValue("@data_nasc", produto.quantida);
                 command.Parameters.AddWithValue("@endereco", produto.codFornecedor);
@@ -103,7 +103,7 @@ namespace Pedidos.DAO
             StringBuilder sb = new StringBuilder();
             sb.Append("Select * from tabproduto")
              .Append("" + strWhere + " ")
-             .Append("ORDER BY id");
+             .Append("ORDER BY descricao");
             SqlCommand cmd = new SqlCommand(sb.ToString());
 
             try
@@ -115,7 +115,7 @@ namespace Pedidos.DAO
                 {
                     produto = new Produto();
 
-                    produto.Id = Convert.ToInt32(reader["id"]);
+                    produto.Id = Convert.ToInt32(reader["idproduto"]);
                     produto.Nome = reader["descricao"].ToString();
                     produto.quantida = Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedor"]);
@@ -158,7 +158,7 @@ namespace Pedidos.DAO
                 {
                     produto = new Produto();
 
-                    produto.Id = Convert.ToInt32(reader["id"]);
+                    produto.Id = Convert.ToInt32(reader["idproduto"]);
                     produto.Nome = reader["descricao"].ToString();
                     produto.quantida = Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedor"]);
@@ -190,9 +190,9 @@ namespace Pedidos.DAO
 
 
                 command.CommandText = @"Delete from tabproduto                 
-                                      WHERE id = @id";
+                                      WHERE id = @idproduto";
 
-                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@idprodutro", id);
                 command.Connection = conexao.Conectar();
 
                 command.ExecuteNonQuery();
@@ -227,7 +227,7 @@ namespace Pedidos.DAO
                 {
                     Produto produto = new Produto();
 
-                    produto.Id = Convert.ToInt32(reader["id"]);
+                    produto.Id = Convert.ToInt32(reader["idproduto"]);
                     produto.Nome = reader["nome"].ToString();
                     produto.quantida= Convert.ToInt32(reader["quantidade"]);
                     produto.codFornecedor = Convert.ToInt32(reader["codfornecedir"]);

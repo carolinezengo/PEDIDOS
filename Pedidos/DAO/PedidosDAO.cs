@@ -1,21 +1,26 @@
-﻿using Pedidos.Entities;
+﻿using Pedidos.BLL;
+using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Pedidos.DAO
 {
-   public class PedidosDAO
+    public class PedidosDAO
 
     {
         SqlCommand command = new SqlCommand();
         ConexaoDAO conexao = new ConexaoDAO();
         SqlDataReader reader;
         public String mensagem = "";
-        public int AtualizarPedido(Pedido pedido)
+        public int AtualizarPedido(Entities.Pedido pedido)
         {
             try
             {
@@ -35,7 +40,7 @@ namespace Pedidos.DAO
                 command.Parameters.AddWithValue("@quantidade", pedido.Quantidade);
                 command.Parameters.AddWithValue("@valortotal", pedido.ValorTotal);
                 command.Parameters.AddWithValue("@situacao", pedido.Situacao);
-             
+
 
                 command.Connection = conexao.Conectar();
                 return command.ExecuteNonQuery();
@@ -50,47 +55,55 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
         }
-        public List<Pedido> CarregarGrid(string strWhere)
+        public List<Entities.Pedidos> CarregarGrid(string strWhere)
         {
-            List<Pedido> listapedido = new List<Pedido>();
-            Pedido pedido = null;
+
+            List<Entities.Pedidos> listapedido = new List<Entities.Pedidos>();
+            Entities.Pedidos pedido = null;
 
 
             if (!string.IsNullOrWhiteSpace(strWhere))
                 strWhere = " WHERE " + strWhere;
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select * from tabpedidos ")
-             .Append("" + strWhere + " ")
-             .Append("ORDER BY nomecliente");
+            sb.Append(@"SELECT tp.idpedido, tc.nome, tp.valortotal, tp.situacao, tp.data_comp  
+               FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id")
+               .Append("" + strWhere + " ")
+               .Append("ORDER BY nome");
+
+
             SqlCommand cmd = new SqlCommand(sb.ToString());
+
+
 
             try
             {
                 cmd.Connection = conexao.Conectar();
-                reader = cmd.ExecuteReader();
+                reader =  cmd.ExecuteReader();
+
+
 
                 while (reader.Read())
                 {
-                    pedido = new Pedido();
+                    pedido = new Entities.Pedidos();
+                   
 
-                    pedido.Id = Convert.ToInt32(reader["id"]);
-                    pedido.IdCliente = Convert.ToInt32(reader["codcliente"]);
-                    pedido.IdProduto = Convert.ToInt32(reader["codproduto"]);
+                    pedido.NumeroPedido = Convert.ToInt32(reader["idpedido"]);
                     pedido.DataCompra = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
-                    pedido.Quantidade = Convert.ToInt32(reader["quantidade"]);
-                    pedido.ValorUnitario = Convert.ToDouble(reader["valorunitario"]);
-                    pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
                     pedido.Situacao = reader["situacao"].ToString();
+                    pedido.NomeCliente = reader["nome"].ToString();
+                    pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
+
 
                     if (listapedido == null)
-                        listapedido = new List<Pedido>();
+                        listapedido = new List<Entities.Pedidos>();
+
 
                     listapedido.Add(pedido);
 
                 }
 
-                return listapedido;
+                    return listapedido;
 
             }
             catch (Exception)
@@ -103,7 +116,7 @@ namespace Pedidos.DAO
             }
         }
 
-        public String InserirPedido(Pedido pedido)
+        public String InserirPedido(Entities.Pedido pedido)
         {
             if (pedido.Equals(pedido))
             {
@@ -130,7 +143,7 @@ namespace Pedidos.DAO
                 command.Parameters.AddWithValue("@valorunitario", pedido.ValorUnitario);
                 command.Parameters.AddWithValue("@valortotal", pedido.ValorTotal);
                 command.Parameters.AddWithValue("@situacao", pedido.Situacao);
-               
+
                 try
                 {
 

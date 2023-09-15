@@ -13,9 +13,9 @@ namespace Pedidos.BLL
         private PedidosDAO _pedidoDao;
         private ClienteDAO _clienteDAO;
 
-        public void AlterarPedido(Pedido pedido)
+        public void AlterarPedido(Entities.Pedidos pedido)
         {
-            _pedidoDao = new PedidosDAO();
+          /*  _pedidoDao = new PedidosDAO();
 
             ValidarPedido(pedido);
             var linhasAfetadas = _pedidoDao.AtualizarPedido(pedido);
@@ -23,23 +23,27 @@ namespace Pedidos.BLL
             if (linhasAfetadas == 0)
             {
                 MessageBox.Show("Pedido Nao encontrado");
-            }
+            }*/
 
 
 
 
         }
-       public void ValidarPedido(Pedido pedido)
+       public void ValidarPedido(Entities.Pedidos pedido)
         {
             if (string.IsNullOrWhiteSpace(pedido.Situacao) ||
-                pedido.Id == 0)
+                pedido.NumeroPedido== 0)
             {
                 MessageBox.Show("Pedido nao existe");
 
            }
         }
-        public List<Pedido> CarregarGrid(string strWhere)
+
+
+
+        public List<Entities.Pedidos> CarregarGrid(string strWhere)
         {
+           
             try
             {
                 _pedidoDao = new PedidosDAO();
@@ -50,12 +54,9 @@ namespace Pedidos.BLL
 
                 throw;
             }
+
         }
-    
-    
-    
-    
-    
+
     }
 
 }
