@@ -327,6 +327,7 @@
             Controls.Add(TxtCodigo);
             Name = "FrmCadFornecedor";
             Text = "Cadastro Fornecedor ";
+            Load += FrmCadFornecedor_Load;
             ResumeLayout(false);
             PerformLayout();
         }

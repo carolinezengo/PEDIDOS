@@ -59,14 +59,19 @@
             RBtnOrc = new RadioButton();
             lblMensagem = new Label();
             CboCliente = new ComboBox();
+            LblCodProduto = new Label();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)DgProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DgPDV).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 9);
+            label1.Location = new Point(5, 21);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
@@ -74,7 +79,7 @@
             // 
             // TxtNumero
             // 
-            TxtNumero.Location = new Point(75, 6);
+            TxtNumero.Location = new Point(74, 18);
             TxtNumero.Name = "TxtNumero";
             TxtNumero.ReadOnly = true;
             TxtNumero.Size = new Size(88, 23);
@@ -92,7 +97,7 @@
             // 
             // TxtDataCompra
             // 
-            TxtDataCompra.Location = new Point(547, 12);
+            TxtDataCompra.Location = new Point(538, 15);
             TxtDataCompra.Name = "TxtDataCompra";
             TxtDataCompra.Size = new Size(100, 23);
             TxtDataCompra.TabIndex = 5;
@@ -101,7 +106,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(461, 15);
+            label3.Location = new Point(452, 18);
             label3.Name = "label3";
             label3.Size = new Size(80, 15);
             label3.TabIndex = 4;
@@ -120,7 +125,7 @@
             // 
             button1.Location = new Point(591, 264);
             button1.Name = "button1";
-            button1.Size = new Size(89, 23);
+            button1.Size = new Size(77, 23);
             button1.TabIndex = 9;
             button1.Text = "Prencher";
             button1.UseVisualStyleBackColor = true;
@@ -136,6 +141,7 @@
             BtnBuscar.Size = new Size(69, 73);
             BtnBuscar.TabIndex = 33;
             BtnBuscar.UseVisualStyleBackColor = true;
+            BtnBuscar.Click += BtnBuscar_Click;
             // 
             // BtnGravar
             // 
@@ -147,6 +153,7 @@
             BtnGravar.Size = new Size(69, 73);
             BtnGravar.TabIndex = 32;
             BtnGravar.UseVisualStyleBackColor = true;
+            BtnGravar.Click += BtnGravar_Click;
             // 
             // BtnSair
             // 
@@ -168,6 +175,7 @@
             BtnDeletar.Size = new Size(69, 73);
             BtnDeletar.TabIndex = 30;
             BtnDeletar.UseVisualStyleBackColor = true;
+            BtnDeletar.Click += BtnDeletar_Click;
             // 
             // BtnAlterar
             // 
@@ -194,7 +202,7 @@
             // 
             // Txtquat
             // 
-            Txtquat.Location = new Point(341, 264);
+            Txtquat.Location = new Point(285, 267);
             Txtquat.Name = "Txtquat";
             Txtquat.Size = new Size(42, 23);
             Txtquat.TabIndex = 37;
@@ -202,7 +210,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(263, 268);
+            label6.Location = new Point(207, 271);
             label6.Name = "label6";
             label6.Size = new Size(72, 15);
             label6.TabIndex = 36;
@@ -224,7 +232,7 @@
             // 
             // TxtSituacao
             // 
-            TxtSituacao.Location = new Point(588, 528);
+            TxtSituacao.Location = new Point(556, 528);
             TxtSituacao.Name = "TxtSituacao";
             TxtSituacao.ReadOnly = true;
             TxtSituacao.Size = new Size(95, 23);
@@ -235,7 +243,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(588, 510);
+            label5.Location = new Point(556, 510);
             label5.Name = "label5";
             label5.Size = new Size(92, 15);
             label5.TabIndex = 42;
@@ -243,7 +251,7 @@
             // 
             // TxtTotal
             // 
-            TxtTotal.Location = new Point(587, 477);
+            TxtTotal.Location = new Point(555, 477);
             TxtTotal.Name = "TxtTotal";
             TxtTotal.ReadOnly = true;
             TxtTotal.Size = new Size(95, 23);
@@ -254,7 +262,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(633, 459);
+            label7.Location = new Point(601, 459);
             label7.Name = "label7";
             label7.Size = new Size(35, 15);
             label7.TabIndex = 44;
@@ -262,7 +270,7 @@
             // 
             // TxtValorUnitario
             // 
-            TxtValorUnitario.Location = new Point(452, 264);
+            TxtValorUnitario.Location = new Point(396, 267);
             TxtValorUnitario.Name = "TxtValorUnitario";
             TxtValorUnitario.ReadOnly = true;
             TxtValorUnitario.Size = new Size(62, 23);
@@ -272,7 +280,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(389, 268);
+            label8.Location = new Point(333, 271);
             label8.Name = "label8";
             label8.Size = new Size(65, 15);
             label8.TabIndex = 46;
@@ -281,6 +289,7 @@
             // TxtProduto
             // 
             TxtProduto.Location = new Point(62, 123);
+            TxtProduto.Multiline = true;
             TxtProduto.Name = "TxtProduto";
             TxtProduto.Size = new Size(447, 23);
             TxtProduto.TabIndex = 48;
@@ -312,31 +321,31 @@
             // Rbtnmais
             // 
             Rbtnmais.AutoSize = true;
-            Rbtnmais.Location = new Point(520, 265);
+            Rbtnmais.Location = new Point(15, 12);
             Rbtnmais.Name = "Rbtnmais";
-            Rbtnmais.Size = new Size(33, 19);
+            Rbtnmais.Size = new Size(49, 19);
             Rbtnmais.TabIndex = 51;
             Rbtnmais.TabStop = true;
-            Rbtnmais.Text = "+";
+            Rbtnmais.Text = "ADD";
             Rbtnmais.UseVisualStyleBackColor = true;
             Rbtnmais.CheckedChanged += Rbtnmais_CheckedChanged;
             // 
             // Rbtnmenos
             // 
             Rbtnmenos.AutoSize = true;
-            Rbtnmenos.Location = new Point(559, 266);
+            Rbtnmenos.Location = new Point(70, 11);
             Rbtnmenos.Name = "Rbtnmenos";
-            Rbtnmenos.Size = new Size(30, 19);
+            Rbtnmenos.Size = new Size(45, 19);
             Rbtnmenos.TabIndex = 52;
             Rbtnmenos.TabStop = true;
-            Rbtnmenos.Text = "-";
+            Rbtnmenos.Text = "DEL";
             Rbtnmenos.UseVisualStyleBackColor = true;
             Rbtnmenos.CheckedChanged += Rbtnmenos_CheckedChanged;
             // 
             // RbtnFat
             // 
             RbtnFat.AutoSize = true;
-            RbtnFat.Location = new Point(206, 10);
+            RbtnFat.Location = new Point(6, 15);
             RbtnFat.Name = "RbtnFat";
             RbtnFat.Size = new Size(72, 19);
             RbtnFat.TabIndex = 53;
@@ -348,7 +357,7 @@
             // RBtnOrc
             // 
             RBtnOrc.AutoSize = true;
-            RBtnOrc.Location = new Point(284, 10);
+            RBtnOrc.Location = new Point(102, 15);
             RBtnOrc.Name = "RBtnOrc";
             RBtnOrc.Size = new Size(85, 19);
             RBtnOrc.TabIndex = 54;
@@ -373,17 +382,45 @@
             CboCliente.Size = new Size(460, 23);
             CboCliente.TabIndex = 56;
             // 
+            // LblCodProduto
+            // 
+            LblCodProduto.AutoSize = true;
+            LblCodProduto.Enabled = false;
+            LblCodProduto.Location = new Point(520, 126);
+            LblCodProduto.Name = "LblCodProduto";
+            LblCodProduto.Size = new Size(0, 15);
+            LblCodProduto.TabIndex = 57;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(RbtnFat);
+            groupBox1.Controls.Add(RBtnOrc);
+            groupBox1.Location = new Point(190, 6);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(193, 40);
+            groupBox1.TabIndex = 58;
+            groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(Rbtnmenos);
+            groupBox2.Controls.Add(Rbtnmais);
+            groupBox2.Location = new Point(464, 260);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(121, 31);
+            groupBox2.TabIndex = 59;
+            groupBox2.TabStop = false;
+            // 
             // FrmCadPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(694, 562);
+            ClientSize = new Size(672, 554);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(LblCodProduto);
             Controls.Add(CboCliente);
             Controls.Add(lblMensagem);
-            Controls.Add(RBtnOrc);
-            Controls.Add(RbtnFat);
-            Controls.Add(Rbtnmenos);
-            Controls.Add(Rbtnmais);
             Controls.Add(DgPDV);
             Controls.Add(button3);
             Controls.Add(TxtProduto);
@@ -414,6 +451,10 @@
             Load += FrmCadPedido_Load;
             ((System.ComponentModel.ISupportInitialize)DgProduto).EndInit();
             ((System.ComponentModel.ISupportInitialize)DgPDV).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -451,5 +492,8 @@
         private RadioButton RBtnOrc;
         private Label lblMensagem;
         private ComboBox CboCliente;
+        private Label LblCodProduto;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }

@@ -41,9 +41,10 @@
             buscarClienteToolStripMenuItem = new ToolStripMenuItem();
             buscarFornecedorToolStripMenuItem = new ToolStripMenuItem();
             buscaDeProdutoToolStripMenuItem = new ToolStripMenuItem();
+            pedidosToolStripMenuItem = new ToolStripMenuItem();
             relatorioToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
-            pedidosToolStripMenuItem = new ToolStripMenuItem();
+            relatorioDeClienteToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,29 +127,38 @@
             // buscarClienteToolStripMenuItem
             // 
             buscarClienteToolStripMenuItem.Name = "buscarClienteToolStripMenuItem";
-            buscarClienteToolStripMenuItem.Size = new Size(180, 22);
+            buscarClienteToolStripMenuItem.Size = new Size(147, 22);
             buscarClienteToolStripMenuItem.Text = "Cliente";
             buscarClienteToolStripMenuItem.Click += buscarClienteToolStripMenuItem_Click;
             // 
             // buscarFornecedorToolStripMenuItem
             // 
             buscarFornecedorToolStripMenuItem.Name = "buscarFornecedorToolStripMenuItem";
-            buscarFornecedorToolStripMenuItem.Size = new Size(180, 22);
+            buscarFornecedorToolStripMenuItem.Size = new Size(147, 22);
             buscarFornecedorToolStripMenuItem.Text = "Fornecedor";
             buscarFornecedorToolStripMenuItem.Click += buscarFornecedorToolStripMenuItem_Click;
             // 
             // buscaDeProdutoToolStripMenuItem
             // 
             buscaDeProdutoToolStripMenuItem.Name = "buscaDeProdutoToolStripMenuItem";
-            buscaDeProdutoToolStripMenuItem.Size = new Size(180, 22);
+            buscaDeProdutoToolStripMenuItem.Size = new Size(147, 22);
             buscaDeProdutoToolStripMenuItem.Text = "Produto";
+            // 
+            // pedidosToolStripMenuItem
+            // 
+            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            pedidosToolStripMenuItem.Size = new Size(147, 22);
+            pedidosToolStripMenuItem.Text = "Pedidos";
+            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
             // 
             // relatorioToolStripMenuItem
             // 
+            relatorioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { relatorioDeClienteToolStripMenuItem });
             relatorioToolStripMenuItem.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             relatorioToolStripMenuItem.Name = "relatorioToolStripMenuItem";
             relatorioToolStripMenuItem.Size = new Size(77, 20);
             relatorioToolStripMenuItem.Text = "Relatorio";
+            relatorioToolStripMenuItem.Click += relatorioToolStripMenuItem_Click;
             // 
             // groupBox1
             // 
@@ -160,12 +170,12 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
-            // pedidosToolStripMenuItem
+            // relatorioDeClienteToolStripMenuItem
             // 
-            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(180, 22);
-            pedidosToolStripMenuItem.Text = "Pedidos";
-            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
+            relatorioDeClienteToolStripMenuItem.Name = "relatorioDeClienteToolStripMenuItem";
+            relatorioDeClienteToolStripMenuItem.Size = new Size(201, 22);
+            relatorioDeClienteToolStripMenuItem.Text = "Relatorio de Cliente";
+            relatorioDeClienteToolStripMenuItem.Click += relatorioDeClienteToolStripMenuItem_Click;
             // 
             // FrmMenu
             // 
@@ -202,5 +212,6 @@
         private ToolStripMenuItem calculadoraToolStripMenuItem;
         private ToolStripMenuItem buscaDeProdutoToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
+        private ToolStripMenuItem relatorioDeClienteToolStripMenuItem;
     }
 }

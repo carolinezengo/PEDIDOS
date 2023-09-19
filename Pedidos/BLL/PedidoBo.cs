@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pedidos.BLL
 {
@@ -12,10 +13,10 @@ namespace Pedidos.BLL
     {
         private PedidosDAO _pedidoDao;
         private ClienteDAO _clienteDAO;
-
-        public void AlterarPedido(Entities.Pedidos pedido)
+        private string mensagem = "";
+        public void AlterarPedido(Entities.Pedido pedido)
         {
-          /*  _pedidoDao = new PedidosDAO();
+            _pedidoDao = new PedidosDAO();
 
             ValidarPedido(pedido);
             var linhasAfetadas = _pedidoDao.AtualizarPedido(pedido);
@@ -23,13 +24,19 @@ namespace Pedidos.BLL
             if (linhasAfetadas == 0)
             {
                 MessageBox.Show("Pedido Nao encontrado");
-            }*/
+            }
 
 
 
 
         }
-       public void ValidarPedido(Entities.Pedidos pedido)
+        public void DeletarPedido(int id)
+        {
+            PedidosDAO pedidoDAO = new PedidosDAO();
+            pedidoDAO.DeletarPedido(id);
+
+        }
+        public void ValidarPedido(Entities.Pedidos pedido)
         {
             if (string.IsNullOrWhiteSpace(pedido.Situacao) ||
                 pedido.NumeroPedido== 0)
@@ -84,6 +91,22 @@ namespace Pedidos.BLL
                 throw;
             }
 
+        }
+
+        public String Cadastrar(Pedido pedido)
+        {
+            PedidosDAO pedidoDAO = new PedidosDAO();
+            ValidarPedido(pedido);
+            this.mensagem = pedidoDAO.InserirPedido(pedido);
+            return mensagem;
+        }
+
+        public void ValidarPedido(Pedido pedido)
+        {
+            if (string.IsNullOrWhiteSpace(pedido.Situacao) || pedido.IdProduto == 0 || pedido.IdCliente == 0)
+            {
+                MessageBox.Show("Erro");
+            }
         }
 
     }

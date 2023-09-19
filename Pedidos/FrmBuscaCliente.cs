@@ -54,6 +54,9 @@ namespace Pedidos
 
         private void FrmBuscaCliente_Load(object sender, EventArgs e)
         {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
             string strWhere = "";
             List<Cliente> listacliente = new BLL.ClienteBo().CarregarGrid(strWhere);
             DgCliente.DataSource = listacliente;

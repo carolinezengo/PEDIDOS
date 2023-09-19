@@ -28,6 +28,9 @@ namespace Pedidos
 
         private void FrmBuscarPedido_Load(object sender, EventArgs e)
         {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
             string strWhere;
             strWhere = "";
 
@@ -43,7 +46,7 @@ namespace Pedidos
         {
             TxtNome.Text = "";
             operacao = "Nome";
-        }
+        } 
 
         private void RbtNumero_CheckedChanged(object sender, EventArgs e)
         {

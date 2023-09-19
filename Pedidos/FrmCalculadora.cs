@@ -201,8 +201,15 @@ namespace Pedidos
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
-            FrmMenu menu = new FrmMenu();   
-            menu.Show();    
+            FrmMenu menu = new FrmMenu();
+            menu.Show();
+        }
+
+        private void FrmCalculadora_Load(object sender, EventArgs e)
+        {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
         }
     }
 }

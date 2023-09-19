@@ -117,7 +117,9 @@ namespace Pedidos
 
         private void FrmCadClientes_Load(object sender, EventArgs e)
         {
-
+            FrmMenu menu
+                = new FrmMenu();
+            menu.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)

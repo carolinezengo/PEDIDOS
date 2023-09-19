@@ -123,8 +123,15 @@ namespace Pedidos
         private void BtnSair_Click(object sender, EventArgs e)
         {
             Close();
-            FrmMenu menu = new FrmMenu();   
-            menu.Show();    
+            FrmMenu menu = new FrmMenu();
+            menu.Show();
+        }
+
+        private void FrmCadFornecedor_Load(object sender, EventArgs e)
+        {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
         }
     }
 }

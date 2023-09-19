@@ -124,5 +124,12 @@ namespace Pedidos
             _produtoBo.Deletarproduto(Convert.ToInt32(TxtCodigo.Text));
             LimparTela();
         }
+
+        private void FrmCadProduto_Load(object sender, EventArgs e)
+        {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
+        }
     }
 }

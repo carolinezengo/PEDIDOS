@@ -85,8 +85,36 @@ namespace Pedidos
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBuscarPedido pedido = new FrmBuscarPedido();
-            pedido.Show();  
+            pedido.Show();
 
         }
+
+        private void relatorioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void relatorioDeClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dt = GerarRelatorio();
+            using(var frm = new FrmRelatorioCliente(dt))
+            {
+                frm.ShowDialog();
+            }
+
+        }
+
+
+        private DataTable GerarRelatorio()
+        {
+               var dt = new DataTable();
+            dt.Columns.Add("id", typeof(int));
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("CPF");
+
+           
+            return dt;  
     }
+
+}
 }

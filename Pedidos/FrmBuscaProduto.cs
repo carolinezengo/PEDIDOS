@@ -16,5 +16,12 @@ namespace Pedidos
         {
             InitializeComponent();
         }
+
+        private void FrmBuscaProduto_Load(object sender, EventArgs e)
+        {
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
+        }
     }
 }

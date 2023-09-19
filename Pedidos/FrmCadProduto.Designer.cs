@@ -208,6 +208,7 @@
             Controls.Add(TxtCodigo);
             Name = "FrmCadProduto";
             Text = "Cadastro de Produto";
+            Load += FrmCadProduto_Load;
             ResumeLayout(false);
             PerformLayout();
         }

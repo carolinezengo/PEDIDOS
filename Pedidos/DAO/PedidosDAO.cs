@@ -20,6 +20,7 @@ namespace Pedidos.DAO
         ConexaoDAO conexao = new ConexaoDAO();
         SqlDataReader reader;
         public String mensagem = "";
+
         public int AtualizarPedido(Entities.Pedido pedido)
         {
             try
@@ -120,8 +121,8 @@ namespace Pedidos.DAO
         {
             if (pedido.Equals(pedido))
             {
-                command.CommandText = @"INSERT INTO[dbo].[tabpedidos]
-                                       ([codcliente]
+                command.CommandText = @"INSERT INTO[dbo].[tabpedido]
+                                        ([codcliente]
                                         ,[codproduto]
                                         ,[quantidade]
                                         ,[valorunitario]
@@ -260,6 +261,35 @@ namespace Pedidos.DAO
                     conexao.Desconectar();
                 }
             }
+
+        public void DeletarPedido(int id)
+        {
+            try
+            {
+
+
+
+                command.CommandText = @"Delete from tabpedido                 
+                                      WHERE idpedido = @id";
+
+                command.Parameters.AddWithValue("@id", id);
+                command.Connection = conexao.Conectar();
+
+                command.ExecuteNonQuery();
+
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
+
 
     }
 }

@@ -9,10 +9,48 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FaturamentoDataSet.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="FaturamentoDataSet.xsc" />
+    <None Remove="FaturamentoDataSet.xsd" />
+    <None Remove="FaturamentoDataSet.xss" />
+    <None Remove="RelatorioCliente.rdlc" />
+    <None Remove="Report1.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="RelatorioCliente.rdlc">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.18" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
+   
+    <Compile Update="FaturamentoDataSet1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FaturamentoDataSet1.xsd</DependentUpon>
+    </Compile>
+   
+    <Compile Update="FaturamentoDataSet11.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FaturamentoDataSet11.xsd</DependentUpon>
+    </Compile>
+   
+    <Compile Update="FaturamentoDataSet2.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FaturamentoDataSet2.xsd</DependentUpon>
+    </Compile>
+   
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -25,6 +63,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="FaturamentoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FaturamentoDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="FaturamentoDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FaturamentoDataSet11.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="FaturamentoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FaturamentoDataSet2.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Relatorios\" />
   </ItemGroup>
 
 </Project>

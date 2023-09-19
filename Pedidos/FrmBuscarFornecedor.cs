@@ -20,6 +20,10 @@ namespace Pedidos
 
         private void FrmBuscarFornecedor_Load(object sender, EventArgs e)
         {
+
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
             string strWhere = "";
             List<Fornecedor> listafornecedor = new BLL.FornecedorBo().CarregarGrid(strWhere);
 

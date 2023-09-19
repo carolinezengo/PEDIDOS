@@ -1,4 +1,5 @@
 ﻿using Pedidos.BLL;
+using Pedidos.DAO;
 using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Pedidos
 {
@@ -34,6 +36,7 @@ namespace Pedidos
             Carregargrid();
             CarregarDados();
             CarregarClientes();
+            Carregarsituacao();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,7 +55,9 @@ namespace Pedidos
 
         private void FrmCadPedido_Load(object sender, EventArgs e)
         {
-
+            FrmMenu menu
+               = new FrmMenu();
+            menu.Close();
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -74,7 +79,7 @@ namespace Pedidos
                 {
                     TxtProduto.Text = DgProduto.SelectedRows[0].Cells[0].Value.ToString();
                     TxtValorUnitario.Text = DgProduto.SelectedRows[0].Cells[3].Value.ToString();
-
+                    LblCodProduto.Text = DgProduto.SelectedRows[0].Cells[4].Value.ToString();
                 }
             }
             catch (Exception)
@@ -89,6 +94,7 @@ namespace Pedidos
 
             List<Produto> listaProduto = new BLL.ProdutoBo().CarregarGrid(strWhere);
             DgProduto.DataSource = listaProduto;
+
 
         }
 
@@ -142,18 +148,7 @@ namespace Pedidos
                 TxtTotal.Text = total.ToString();
             }
 
-            if (operacao1 == "Faturado")
-            {
-                TxtSituacao.ForeColor = System.Drawing.Color.Red;
-                TxtSituacao.Text = "Faturado";
-            }
-            else
-            if (operacao1 == "Orcamento")
 
-            {
-                TxtSituacao.ForeColor = System.Drawing.Color.Green;
-                TxtSituacao.Text = "Orçamento";
-            }
 
 
 
@@ -183,6 +178,7 @@ namespace Pedidos
 
         private void RbtnFat_CheckedChanged(object sender, EventArgs e)
         {
+
             TxtSituacao.Text = "";
             operacao1 = "Faturado";
         }
@@ -220,7 +216,7 @@ namespace Pedidos
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-           /* string operacao = "";
+            string operacao = "";
             operacao = TxtSituacao.Text;
             if (operacao == "Orcamento")
             {
@@ -236,14 +232,14 @@ namespace Pedidos
             if (operacao == "Faturamento")
             {
                 BtnAlterar.Enabled = false;
-            }*/
+            }
         }
         private Entities.Pedido ObterModeloPreenchido()
         {
             var pedido = new Entities.Pedido();
-            pedido.Id = Convert.ToInt32(TxtNumero.Text);
-            pedido.IdCliente = Convert.ToInt32(TxtNumero.Text);
-            pedido.IdProduto = Convert.ToInt32(TxtNumero.Text);
+
+            pedido.IdCliente = Convert.ToInt32(CboCliente.SelectedValue);
+            pedido.IdProduto = Convert.ToInt32(LblCodProduto.Text);
             pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
             pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
@@ -264,9 +260,69 @@ namespace Pedidos
 
             _clienteBo = new ClienteBo();
             List<Cliente> listacliente = new BLL.ClienteBo().ObterClientes();
-            CboCliente.DisplayMember = "nome";
             CboCliente.DataSource = listacliente;
+            CboCliente.DisplayMember = "nome";
+            CboCliente.ValueMember = "id";
 
+
+        }
+
+        private void BtnGravar_Click(object sender, EventArgs e)
+        {
+            _pedidoBo = new PedidoBo();
+            var pedido = ObterModeloPreenchido();
+
+
+            try
+            {
+                _pedidoBo.Cadastrar(pedido);
+
+                mesagemDeSucesso = "Cliente Cadastrado com sucesso!";
+
+                mesagemDeSucesso = "Pedido Cadastrado com sucesso!";
+
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao gravar!");
+            }
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            string txt = TxtSituacao.Text;
+            if (txt == "Orcamento")
+            {
+                _pedidoBo.DeletarPedido(Convert.ToInt32(TxtNumero.Text));
+            }
+            else
+            {
+                MessageBox.Show("Pedido já foi Faturado");
+            }
+            LimparTela();
+
+        }
+
+        private void Carregarsituacao()
+        {
+            if (operacao1 == "Faturado")
+            {
+                TxtSituacao.ForeColor = System.Drawing.Color.Red;
+                TxtSituacao.Text = "Faturado";
+            }
+            else
+          if (operacao1 == "Orcamento")
+
+            {
+                TxtSituacao.ForeColor = System.Drawing.Color.Green;
+                TxtSituacao.Text = "Orçamento";
+            }
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
 
         }
     }

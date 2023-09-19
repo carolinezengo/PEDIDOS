@@ -37,6 +37,7 @@
             ClientSize = new Size(800, 450);
             Name = "FrmBuscaProduto";
             Text = "Busca Por Produto";
+            Load += FrmBuscaProduto_Load;
             ResumeLayout(false);
         }
 

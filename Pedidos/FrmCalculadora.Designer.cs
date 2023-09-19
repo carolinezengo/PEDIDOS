@@ -325,6 +325,7 @@
             Controls.Add(TxtResultado);
             Name = "FrmCalculadora";
             Text = "Calculadora ";
+            Load += FrmCalculadora_Load;
             ResumeLayout(false);
             PerformLayout();
         }
