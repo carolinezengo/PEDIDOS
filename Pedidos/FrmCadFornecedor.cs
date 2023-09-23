@@ -69,20 +69,20 @@ namespace Pedidos
             _fornecedorBo = new FornecedorBo();
             var fornecedor = ObterModeloPreenchido();
 
-            //  try
-            //  {
-            _fornecedorBo.Cadastrar(fornecedor);
-            mesagemDeSucesso = "Fornecedor Cadastrado com sucesso!";
+            try
+            {
+                _fornecedorBo.Cadastrar(fornecedor);
+                mesagemDeSucesso = "Fornecedor Cadastrado com sucesso!";
 
-            lblMensagem.ForeColor = System.Drawing.Color.Green;
-            lblMensagem.Text = mesagemDeSucesso;
-            //  }
-            //  catch
-            // {
-            //     mesagemDeSucesso = "Erro ao Salvar!";
-            //     lblMensagem.ForeColor = System.Drawing.Color.Red;
-            //     lblMensagem.Text = mesagemDeSucesso;
-            //}
+                lblMensagem.ForeColor = System.Drawing.Color.Green;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
+            catch (Exception ex)
+            {
+                mesagemDeSucesso = "Erro ao Salvar!";
+                lblMensagem.ForeColor = System.Drawing.Color.Red;
+                lblMensagem.Text = mesagemDeSucesso;
+            }
 
         }
         private Fornecedor ObterModeloPreenchido()
@@ -132,6 +132,44 @@ namespace Pedidos
             FrmMenu menu
                = new FrmMenu();
             menu.Close();
+        }
+
+        private Fornecedor ObterModeloPreenchidoAlterar()
+        {
+            var fornecedor = new Fornecedor();
+            fornecedor.Id = Convert.ToInt32(TxtCodigo.Text);
+            fornecedor.Nome = TxtNome.Text;
+            fornecedor.DataComp = string.IsNullOrWhiteSpace(TxtDataComp.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataComp.Text);
+            fornecedor.Rua = TxtEndereco.Text;
+            fornecedor.Bairro = TxtBairro.Text;
+            fornecedor.Complemento = TxtComp.Text;
+            fornecedor.Cidade = TxtCidade.Text;
+            fornecedor.CEP = TxtCep.Text;
+            fornecedor.CNPJ = TxtCnpj.Text;
+            fornecedor.tel = TxtTel.Text;
+
+            return fornecedor;
+        }
+
+        private void BtnAlterar_Click(object sender, EventArgs e)
+        {
+            var fornecedor = ObterModeloPreenchidoAlterar();
+            _fornecedorBo.Alterarfornecedor(fornecedor);
+
+            mesagemDeSucesso = "Cadastro de fornecedor alterado com Sucesso!";
+
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = mesagemDeSucesso;
+
+
+
+
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(TxtCodigo.Text);
+            _fornecedorBo.Deletarfornecedor(id);
         }
     }
 }

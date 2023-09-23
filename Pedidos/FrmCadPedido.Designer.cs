@@ -159,7 +159,7 @@
             // 
             BtnSair.BackgroundImage = Properties.Resources.exit_door;
             BtnSair.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnSair.Location = new Point(332, 477);
+            BtnSair.Location = new Point(333, 477);
             BtnSair.Name = "BtnSair";
             BtnSair.Size = new Size(69, 73);
             BtnSair.TabIndex = 31;
@@ -462,9 +462,7 @@
         #endregion
 
         private Label label1;
-        private TextBox TxtNumero;
         private Label label2;
-        private TextBox TxtDataCompra;
         private Label label3;
         private Label label4;
         private Button button1;
@@ -474,26 +472,28 @@
         private Button BtnDeletar;
         private Button BtnAlterar;
         private Button BtnNovo;
-        private TextBox Txtquat;
         private Label label6;
         private DataGridView DgProduto;
-        private TextBox TxtSituacao;
         private Label label5;
-        private TextBox TxtTotal;
         private Label label7;
         private TextBox TxtValorUnitario;
         private Label label8;
-        private TextBox TxtProduto;
         private Button button3;
         private DataGridView DgPDV;
-        private RadioButton Rbtnmais;
-        private RadioButton Rbtnmenos;
         private RadioButton RbtnFat;
         private RadioButton RBtnOrc;
         private Label lblMensagem;
-        private ComboBox CboCliente;
         private Label LblCodProduto;
-        private GroupBox groupBox1;
         private GroupBox groupBox2;
+        public TextBox TxtDataCompra;
+        public TextBox Txtquat;
+        public TextBox TxtProduto;
+        public RadioButton Rbtnmais;
+        public RadioButton Rbtnmenos;
+        public ComboBox CboCliente;
+        public GroupBox groupBox1;
+        public TextBox TxtNumero;
+        public TextBox TxtSituacao;
+        public TextBox TxtTotal;
     }
 }

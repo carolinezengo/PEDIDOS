@@ -12,8 +12,7 @@ namespace Pedidos.BLL
 {
  public class RelatorioBo
     {
-        RelatorioDAO relatoriodao = null;
-
+       
 
 
 
@@ -25,7 +24,7 @@ namespace Pedidos.BLL
                 RelatorioDAO relatoriodao = new RelatorioDAO();
                 
            
-            return relatoriodao.Relatorio();
+            return relatoriodao.RelatorioRelacaoCliente();
         }
 
 

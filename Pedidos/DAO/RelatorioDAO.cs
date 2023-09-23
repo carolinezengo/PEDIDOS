@@ -14,10 +14,10 @@ namespace Pedidos.DAO
     {
         SqlCommand command = new SqlCommand();
         ConexaoDAO conexao = new ConexaoDAO();
-        SqlDataReader reader;
+       
         public String mensagem = "";
 
-        public DataTable Relatorio()
+        public DataTable RelatorioRelacaoCliente()
         {
 
             DataTable dt = new DataTable();

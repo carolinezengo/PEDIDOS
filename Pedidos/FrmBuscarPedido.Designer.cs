@@ -142,9 +142,11 @@
             DGPDV.Location = new Point(2, 125);
             DGPDV.Name = "DGPDV";
             DGPDV.RowTemplate.Height = 25;
+            DGPDV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGPDV.Size = new Size(610, 209);
             DGPDV.TabIndex = 1;
             DGPDV.CellContentClick += DGPDV_CellContentClick;
+            DGPDV.CellDoubleClick += DGPDV_CellDoubleClick;
             // 
             // FrmBuscarPedido
             // 

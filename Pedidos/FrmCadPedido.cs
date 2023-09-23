@@ -23,6 +23,7 @@ namespace Pedidos
         private ClienteBo _clienteBo;
 
 
+
         public ProdutoBo _produtoBo;
         double total = 0, total1 = 0;
         int quant = 0;
@@ -30,6 +31,8 @@ namespace Pedidos
         string operacao = "", operacao1 = "";
 
         DataTable dt = new DataTable();
+
+
         public FrmCadPedido()
         {
             InitializeComponent();
@@ -37,6 +40,10 @@ namespace Pedidos
             CarregarDados();
             CarregarClientes();
             Carregarsituacao();
+
+            FrmBuscarPedido pedido = new FrmBuscarPedido();
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -124,10 +131,16 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (quant > 0)
+            {
 
-
-            quant = Convert.ToInt32(Txtquat.Text);
-            valoruni = Convert.ToDouble(TxtValorUnitario.Text);
+                quant = Convert.ToInt32(Txtquat.Text);
+                valoruni = Convert.ToDouble(TxtValorUnitario.Text);
+            }
+            else
+            {
+                MessageBox.Show("Produto sem quantidade");
+            }
 
 
 
@@ -323,6 +336,8 @@ namespace Pedidos
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            FrmBuscarPedido pedido = new FrmBuscarPedido();
+            pedido.Show();
 
         }
     }

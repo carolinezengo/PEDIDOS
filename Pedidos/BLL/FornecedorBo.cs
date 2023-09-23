@@ -45,7 +45,7 @@ namespace Pedidos.BLL
         }
 
         
-            public void Alterarfornecedor(Fornecedor fornecedor)
+       public void Alterarfornecedor(Fornecedor fornecedor)
         {
             _fornecedorDao = new FornecedorDao();
 
@@ -60,13 +60,13 @@ namespace Pedidos.BLL
 
 
 
-        }
+       }
         public void Validarfornecedor(Fornecedor fornecedor)
         {
             if (string.IsNullOrWhiteSpace(fornecedor.Nome) ||
                 fornecedor.Id == 0)
             {
-                MessageBox.Show("fornecedor nao existe");
+                MessageBox.Show("Fornecedor nao existe");
 
             }
         }

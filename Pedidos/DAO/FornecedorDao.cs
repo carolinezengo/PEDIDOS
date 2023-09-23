@@ -84,9 +84,9 @@ namespace Pedidos.DAO
                 command.CommandText = @"UPDATE[dbo].[tabfornecedor]
                                         SET[nome] = @nome
                                        ,[data_comp] = @data_comp
-                                       ,[endereco] = @endereco
+                                       ,[rua] = @rua
 	                                   ,[bairro] = @bairro
-                                       ,[complemento] = @complemento
+                                       ,[compl] = @compl
                                        ,[cidade] = @cidade
                                        ,[cep] = @cep
                                        ,[cnpj] = @cnpj
@@ -96,13 +96,13 @@ namespace Pedidos.DAO
 
                 command.Parameters.AddWithValue("@id", fornecedor.Id);
                 command.Parameters.AddWithValue("@nome", fornecedor.Nome);
-                command.Parameters.AddWithValue("@data_nasc", fornecedor.DataComp);
-                command.Parameters.AddWithValue("@endereco", fornecedor.Rua);
+                command.Parameters.AddWithValue("@data_comp", fornecedor.DataComp);
+                command.Parameters.AddWithValue("@rua", fornecedor.Rua);
                 command.Parameters.AddWithValue("@bairro", fornecedor.Bairro);
-                command.Parameters.AddWithValue("@complemento", fornecedor.Complemento);
+                command.Parameters.AddWithValue("@compl", fornecedor.Complemento);
                 command.Parameters.AddWithValue("@cidade", fornecedor.Cidade);
                 command.Parameters.AddWithValue("@cep", fornecedor.CEP);
-                command.Parameters.AddWithValue("@cpf", fornecedor.CNPJ);
+                command.Parameters.AddWithValue("@cnpj", fornecedor.CNPJ);
                 command.Parameters.AddWithValue("@tel", fornecedor.tel);
 
                 command.Connection = conexao.Conectar();

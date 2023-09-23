@@ -117,6 +117,7 @@
             BtnDeletar.Size = new Size(69, 73);
             BtnDeletar.TabIndex = 48;
             BtnDeletar.UseVisualStyleBackColor = true;
+            BtnDeletar.Click += BtnDeletar_Click;
             // 
             // BtnAlterar
             // 
@@ -127,6 +128,7 @@
             BtnAlterar.Size = new Size(69, 73);
             BtnAlterar.TabIndex = 47;
             BtnAlterar.UseVisualStyleBackColor = true;
+            BtnAlterar.Click += BtnAlterar_Click;
             // 
             // BtnNovo
             // 
