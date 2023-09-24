@@ -77,7 +77,7 @@ namespace Pedidos
         {
 
         }
-
+        // Carregar a gridview de pedido
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -94,6 +94,8 @@ namespace Pedidos
                 MessageBox.Show("Campo Invalido");
             }
         }
+
+        // Carregar GridView De produto
         public void Carregargrid()
         {
             _produtoBo = new ProdutoBo();
@@ -105,12 +107,16 @@ namespace Pedidos
 
         }
 
+
         private void button3_Click_1(object sender, EventArgs e)
         {
             Close();
             FrmBuscaCliente cliente = new FrmBuscaCliente();
             cliente.Show();
         }
+
+        // Carregar dados Da GridViiew de Pedido
+
         private void CarregarDados()
         {
             DgPDV.ColumnCount = 4;
@@ -208,6 +214,7 @@ namespace Pedidos
         {
             LimparTela();
         }
+        //limpar os campos
         private void LimparTela()
         {
 
@@ -224,6 +231,7 @@ namespace Pedidos
 
         }
 
+        //Botao de Alterar o pedido
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
             string operacao = "";
@@ -244,6 +252,8 @@ namespace Pedidos
                 BtnAlterar.Enabled = false;
             }
         }
+
+        //Preencher os campos com dados da Classe Pedido
         private Entities.Pedido ObterModeloPreenchido()
         {
             var pedido = new Entities.Pedido();
@@ -264,6 +274,7 @@ namespace Pedidos
 
         }
 
+        // Carregar a lista de Cliente
         private void CarregarClientes()
         {
 
@@ -276,7 +287,7 @@ namespace Pedidos
 
 
         }
-
+        // Botao Salvar o Pedido
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             _pedidoBo = new PedidoBo();
@@ -315,6 +326,7 @@ namespace Pedidos
 
         }
 
+        // Carregar a situação que o pedido se encontra
         private void Carregarsituacao()
         {
             if (operacao1 == "Faturado")
@@ -330,6 +342,8 @@ namespace Pedidos
                 TxtSituacao.Text = "Orçamento";
             }
         }
+
+        // Botao Buscar por um pedido
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {

@@ -15,6 +15,7 @@ namespace Pedidos.Entities
     
         public string NDescricaoProduto { get; set; }
 
+        public Double ValorUnitario { get; set; }
         public Double ValorTotal { get; set; }
         public DateTime? DataCompra { get; set; }
        
