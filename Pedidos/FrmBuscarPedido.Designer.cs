@@ -141,6 +141,7 @@
             DGPDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGPDV.Location = new Point(2, 125);
             DGPDV.Name = "DGPDV";
+            DGPDV.RowHeadersVisible = false;
             DGPDV.RowTemplate.Height = 25;
             DGPDV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGPDV.Size = new Size(610, 209);

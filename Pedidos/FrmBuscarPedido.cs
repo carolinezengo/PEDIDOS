@@ -63,17 +63,6 @@ namespace Pedidos
 
         private void DGPDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                string pedido = DGPDV.CurrentRow.Cells[0].Value.ToString();
-
-                FrmCadPedido frmImagem = new FrmCadPedido();
-                frmImagem.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
         }
 
@@ -82,11 +71,11 @@ namespace Pedidos
         {
             DGPDV.Columns[0].HeaderText = "Numero Pedido";
             DGPDV.Columns[1].HeaderText = "Nome Cliente";
-            DGPDV.Columns[2].HeaderText = "Valor Total";
-            DGPDV.Columns[3].HeaderText = "Data Compra";
-            DGPDV.Columns[4].HeaderText = "Situacao";
-            DGPDV.Columns[5].HeaderText = "Produto";
-            DGPDV.Columns[6].HeaderText = "Quantidade";
+            DGPDV.Columns[2].HeaderText = "Quantidade";
+            DGPDV.Columns[3].HeaderText = "Produto";
+            DGPDV.Columns[4].HeaderText = "Valor Total";
+            DGPDV.Columns[5].HeaderText = "Data Compra";
+            DGPDV.Columns[6].HeaderText = "Situacao";
 
             DGPDV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             DGPDV.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -131,22 +120,36 @@ namespace Pedidos
             DGPDV.ReadOnly = true;
         }
 
-       
+
 
         private void DGPDV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            FormatDG();
             FrmCadPedido pedido = new FrmCadPedido();
             pedido.TxtNumero.Text = this.DGPDV.CurrentRow.Cells[0].Value.ToString();
             pedido.CboCliente.Text = this.DGPDV.CurrentRow.Cells[1].Value.ToString();
-            pedido.TxtTotal.Text =  this.DGPDV.CurrentRow.Cells[2].Value.ToString();
-            pedido.TxtDataCompra.Text = this.DGPDV.CurrentRow.Cells[3].Value.ToString();
-            pedido.TxtSituacao.Text = this.DGPDV.CurrentRow.Cells[4].Value.ToString();
-            pedido.TxtProduto.Text = this.DGPDV.CurrentRow.Cells[5].Value.ToString();
-            pedido.Txtquat.Text = this.DGPDV.CurrentRow.Cells[6].Value.ToString();
+            pedido.Txtquat.Text = this.DGPDV.CurrentRow.Cells[2].Value.ToString();
+
+            for (int i = 0; i < DGPDV.Rows.Count; i++)
+            {
+                pedido.DgPDV.Rows[i].Cells[0].Value = DGPDV.Rows[i].Cells[3].Value;
+                pedido.DgPDV.Rows[i].Cells[1].Value = DGPDV.Rows[i].Cells[2].Value;
+                pedido.DgPDV.Rows[i].Cells[3].Value = DGPDV.Rows[i].Cells[4].Value;
+
+            }
+          
+
+            pedido.TxtTotal.Text = this.DGPDV.CurrentRow.Cells[4].Value.ToString();
+            pedido.TxtDataCompra.Text = this.DGPDV.CurrentRow.Cells[5].Value.ToString();
+            pedido.TxtSituacao.Text = this.DGPDV.CurrentRow.Cells[6].Value.ToString();
+
+
             pedido.ShowDialog();
-        
-        
-        
+
+
+
         }
+
+       
     }
 }

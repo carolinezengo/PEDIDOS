@@ -11,6 +11,9 @@ namespace Pedidos.Entities
     {
         public int NumeroPedido { get; set; }
         public string NomeCliente { get; set; }
+        public int Quantidade { get; set; }
+    
+        public string NDescricaoProduto { get; set; }
 
         public Double ValorTotal { get; set; }
         public DateTime? DataCompra { get; set; }

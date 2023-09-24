@@ -169,13 +169,10 @@ namespace Pedidos
 
         private void TxtTotal_TextChanged(object sender, EventArgs e)
         {
-            ;
-        }
-
-        private void DgPDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
+
+
 
         private void Rbtnmais_CheckedChanged(object sender, EventArgs e)
         {
@@ -338,6 +335,11 @@ namespace Pedidos
         {
             FrmBuscarPedido pedido = new FrmBuscarPedido();
             pedido.Show();
+
+        }
+
+        private void DgPDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

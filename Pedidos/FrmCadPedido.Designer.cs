@@ -223,6 +223,7 @@
             DgProduto.Location = new Point(12, 155);
             DgProduto.Name = "DgProduto";
             DgProduto.ReadOnly = true;
+            DgProduto.RowHeadersVisible = false;
             DgProduto.RowTemplate.Height = 25;
             DgProduto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgProduto.Size = new Size(638, 103);
@@ -311,6 +312,7 @@
             DgPDV.Location = new Point(12, 293);
             DgPDV.Name = "DgPDV";
             DgPDV.ReadOnly = true;
+            DgPDV.RowHeadersVisible = false;
             DgPDV.RowTemplate.Height = 25;
             DgPDV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgPDV.Size = new Size(638, 152);
@@ -473,13 +475,11 @@
         private Button BtnAlterar;
         private Button BtnNovo;
         private Label label6;
-        private DataGridView DgProduto;
         private Label label5;
         private Label label7;
         private TextBox TxtValorUnitario;
         private Label label8;
         private Button button3;
-        private DataGridView DgPDV;
         private RadioButton RbtnFat;
         private RadioButton RBtnOrc;
         private Label lblMensagem;
@@ -495,5 +495,7 @@
         public TextBox TxtNumero;
         public TextBox TxtSituacao;
         public TextBox TxtTotal;
+        public DataGridView DgProduto;
+        public DataGridView DgPDV;
     }
 }
