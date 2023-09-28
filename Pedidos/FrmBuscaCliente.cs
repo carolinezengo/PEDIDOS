@@ -20,7 +20,7 @@ namespace Pedidos
     public partial class FrmBuscaCliente : Form
     {
 
-        ConexaoDAO conexao = new ConexaoDAO();
+    
         private ClienteBo _clienteBo;
         public FrmBuscaCliente()
         {
@@ -30,17 +30,11 @@ namespace Pedidos
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-
-
-
             Carregargrid();
 
 
-
-
-
         }
+        //Carregar a Gridview Pelo Nome do Cliente
         public void Carregargrid()
         {
             var nome = TxtNome.Text;
@@ -58,6 +52,7 @@ namespace Pedidos
                = new FrmMenu();
             menu.Close();
             string strWhere = "";
+            //Carregar a Gridview de Cadastro Cliente
             List<Cliente> listacliente = new BLL.ClienteBo().CarregarGrid(strWhere);
             DgCliente.DataSource = listacliente;
 

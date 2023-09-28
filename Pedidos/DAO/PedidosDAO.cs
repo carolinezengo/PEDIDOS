@@ -67,7 +67,7 @@ namespace Pedidos.DAO
                 strWhere = " WHERE " + strWhere;
 
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"SELECT tp.idpedido, tc.nome, tp.valorunitario, tp.valortotal, tp.situacao, tp.data_comp, tpp.descricao, tp.quantidade 
+            sb.Append(@"SELECT tp.idpedido, tc.nome,tp.codcliente, tp.codproduto, tp.valorunitario, tp.valortotal, tp.situacao, tp.data_comp, tpp.descricao, tp.quantidade 
                FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id INNER JOIN tabproduto AS tpp ON codproduto = idproduto")
                .Append("" + strWhere + " ")
                .Append("ORDER BY nome");
@@ -97,6 +97,8 @@ namespace Pedidos.DAO
                     pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
                     pedido.Quantidade = Convert.ToInt32(reader["quantidade"]);
                     pedido.NDescricaoProduto = reader["descricao"].ToString();
+                    pedido.codproduto = Convert.ToInt32(reader["codproduto"]);
+                    pedido.codcliente = Convert.ToInt32(reader["codcliente"]);
 
                     if (listapedido == null)
                         listapedido = new List<Entities.Pedidos>();

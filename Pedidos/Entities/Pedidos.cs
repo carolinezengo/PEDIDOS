@@ -10,9 +10,11 @@ namespace Pedidos.Entities
 
     {
         public int NumeroPedido { get; set; }
+        public int codcliente { get; set; }
         public string NomeCliente { get; set; }
         public int Quantidade { get; set; }
-    
+        public int codproduto { get; set; }
+
         public string NDescricaoProduto { get; set; }
 
         public Double ValorUnitario { get; set; }

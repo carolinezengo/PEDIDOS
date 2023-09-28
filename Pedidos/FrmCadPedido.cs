@@ -1,18 +1,6 @@
 ﻿using Pedidos.BLL;
-using Pedidos.DAO;
 using Pedidos.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace Pedidos
 {
@@ -25,10 +13,11 @@ namespace Pedidos
 
 
         public ProdutoBo _produtoBo;
-        double total = 0, total1 = 0;
-        int quant = 0;
+        double total, total1;
+        int quant;
         double valoruni = 0;
         string operacao = "", operacao1 = "";
+
 
         DataTable dt = new DataTable();
 
@@ -36,13 +25,12 @@ namespace Pedidos
         public FrmCadPedido()
         {
             InitializeComponent();
-            Carregargrid();
-            CarregarDados();
+            CarregargridProduto();
+            CarregarDadosProdutos();
             CarregarClientes();
-            Carregarsituacao();
+
 
             FrmBuscarPedido pedido = new FrmBuscarPedido();
-
 
         }
 
@@ -62,21 +50,21 @@ namespace Pedidos
 
         private void FrmCadPedido_Load(object sender, EventArgs e)
         {
+
+            TxtDataCompra.Enabled = false;
+            TxtProduto.Enabled = false;
+            Txtquat.Enabled = false;
+            CboCliente.Enabled = false;
+            lblcodcliente.Enabled = false;
+            lblcodcliente.Text = "";
+
+
             FrmMenu menu
                = new FrmMenu();
             menu.Close();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
 
-
-        }
-
-        private void listBoxProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         // Carregar a gridview de pedido
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -87,6 +75,7 @@ namespace Pedidos
                     TxtProduto.Text = DgProduto.SelectedRows[0].Cells[0].Value.ToString();
                     TxtValorUnitario.Text = DgProduto.SelectedRows[0].Cells[3].Value.ToString();
                     LblCodProduto.Text = DgProduto.SelectedRows[0].Cells[4].Value.ToString();
+
                 }
             }
             catch (Exception)
@@ -95,8 +84,23 @@ namespace Pedidos
             }
         }
 
+        private Entities.Pedido ObterModeloPreenchidoGravar()
+        {
+            var pedido = new Entities.Pedido();
+
+
+            pedido.IdProduto = Convert.ToInt32(LblCodProduto.Text);
+            pedido.IdCliente = Convert.ToInt32(lblcodcliente.Text);
+            pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
+            pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
+            pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
+            pedido.ValorTotal = Convert.ToDouble(TxtTotal.Text);
+            pedido.Situacao = TxtSituacao.Text.ToString();
+
+            return pedido;
+        }
         // Carregar GridView De produto
-        public void Carregargrid()
+        public void CarregargridProduto()
         {
             _produtoBo = new ProdutoBo();
             string strWhere = "";
@@ -115,9 +119,9 @@ namespace Pedidos
             cliente.Show();
         }
 
-        // Carregar dados Da GridViiew de Pedido
+        // Carregar dados Da GridViiew de Produtos
 
-        private void CarregarDados()
+        private void CarregarDadosProdutos()
         {
             DgPDV.ColumnCount = 4;
             DgPDV.Columns[0].Name = "Produto";
@@ -137,6 +141,31 @@ namespace Pedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
+            testequantuida();
+
+
+            if (Rbtnmais.Checked == true)
+            {
+                total1 = (quant * valoruni);
+                total = (total + total1);
+                TxtTotal.Text = Convert.ToDouble(total).ToString();
+                DgPDV.Rows.Add(TxtProduto.Text, Txtquat.Text, TxtValorUnitario.Text, total1);
+
+            }
+            else if (Rbtnmenos.Checked == true)
+
+            {
+                DgPDV.Rows.RemoveAt(DgPDV.CurrentRow.Index);
+                total = total - total1;
+                TxtTotal.Text = total.ToString();
+            }
+
+
+        }
+
+        private void testequantuida()
+        {
+            quant = Convert.ToInt32(Txtquat.Text);
             if (quant > 0)
             {
 
@@ -147,68 +176,40 @@ namespace Pedidos
             {
                 MessageBox.Show("Produto sem quantidade");
             }
-
-
-
-            if (operacao == "adicionar")
-            {
-                total1 = (quant * valoruni);
-                total = total + total1;
-                TxtTotal.Text = total.ToString();
-                DgPDV.Rows.Add(TxtProduto.Text, Txtquat.Text, TxtValorUnitario.Text, TxtTotal.Text);
-            }
-            else
-
-            if (operacao == "deletar")
-
-            {
-                DgPDV.Rows.RemoveAt(DgPDV.CurrentRow.Index);
-                total = total - total1;
-                TxtTotal.Text = total.ToString();
-            }
-
-
-
-
-
         }
 
         private void TxtTotal_TextChanged(object sender, EventArgs e)
+
         {
+
 
         }
 
-
-
-        private void Rbtnmais_CheckedChanged(object sender, EventArgs e)
+        private void liberarFormulario()
         {
-            TxtTotal.Text = "";
-            operacao = "adicionar";
+            if (RBtnOrc.Checked == true)
+            {
+                TxtDataCompra.Enabled = true;
+                TxtProduto.Enabled = true;
+                Txtquat.Enabled = true;
+                CboCliente.Enabled = true;
+               
+                TxtSituacao.Text = "Orçamento";
+            }
+            else if (RbtnFat.Checked == true)
+            {
+
+                TxtDataCompra.Enabled = true;
+                TxtProduto.Enabled = true;
+                Txtquat.Enabled = true;
+                CboCliente.Enabled = true;
+            
+                TxtSituacao.Text = "Faturado";
+
+            }
         }
 
-        private void Rbtnmenos_CheckedChanged(object sender, EventArgs e)
-        {
-            TxtTotal.Text = "";
-            operacao = "deletar";
-        }
 
-        private void RbtnFat_CheckedChanged(object sender, EventArgs e)
-        {
-
-            TxtSituacao.Text = "";
-            operacao1 = "Faturado";
-        }
-
-        private void RBtnOrc_CheckedChanged(object sender, EventArgs e)
-        {
-            TxtSituacao.Text = "";
-            operacao1 = "Orcamento";
-        }
-
-        private void TxtSituacao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
@@ -258,7 +259,7 @@ namespace Pedidos
         {
             var pedido = new Entities.Pedido();
 
-            pedido.IdCliente = Convert.ToInt32(CboCliente.SelectedValue);
+            pedido.IdCliente = Convert.ToInt32(lblcodcliente.Text);
             pedido.IdProduto = Convert.ToInt32(LblCodProduto.Text);
             pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
@@ -269,10 +270,7 @@ namespace Pedidos
             return pedido;
         }
 
-        private void TxtData_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         // Carregar a lista de Cliente
         private void CarregarClientes()
@@ -282,8 +280,23 @@ namespace Pedidos
             _clienteBo = new ClienteBo();
             List<Cliente> listacliente = new BLL.ClienteBo().ObterClientes();
             CboCliente.DataSource = listacliente;
-            CboCliente.DisplayMember = "nome";
-            CboCliente.ValueMember = "id";
+          CboCliente.DisplayMember = "nome";
+           CboCliente.ValueMember = "id";
+
+           //string selected =this.CboCliente.SelectedValue.ToString();
+          //  lblcodcliente.Text = selected;
+             
+            // lblcodcliente.Text = CboCliente.ValueMember.ToString();    
+            // CboCliente.ValueMember = "id";
+            //   for (int item = 0; item < listacliente.Count; item++)
+            //{
+             //   CboCliente.DataSource = listacliente;
+             //  CboCliente.DisplayMember = "nome";
+
+             // lblcodcliente.Text = Convert.ToInt32(listacliente[item].Id).ToString();
+//
+        //    }
+           
 
 
         }
@@ -291,7 +304,8 @@ namespace Pedidos
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             _pedidoBo = new PedidoBo();
-            var pedido = ObterModeloPreenchido();
+
+            var pedido = ObterModeloPreenchidoGravar();
 
 
             try
@@ -327,21 +341,7 @@ namespace Pedidos
         }
 
         // Carregar a situação que o pedido se encontra
-        private void Carregarsituacao()
-        {
-            if (operacao1 == "Faturado")
-            {
-                TxtSituacao.ForeColor = System.Drawing.Color.Red;
-                TxtSituacao.Text = "Faturado";
-            }
-            else
-          if (operacao1 == "Orcamento")
 
-            {
-                TxtSituacao.ForeColor = System.Drawing.Color.Green;
-                TxtSituacao.Text = "Orçamento";
-            }
-        }
 
         // Botao Buscar por um pedido
 
@@ -352,9 +352,21 @@ namespace Pedidos
 
         }
 
-        private void DgPDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RbtnFat_CheckedChanged(object sender, EventArgs e)
         {
+            liberarFormulario();
+        }
 
+        private void RBtnOrc_CheckedChanged(object sender, EventArgs e)
+        {
+            liberarFormulario();
+        }
+
+        private void CboCliente_SelectedIndexChanged(object sender, EventArgs e)
+
+        {
+            
+            lblcodcliente.Text = CboCliente.SelectedValue.ToString();
         }
     }
 

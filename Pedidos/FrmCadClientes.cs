@@ -22,20 +22,21 @@ namespace Pedidos
             InitializeComponent();
         }
 
+        //Botao Limpar Dados
         private void button1_Click(object sender, EventArgs e)
         {
             LimparTela();
             BtnNovo.Enabled = false;
 
         }
-
+        // Botao Sair
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
             FrmMenu menu = new FrmMenu();
             menu.Show();
         }
-
+        //Botao Gravar
         private void BtnGrava_Click(object sender, EventArgs e)
         {
             _clienteBo = new ClienteBo();
@@ -58,7 +59,7 @@ namespace Pedidos
 
         }
 
-
+        // Preenchimento de dados dos componetes com a classe
         private Cliente ObterModeloPreenchido()
         {
             var cliente = new Cliente();
@@ -75,6 +76,7 @@ namespace Pedidos
 
             return cliente;
         }
+        //Carregar os componetes com as informacoes para alterar o Cadastro
         public void CarregarDadosParaEdicao()
         {
             _clienteBo = new ClienteBo();
@@ -94,7 +96,7 @@ namespace Pedidos
 
         }
 
-
+        // Botao Buscar Cadastro Cliente pelo Nome
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             _clienteBo = new ClienteBo();
@@ -121,7 +123,7 @@ namespace Pedidos
                 = new FrmMenu();
             menu.Close();
         }
-
+        //Botao Alterar cliente
         private void button3_Click(object sender, EventArgs e)
 
         {
@@ -133,6 +135,7 @@ namespace Pedidos
             lblMensagem.ForeColor = System.Drawing.Color.Green;
             lblMensagem.Text = mesagemDeSucesso;
         }
+        // Botao deletar cliente
 
         private void BtnDeletar_Click(object sender, EventArgs e)
         {
@@ -144,6 +147,7 @@ namespace Pedidos
 
 
         }
+        // Limpar dados na tela 
         private void LimparTela()
         {
 
@@ -160,86 +164,6 @@ namespace Pedidos
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtComp_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtTel_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtCpf_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtCidade_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtBairro_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtCep_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtDataNasc_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtEndereco_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtNome_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtCodigo_TextChanged(object sender, EventArgs e)
-        {
-        }
     }
 
 }

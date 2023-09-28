@@ -35,7 +35,7 @@ namespace Pedidos.BLL
         }
 
 
-        public Cliente ObterClientePeloNome(String nome)
+        public Cliente ObterClientePeloNome(String nome) //
         {
             _clienteDao = new ClienteDAO();
             var cliente = _clienteDao.ObterClientePeloNome(nome);
@@ -90,7 +90,7 @@ namespace Pedidos.BLL
             }
         }
 
-        public List<Cliente> SelecionarClientePorNome(string nome)
+        public List<Cliente> SelecionarClientePorNome(string nome) ///
         {
             try
             {
@@ -119,7 +119,7 @@ namespace Pedidos.BLL
 
                 throw;
             }
-        }
+        } ////
     }
     
 

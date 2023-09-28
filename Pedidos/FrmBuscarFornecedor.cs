@@ -1,4 +1,5 @@
-﻿using Pedidos.Entities;
+﻿using Pedidos.BLL;
+using Pedidos.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace Pedidos
 {
     public partial class FrmBuscarFornecedor : Form
     {
+        private Fornecedor _fornecedorBo;
+
         public FrmBuscarFornecedor()
         {
             InitializeComponent();
@@ -25,9 +28,28 @@ namespace Pedidos
                = new FrmMenu();
             menu.Close();
             string strWhere = "";
+            //Carregar a GriView do Cadastro de Fornecedores
             List<Fornecedor> listafornecedor = new BLL.FornecedorBo().CarregarGrid(strWhere);
 
-                DgFornecedor.DataSource = listafornecedor;
+            DgFornecedor.DataSource = listafornecedor;
+        }
+        // Carregar a GridView Com Nome Solicitado do Fornecedor
+        public void Carregargrid()
+        {
+            string nome = TxtFornecedor.Text;
+
+           FornecedorBo _fornecedorBo = new FornecedorBo();
+
+            List<Fornecedor> listafornecedor = new List<Fornecedor>();
+            listafornecedor = _fornecedorBo.SelecionarFornecedorPorNome(nome);  
+            DgFornecedor.DataSource = listafornecedor;
+
+
+        }
+
+        private void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+            Carregargrid();
         }
     }
 }

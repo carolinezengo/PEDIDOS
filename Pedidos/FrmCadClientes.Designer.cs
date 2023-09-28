@@ -63,7 +63,7 @@
             TxtCodigo.Name = "TxtCodigo";
             TxtCodigo.Size = new Size(100, 23);
             TxtCodigo.TabIndex = 0;
-            TxtCodigo.TextChanged += TxtCodigo_TextChanged;
+         
             // 
             // TxtNome
             // 
@@ -71,7 +71,7 @@
             TxtNome.Name = "TxtNome";
             TxtNome.Size = new Size(350, 23);
             TxtNome.TabIndex = 1;
-            TxtNome.TextChanged += TxtNome_TextChanged;
+           
             // 
             // TxtEndereco
             // 
@@ -79,7 +79,7 @@
             TxtEndereco.Name = "TxtEndereco";
             TxtEndereco.Size = new Size(350, 23);
             TxtEndereco.TabIndex = 2;
-            TxtEndereco.TextChanged += TxtEndereco_TextChanged;
+          
             // 
             // TxtDataNasc
             // 
@@ -87,7 +87,7 @@
             TxtDataNasc.Name = "TxtDataNasc";
             TxtDataNasc.Size = new Size(137, 23);
             TxtDataNasc.TabIndex = 3;
-            TxtDataNasc.TextChanged += TxtDataNasc_TextChanged;
+            
             // 
             // TxtCep
             // 
@@ -95,7 +95,7 @@
             TxtCep.Name = "TxtCep";
             TxtCep.Size = new Size(100, 23);
             TxtCep.TabIndex = 4;
-            TxtCep.TextChanged += TxtCep_TextChanged;
+        
             // 
             // TxtBairro
             // 
@@ -103,7 +103,7 @@
             TxtBairro.Name = "TxtBairro";
             TxtBairro.Size = new Size(100, 23);
             TxtBairro.TabIndex = 5;
-            TxtBairro.TextChanged += TxtBairro_TextChanged;
+            
             // 
             // TxtCidade
             // 
@@ -111,7 +111,7 @@
             TxtCidade.Name = "TxtCidade";
             TxtCidade.Size = new Size(182, 23);
             TxtCidade.TabIndex = 6;
-            TxtCidade.TextChanged += TxtCidade_TextChanged;
+          
             // 
             // TxtCpf
             // 
@@ -119,7 +119,7 @@
             TxtCpf.Name = "TxtCpf";
             TxtCpf.Size = new Size(190, 23);
             TxtCpf.TabIndex = 7;
-            TxtCpf.TextChanged += TxtCpf_TextChanged;
+           
             // 
             // TxtTel
             // 
@@ -127,7 +127,7 @@
             TxtTel.Name = "TxtTel";
             TxtTel.Size = new Size(149, 23);
             TxtTel.TabIndex = 8;
-            TxtTel.TextChanged += TxtTel_TextChanged;
+           
             // 
             // label1
             // 
@@ -137,7 +137,7 @@
             label1.Size = new Size(49, 15);
             label1.TabIndex = 9;
             label1.Text = "Codigo:";
-            label1.Click += label1_Click;
+          
             // 
             // label2
             // 
@@ -147,7 +147,7 @@
             label2.Size = new Size(43, 15);
             label2.TabIndex = 10;
             label2.Text = "Nome:";
-            label2.Click += label2_Click;
+            
             // 
             // label3
             // 
@@ -157,7 +157,7 @@
             label3.Size = new Size(101, 15);
             label3.TabIndex = 11;
             label3.Text = "Data Nascimento:";
-            label3.Click += label3_Click;
+           
             // 
             // label4
             // 
@@ -167,7 +167,7 @@
             label4.Size = new Size(30, 15);
             label4.TabIndex = 12;
             label4.Text = "Rua:";
-            label4.Click += label4_Click;
+         
             // 
             // label5
             // 
@@ -177,7 +177,7 @@
             label5.Size = new Size(41, 15);
             label5.TabIndex = 13;
             label5.Text = "Bairro:";
-            label5.Click += label5_Click;
+          
             // 
             // label6
             // 
@@ -187,7 +187,7 @@
             label6.Size = new Size(47, 15);
             label6.TabIndex = 14;
             label6.Text = "Cidade:";
-            label6.Click += label6_Click;
+           
             // 
             // label7
             // 
@@ -197,7 +197,7 @@
             label7.Size = new Size(31, 15);
             label7.TabIndex = 15;
             label7.Text = "CEP:";
-            label7.Click += label7_Click;
+            
             // 
             // label8
             // 
@@ -207,7 +207,7 @@
             label8.Size = new Size(31, 15);
             label8.TabIndex = 16;
             label8.Text = "CPF:";
-            label8.Click += label8_Click;
+           
             // 
             // label9
             // 
@@ -217,7 +217,7 @@
             label9.Size = new Size(28, 15);
             label9.TabIndex = 17;
             label9.Text = "TEL:";
-            label9.Click += label9_Click;
+            
             // 
             // BtnNovo
             // 
@@ -272,7 +272,7 @@
             label10.Size = new Size(87, 15);
             label10.TabIndex = 24;
             label10.Text = "Complemento:";
-            label10.Click += label10_Click;
+         
             // 
             // TxtComp
             // 
@@ -280,7 +280,7 @@
             TxtComp.Name = "TxtComp";
             TxtComp.Size = new Size(275, 23);
             TxtComp.TabIndex = 23;
-            TxtComp.TextChanged += TxtComp_TextChanged;
+          
             // 
             // BtnGravar
             // 

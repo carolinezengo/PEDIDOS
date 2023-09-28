@@ -224,7 +224,7 @@ namespace Pedidos.DAO
 
         }
 
-
+        //DELETAR Cliente
         public void DeletarCliente(int id)
         {
             try
@@ -252,7 +252,7 @@ namespace Pedidos.DAO
                 conexao.Desconectar();
             }
         }
-
+        // Lista de cliente por nome
         public List<Cliente> SelecionarClientePorNome(string nome)
         {
             try
@@ -310,7 +310,7 @@ namespace Pedidos.DAO
            
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select nome from tabcliente");
+            sb.Append("Select id, nome from tabcliente");
               
             SqlCommand cmd = new SqlCommand(sb.ToString());
 
@@ -327,11 +327,10 @@ namespace Pedidos.DAO
                     }
                     cliente = new Cliente();
 
-                    if (reader["nome"] != DBNull.Value) 
+                    cliente.Id = Convert.ToInt32(reader["id"]);
                     cliente.Nome = reader["nome"].ToString();
-                    
 
-                    
+
 
                     listacliente.Add(cliente);
 

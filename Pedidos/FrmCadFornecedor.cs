@@ -23,16 +23,16 @@ namespace Pedidos
         {
             InitializeComponent();
         }
-
+        //Botao Buscar
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             _fornecedorBo = new FornecedorBo();
             var nome = TxtNome.Text;
 
-            if (nome != null)
+            if (nome != null || nome == "")
             {
                 _fornecedorBo.ObterFornecedorPeloNome(nome);
-                CarregarDadosParaEdicao();
+                ObterModeloPesquisa();
                 mesagemDeSucesso = "Cadastro de Fornecedor encontrado";
                 lblMensagem.ForeColor = System.Drawing.Color.Green;
                 lblMensagem.Text = mesagemDeSucesso;
@@ -42,12 +42,12 @@ namespace Pedidos
                 MessageBox.Show("Deu erro");
             }
         }
-
+        // Botao novo apagando Limpando tela
         private void BtnNovo_Click(object sender, EventArgs e)
         {
             LimparTela();
         }
-
+        // Limpar a tela 
         private void LimparTela()
         {
 
@@ -63,7 +63,7 @@ namespace Pedidos
             TxtTel.Text = "";
 
         }
-
+        // Botao Salvar Fornecedor
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             _fornecedorBo = new FornecedorBo();
@@ -85,6 +85,8 @@ namespace Pedidos
             }
 
         }
+
+        // Preencher dados dos Classse com os campos
         private Fornecedor ObterModeloPreenchido()
         {
             var fornecedor = new Fornecedor();
@@ -101,24 +103,8 @@ namespace Pedidos
 
             return fornecedor;
         }
-        public void CarregarDadosParaEdicao()
-        {
-            _fornecedorBo = new FornecedorBo();
-
-            var nome = TxtNome.Text;
-            var fornecedor = _fornecedorBo.ObterFornecedorPeloNome(nome);
-            TxtCodigo.Text = fornecedor.Id.ToString();
-            TxtNome.Text = fornecedor.Nome;
-            TxtDataComp.Text = fornecedor.DataComp.HasValue ? fornecedor.DataComp.Value.ToString("yyy-MM-dd") : string.Empty;
-            TxtEndereco.Text = fornecedor.Rua;
-            TxtBairro.Text = fornecedor.Bairro;
-            TxtComp.Text = fornecedor.Complemento;
-            TxtCidade.Text = fornecedor.Cidade;
-            TxtCep.Text = fornecedor.CEP;
-            TxtCnpj.Text = fornecedor.CNPJ;
-            TxtTel.Text = fornecedor.tel;
-
-        }
+       
+      
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
@@ -133,7 +119,7 @@ namespace Pedidos
                = new FrmMenu();
             menu.Close();
         }
-
+        // Carregar as informacoes Campos com a Classe
         private Fornecedor ObterModeloPreenchidoAlterar()
         {
             var fornecedor = new Fornecedor();
@@ -151,6 +137,26 @@ namespace Pedidos
             return fornecedor;
         }
 
+        // Carrega dados dos campos com informacação do banco de dados
+        private void ObterModeloPesquisa()
+        {
+            _fornecedorBo = new FornecedorBo();
+
+            var nome = TxtNome.Text;
+            var fornecedor = _fornecedorBo.ObterFornecedorPeloNome(nome);
+            TxtCodigo.Text = fornecedor.Id.ToString();
+            TxtNome.Text = fornecedor.Nome;
+            TxtDataComp.Text = fornecedor.DataComp.HasValue ? fornecedor.DataComp.Value.ToString("yyy-MM-dd") : string.Empty;
+            TxtEndereco.Text = fornecedor.Rua;
+            TxtBairro.Text = fornecedor.Bairro;
+            TxtComp.Text = fornecedor.Complemento;
+            TxtCidade.Text = fornecedor.Cidade;
+            TxtCep.Text = fornecedor.CEP;
+            TxtCnpj.Text = fornecedor.CNPJ;
+            TxtTel.Text = fornecedor.tel;
+
+        }
+        //Botao alterar dados do cliente
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
             var fornecedor = ObterModeloPreenchidoAlterar();
@@ -165,6 +171,7 @@ namespace Pedidos
 
 
         }
+        //Botao deletar
 
         private void BtnDeletar_Click(object sender, EventArgs e)
         {

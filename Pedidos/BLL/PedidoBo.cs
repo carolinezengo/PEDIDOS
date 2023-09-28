@@ -103,9 +103,9 @@ namespace Pedidos.BLL
 
         public void ValidarPedido(Pedido pedido)
         {
-            if (string.IsNullOrWhiteSpace(pedido.Situacao) || pedido.IdProduto == 0 || pedido.IdCliente == 0)
+            if (string.IsNullOrWhiteSpace(pedido.Situacao) || pedido.IdCliente == 0)
             {
-                MessageBox.Show("Erro");
+                MessageBox.Show("Erro ao Validar");
             }
         }
 

@@ -13,13 +13,13 @@ namespace Pedidos.BLL
         public bool fornecedor;
         public String mensagem = "";
         private FornecedorDao _fornecedorDao;
-        
-      
+
+
 
         public String Cadastrar(Fornecedor fornecedor)
         {
             FornecedorDao fornecedorDao = new FornecedorDao();
-            this.mensagem = fornecedorDao.InserirFornecedor(fornecedor) ;
+            this.mensagem = fornecedorDao.InserirFornecedor(fornecedor);
             return mensagem;
         }
 
@@ -44,8 +44,8 @@ namespace Pedidos.BLL
 
         }
 
-        
-       public void Alterarfornecedor(Fornecedor fornecedor)
+
+        public void Alterarfornecedor(Fornecedor fornecedor)
         {
             _fornecedorDao = new FornecedorDao();
 
@@ -60,7 +60,7 @@ namespace Pedidos.BLL
 
 
 
-       }
+        }
         public void Validarfornecedor(Fornecedor fornecedor)
         {
             if (string.IsNullOrWhiteSpace(fornecedor.Nome) ||
@@ -85,7 +85,24 @@ namespace Pedidos.BLL
                 throw;
             }
         }
+    
+    //Lista de Cliente selecionado por nome
+    public List<Fornecedor> SelecionarFornecedorPorNome(string nome)
+    {
+        try
+        {
+            _fornecedorDao = new FornecedorDao();
+            return _fornecedorDao.SelecionarfornecedorPorNome(nome);
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
     }
+}
+
 
 }
 

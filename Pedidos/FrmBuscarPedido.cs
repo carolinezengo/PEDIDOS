@@ -70,13 +70,15 @@ namespace Pedidos
         private void FormatDG()
         {
             DGPDV.Columns[0].HeaderText = "Numero Pedido";
-            DGPDV.Columns[1].HeaderText = "Nome Cliente";
-            DGPDV.Columns[2].HeaderText = "Quantidade";
-            DGPDV.Columns[3].HeaderText = "Produto";
-            DGPDV.Columns[4].HeaderText = "Valor Unitario";
-            DGPDV.Columns[5].HeaderText = "Valor Total";
-            DGPDV.Columns[6].HeaderText = "Data Compra";
-            DGPDV.Columns[7].HeaderText = "Situacao";
+            DGPDV.Columns[1].HeaderText = "Codigo Cliente";
+            DGPDV.Columns[2].HeaderText = "Nome Cliente";
+            DGPDV.Columns[3].HeaderText = "Quantidade";
+            DGPDV.Columns[4].HeaderText = "Codigo Do Produto";   
+            DGPDV.Columns[5].HeaderText = "Produto";
+            DGPDV.Columns[6].HeaderText = "Valor Unitario";
+            DGPDV.Columns[7].HeaderText = "Valor Total";
+            DGPDV.Columns[8].HeaderText = "Data Compra";
+            DGPDV.Columns[9].HeaderText = "Situacao";
 
             DGPDV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             DGPDV.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -86,7 +88,8 @@ namespace Pedidos
             DGPDV.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DGPDV.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DGPDV.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            DGPDV.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DGPDV.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void BtnSair_Click(object sender, EventArgs e)
@@ -127,25 +130,40 @@ namespace Pedidos
         // Ao clicar na linha da GriView envia as  informacoes para Cadastro de Pedido 
         private void DGPDV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            int b1 = 0;
+            double b2 = 0, b3 = 0;
+            string situacao;
+
             FormatDG();
             FrmCadPedido pedido = new FrmCadPedido();
             pedido.TxtNumero.Text = this.DGPDV.CurrentRow.Cells[0].Value.ToString();
-            pedido.CboCliente.Text = this.DGPDV.CurrentRow.Cells[1].Value.ToString();
-            pedido.Txtquat.Text = this.DGPDV.CurrentRow.Cells[2].Value.ToString();
-
+            pedido.lblcodcliente.Text = this.DGPDV.CurrentRow.Cells[1].Value.ToString();
+            pedido.CboCliente.Text = this.DGPDV.CurrentRow.Cells[2].Value.ToString();
+            pedido.Txtquat.Text = this.DGPDV.CurrentRow.Cells[3].Value.ToString();
+            pedido.LblCodProduto.Text = this.DGPDV.CurrentRow.Cells[4].Value.ToString();    
+            pedido.TxtProduto.Text = this.DGPDV.CurrentRow.Cells[5].Value.ToString();    
+        
+            // Precher a Grid no PDV com os produtos Solicitados
             for (int i = 0; i < DGPDV.Rows.Count; i++)
             {
-                pedido.DgPDV.Rows[i].Cells[0].Value = DGPDV.Rows[i].Cells[3].Value;
-                pedido.DgPDV.Rows[i].Cells[1].Value = DGPDV.Rows[i].Cells[2].Value;
-                pedido.DgPDV.Rows[i].Cells[2].Value = DGPDV.Rows[i].Cells[4].Value;
-                pedido.DgPDV.Rows[i].Cells[3].Value = DGPDV.Rows[i].Cells[5].Value;
+                pedido.DgPDV.Rows[i].Cells[0].Value = DGPDV.Rows[i].Cells[5].Value;
+                pedido.DgPDV.Rows[i].Cells[1].Value = DGPDV.Rows[i].Cells[3].Value;
+                pedido.DgPDV.Rows[i].Cells[2].Value = DGPDV.Rows[i].Cells[6].Value;
 
-            }
-          
+                b1 += Convert.ToInt32(DGPDV.Rows[i].Cells[3].Value);
+                b2 += Convert.ToDouble(DGPDV.Rows[i].Cells[6].Value);
+                b3 += b1 * b2;
+                pedido.DgPDV.Rows[i].Cells[3].Value = b3;
+            }   
 
-            pedido.TxtTotal.Text = this.DGPDV.CurrentRow.Cells[5].Value.ToString();
-            pedido.TxtDataCompra.Text = this.DGPDV.CurrentRow.Cells[6].Value.ToString();
-            pedido.TxtSituacao.Text = this.DGPDV.CurrentRow.Cells[7].Value.ToString();
+
+            pedido.TxtTotal.Text = this.DGPDV.CurrentRow.Cells[7].Value.ToString();
+            pedido.TxtDataCompra.Text = this.DGPDV.CurrentRow.Cells[8].Value.ToString();
+            pedido.TxtSituacao.Text = this.DGPDV.CurrentRow.Cells[9].Value.ToString();
+
+           
+
+           
 
 
             pedido.ShowDialog();
@@ -154,6 +172,6 @@ namespace Pedidos
 
         }
 
-       
+
     }
 }

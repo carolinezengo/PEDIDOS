@@ -62,6 +62,9 @@
             LblCodProduto = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            label9 = new Label();
+            label10 = new Label();
+            lblcodcliente = new Label();
             ((System.ComponentModel.ISupportInitialize)DgProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DgPDV).BeginInit();
             groupBox1.SuspendLayout();
@@ -101,7 +104,6 @@
             TxtDataCompra.Name = "TxtDataCompra";
             TxtDataCompra.Size = new Size(100, 23);
             TxtDataCompra.TabIndex = 5;
-            TxtDataCompra.TextChanged += TxtData_TextChanged;
             // 
             // label3
             // 
@@ -239,7 +241,6 @@
             TxtSituacao.Size = new Size(95, 23);
             TxtSituacao.TabIndex = 43;
             TxtSituacao.TabStop = false;
-            TxtSituacao.TextChanged += TxtSituacao_TextChanged;
             // 
             // label5
             // 
@@ -318,7 +319,6 @@
             DgPDV.Size = new Size(638, 152);
             DgPDV.TabIndex = 50;
             DgPDV.TabStop = false;
-            DgPDV.CellContentClick += DgPDV_CellContentClick;
             // 
             // Rbtnmais
             // 
@@ -330,7 +330,6 @@
             Rbtnmais.TabStop = true;
             Rbtnmais.Text = "ADD";
             Rbtnmais.UseVisualStyleBackColor = true;
-            Rbtnmais.CheckedChanged += Rbtnmais_CheckedChanged;
             // 
             // Rbtnmenos
             // 
@@ -342,7 +341,6 @@
             Rbtnmenos.TabStop = true;
             Rbtnmenos.Text = "DEL";
             Rbtnmenos.UseVisualStyleBackColor = true;
-            Rbtnmenos.CheckedChanged += Rbtnmenos_CheckedChanged;
             // 
             // RbtnFat
             // 
@@ -383,12 +381,13 @@
             CboCliente.Name = "CboCliente";
             CboCliente.Size = new Size(460, 23);
             CboCliente.TabIndex = 56;
+            CboCliente.SelectedIndexChanged += CboCliente_SelectedIndexChanged;
             // 
             // LblCodProduto
             // 
             LblCodProduto.AutoSize = true;
             LblCodProduto.Enabled = false;
-            LblCodProduto.Location = new Point(520, 126);
+            LblCodProduto.Location = new Point(522, 126);
             LblCodProduto.Name = "LblCodProduto";
             LblCodProduto.Size = new Size(0, 15);
             LblCodProduto.TabIndex = 57;
@@ -413,11 +412,41 @@
             groupBox2.TabIndex = 59;
             groupBox2.TabStop = false;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Enabled = false;
+            label9.Location = new Point(336, 270);
+            label9.Name = "label9";
+            label9.Size = new Size(0, 15);
+            label9.TabIndex = 60;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Enabled = false;
+            label10.Location = new Point(344, 278);
+            label10.Name = "label10";
+            label10.Size = new Size(0, 15);
+            label10.TabIndex = 61;
+            // 
+            // lblcodcliente
+            // 
+            lblcodcliente.AutoSize = true;
+            lblcodcliente.Enabled = false;
+            lblcodcliente.Location = new Point(527, 70);
+            lblcodcliente.Name = "lblcodcliente";
+            lblcodcliente.Size = new Size(0, 15);
+            lblcodcliente.TabIndex = 62;
+            // 
             // FrmCadPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 554);
+            Controls.Add(lblcodcliente);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(LblCodProduto);
@@ -480,10 +509,7 @@
         private TextBox TxtValorUnitario;
         private Label label8;
         private Button button3;
-        private RadioButton RbtnFat;
-        private RadioButton RBtnOrc;
         private Label lblMensagem;
-        private Label LblCodProduto;
         private GroupBox groupBox2;
         public TextBox TxtDataCompra;
         public TextBox Txtquat;
@@ -497,5 +523,11 @@
         public TextBox TxtTotal;
         public DataGridView DgProduto;
         public DataGridView DgPDV;
+        private Label label9;
+        private Label label10;
+        public Label lblcodcliente;
+        public Label LblCodProduto;
+        public RadioButton RbtnFat;
+        public RadioButton RBtnOrc;
     }
 }

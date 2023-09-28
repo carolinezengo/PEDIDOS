@@ -30,7 +30,7 @@
         {
             DgFornecedor = new DataGridView();
             label1 = new Label();
-            textBox1 = new TextBox();
+            TxtFornecedor = new TextBox();
             BtnPesquisar = new Button();
             ((System.ComponentModel.ISupportInitialize)DgFornecedor).BeginInit();
             SuspendLayout();
@@ -53,12 +53,12 @@
             label1.TabIndex = 1;
             label1.Text = "Nome do Fornecedor:";
             // 
-            // textBox1
+            // TxtFornecedor
             // 
-            textBox1.Location = new Point(141, 66);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(445, 23);
-            textBox1.TabIndex = 2;
+            TxtFornecedor.Location = new Point(141, 66);
+            TxtFornecedor.Name = "TxtFornecedor";
+            TxtFornecedor.Size = new Size(445, 23);
+            TxtFornecedor.TabIndex = 2;
             // 
             // BtnPesquisar
             // 
@@ -68,6 +68,7 @@
             BtnPesquisar.TabIndex = 3;
             BtnPesquisar.Text = "Pesquisar";
             BtnPesquisar.UseVisualStyleBackColor = true;
+            BtnPesquisar.Click += BtnPesquisar_Click;
             // 
             // FrmBuscarFornecedor
             // 
@@ -75,7 +76,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 418);
             Controls.Add(BtnPesquisar);
-            Controls.Add(textBox1);
+            Controls.Add(TxtFornecedor);
             Controls.Add(label1);
             Controls.Add(DgFornecedor);
             Name = "FrmBuscarFornecedor";
@@ -90,7 +91,7 @@
 
         private DataGridView DgFornecedor;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox TxtFornecedor;
         private Button BtnPesquisar;
     }
 }
