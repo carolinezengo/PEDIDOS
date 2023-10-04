@@ -37,6 +37,9 @@
     <Compile Update="FrmRelatorioCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmRelatorioFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="FaturamentoDataSet1.xsd">

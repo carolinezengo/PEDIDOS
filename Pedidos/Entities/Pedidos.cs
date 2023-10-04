@@ -22,9 +22,13 @@ namespace Pedidos.Entities
         public DateTime? DataCompra { get; set; }
        
         public string Situacao { get; set; }
-       
-       
+        public Produto Produto { get; set; }
+     
+        public Cliente Cliente { get; set; }
 
-       
+
+
+
+
     }
 }

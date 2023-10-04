@@ -32,6 +32,21 @@ namespace Pedidos.DAO
 
 
         }
+           public DataTable RelatorioFornecedor()
+        {
+
+            DataTable dt = new DataTable();
+            command.Connection = conexao.Conectar();
+            SqlDataAdapter relatorio = new SqlDataAdapter("Select id, nome, cnpj,  tel from tabfornecedor", command.Connection);
+
+
+            relatorio.Fill(dt);
+            relatorio.Dispose();
+            return dt;
+
+
+
+        }
 
     }
 }

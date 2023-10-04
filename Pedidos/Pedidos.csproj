@@ -17,6 +17,7 @@
     <None Remove="FaturamentoDataSet.xsd" />
     <None Remove="FaturamentoDataSet.xss" />
     <None Remove="RelatorioCliente.rdlc" />
+    <None Remove="RelatorioFornecedor.rdlc" />
     <None Remove="Report1.rdlc" />
   </ItemGroup>
 
@@ -24,6 +25,7 @@
     <EmbeddedResource Include="RelatorioCliente.rdlc">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioFornecedor.rdlc" />
   </ItemGroup>
 
   <ItemGroup>

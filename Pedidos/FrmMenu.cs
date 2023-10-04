@@ -96,8 +96,8 @@ namespace Pedidos
 
         private void relatorioDeClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dt = GerarRelatorio();
-            using(var frm = new FrmRelatorioCliente(dt))
+            var dt = GerarRelatorioCliente();
+            using (var frm = new FrmRelatorioCliente(dt))
             {
                 frm.ShowDialog();
             }
@@ -105,16 +105,39 @@ namespace Pedidos
         }
 
 
-        private DataTable GerarRelatorio()
+        private DataTable GerarRelatorioCliente()
         {
-               var dt = new DataTable();
+            var dt = new DataTable();
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("Nome");
             dt.Columns.Add("CPF");
 
-           
-            return dt;  
-    }
 
-}
+            return dt;
+        }
+
+        private DataTable GerarRelatorioFornecedor()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("id", typeof(int));
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("CNPJ");
+            dt.Columns.Add("tel");
+
+
+
+            return dt;
+        }
+
+        private void relatorioDeFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var dt = GerarRelatorioFornecedor();
+            using (var frm = new FrmRelatorioFornecedor(dt))
+            {
+                frm.ShowDialog();
+            }
+
+        }
+    }
 }

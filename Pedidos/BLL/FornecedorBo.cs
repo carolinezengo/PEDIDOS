@@ -101,8 +101,22 @@ namespace Pedidos.BLL
         }
 
     }
-}
 
+        public List<Fornecedor> ObterFornecedor()
+        {
+            try
+            {
+                _fornecedorDao = new FornecedorDao();
+                return _fornecedorDao.ObterTodosNomesFornecedor();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        } ////
+    }
+ 
 
 }
 

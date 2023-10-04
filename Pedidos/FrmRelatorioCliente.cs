@@ -29,7 +29,7 @@ namespace Pedidos
             reportViewerCliente.LocalReport.ReportEmbeddedResource =
              "Pedidos.RelatorioCliente.rdlc";
             
-            // reportViewerCliente.RefreshReport();
+            reportViewerCliente.RefreshReport();
         }
 
         private void btnrelatorio_Click(object sender, EventArgs e)

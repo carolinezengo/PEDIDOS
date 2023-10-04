@@ -14,11 +14,11 @@ namespace Pedidos.BLL
         private PedidosDAO _pedidoDao;
         private ClienteDAO _clienteDAO;
         private string mensagem = "";
-        public void AlterarPedido(Entities.Pedido pedido)
+        public void AlterarPedido(Entities.Pedidos pedido)
         {
             _pedidoDao = new PedidosDAO();
 
-            ValidarPedido(pedido);
+            //ValidarPedidos(pedido);
             var linhasAfetadas = _pedidoDao.AtualizarPedido(pedido);
 
             if (linhasAfetadas == 0)
@@ -36,15 +36,16 @@ namespace Pedidos.BLL
             pedidoDAO.DeletarPedido(id);
 
         }
-        public void ValidarPedido(Entities.Pedidos pedido)
-        {
-            if (string.IsNullOrWhiteSpace(pedido.Situacao) ||
-                pedido.NumeroPedido== 0)
-            {
-                MessageBox.Show("Pedido nao existe");
+      //  public void ValidarPedidos(Entities.Pedidos pedido)
+     //   {
+            
+      //          if (string.IsNullOrWhiteSpace(pedido.codcliente == 0))
 
-           }
-        }
+       //         {
+              //      MessageBox.Show("Pedido nao existe");
+////
+         //  }
+      //  }
 
 
 
@@ -93,21 +94,15 @@ namespace Pedidos.BLL
 
         }
 
-        public String Cadastrar(Pedido pedido)
+        public String Cadastrar(Entities.Pedidos pedido)
         {
             PedidosDAO pedidoDAO = new PedidosDAO();
-            ValidarPedido(pedido);
+            //ValidarPedidos(pedido);
             this.mensagem = pedidoDAO.InserirPedido(pedido);
             return mensagem;
         }
 
-        public void ValidarPedido(Pedido pedido)
-        {
-            if (string.IsNullOrWhiteSpace(pedido.Situacao) || pedido.IdCliente == 0)
-            {
-                MessageBox.Show("Erro ao Validar");
-            }
-        }
+       
 
     }
 

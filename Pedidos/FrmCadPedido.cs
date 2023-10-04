@@ -28,9 +28,10 @@ namespace Pedidos
             CarregargridProduto();
             CarregarDadosProdutos();
             CarregarClientes();
+            MakeReadOnly();
 
 
-            FrmBuscarPedido pedido = new FrmBuscarPedido();
+           FrmBuscarPedido pedido = new FrmBuscarPedido();
 
         }
 
@@ -84,13 +85,13 @@ namespace Pedidos
             }
         }
 
-        private Entities.Pedido ObterModeloPreenchidoGravar()
+        private Entities.Pedidos ObterModeloPreenchidoGravar()
         {
-            var pedido = new Entities.Pedido();
+            var pedido = new Entities.Pedidos();
 
 
-            pedido.IdProduto = Convert.ToInt32(LblCodProduto.Text);
-            pedido.IdCliente = Convert.ToInt32(lblcodcliente.Text);
+            pedido.codproduto = Convert.ToInt32(LblCodProduto.Text);
+            pedido.codcliente = Convert.ToInt32(lblcodcliente.Text);
             pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
             pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);
@@ -109,6 +110,13 @@ namespace Pedidos
             DgProduto.DataSource = listaProduto;
 
 
+        }
+
+        private void MakeReadOnly()
+        {
+            DgProduto.AllowUserToAddRows = false;
+            DgProduto.AllowUserToDeleteRows = false;
+            DgProduto.ReadOnly = true;
         }
 
 
@@ -255,12 +263,12 @@ namespace Pedidos
         }
 
         //Preencher os campos com dados da Classe Pedido
-        private Entities.Pedido ObterModeloPreenchido()
+        private Entities.Pedidos ObterModeloPreenchido()
         {
-            var pedido = new Entities.Pedido();
+            var pedido = new Entities.Pedidos();
 
-            pedido.IdCliente = Convert.ToInt32(lblcodcliente.Text);
-            pedido.IdProduto = Convert.ToInt32(LblCodProduto.Text);
+            pedido.codcliente = Convert.ToInt32(lblcodcliente.Text);
+            pedido.codproduto = Convert.ToInt32(LblCodProduto.Text);
             pedido.DataCompra = string.IsNullOrWhiteSpace(TxtDataCompra.Text) ? (DateTime?)null : Convert.ToDateTime(TxtDataCompra.Text);
             pedido.Quantidade = Convert.ToInt32(Txtquat.Text);
             pedido.ValorUnitario = Convert.ToDouble(TxtValorUnitario.Text);

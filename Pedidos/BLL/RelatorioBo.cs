@@ -27,6 +27,15 @@ namespace Pedidos.BLL
             return relatoriodao.RelatorioRelacaoCliente();
         }
 
+        public DataTable RelatorioFornecedor()
+        {
+
+
+            RelatorioDAO relatoriodao = new RelatorioDAO();
+
+
+            return relatoriodao.RelatorioFornecedor();
+        }
 
 
 
@@ -34,8 +43,8 @@ namespace Pedidos.BLL
     }
 
 
-    
 
-   
-  
+
+
+
 }

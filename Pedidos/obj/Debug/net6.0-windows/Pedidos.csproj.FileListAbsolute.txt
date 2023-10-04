@@ -66,3 +66,4 @@ C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\ru\Micros
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\bin\Debug\net6.0-windows\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Rodrigo\source\repos\Pedidos\Pedidos\obj\Debug\net6.0-windows\Pedidos.FrmRelatorioFornecedor.resources

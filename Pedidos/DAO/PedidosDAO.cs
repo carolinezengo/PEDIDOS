@@ -21,7 +21,7 @@ namespace Pedidos.DAO
         SqlDataReader reader;
         public String mensagem = "";
 
-        public int AtualizarPedido(Entities.Pedido pedido)
+        public int AtualizarPedido(Entities.Pedidos pedido)
         {
             try
             {
@@ -35,9 +35,9 @@ namespace Pedidos.DAO
                                          WHERE id = @id";
 
 
-                command.Parameters.AddWithValue("@id", pedido.Id);
+                command.Parameters.AddWithValue("@id", pedido.NumeroPedido);
                 command.Parameters.AddWithValue("@data_comp", pedido.DataCompra);
-                command.Parameters.AddWithValue("@codproduto", pedido.IdProduto);
+                command.Parameters.AddWithValue("@codproduto", pedido.codproduto);
                 command.Parameters.AddWithValue("@quantidade", pedido.Quantidade);
                 command.Parameters.AddWithValue("@valortotal", pedido.ValorTotal);
                 command.Parameters.AddWithValue("@situacao", pedido.Situacao);
@@ -121,7 +121,7 @@ namespace Pedidos.DAO
             }
         }
 
-        public String InserirPedido(Entities.Pedido pedido)
+        public String InserirPedido(Entities.Pedidos pedido)
         {
             if (pedido.Equals(pedido))
             {
@@ -141,9 +141,9 @@ namespace Pedidos.DAO
                                       ,@valortotal
                                       ,@situacao
                                       ,@data_comp)";
-                command.Parameters.AddWithValue("@codcliente", pedido.IdCliente);
+                command.Parameters.AddWithValue("@codcliente", pedido.codcliente);
                 command.Parameters.AddWithValue("@data_comp", pedido.DataCompra);
-                command.Parameters.AddWithValue("@codproduto", pedido.IdProduto);
+                command.Parameters.AddWithValue("@codproduto", pedido.codproduto);
                 command.Parameters.AddWithValue("@quantidade", pedido.Quantidade);
                 command.Parameters.AddWithValue("@valorunitario", pedido.ValorUnitario);
                 command.Parameters.AddWithValue("@valortotal", pedido.ValorTotal);
@@ -185,8 +185,8 @@ namespace Pedidos.DAO
             Entities.Pedidos pedido = null;
             try
             {
-                command.CommandText = @"SELECT tp.idpedido, tc.nome, tp.valortotal, tp.situacao, tp.data_comp  
-               FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id where tc.nome = @nome";
+                command.CommandText = @"SELECT tp.idpedido, tp.codcliente,  tc.nome,  tpp.descricao, tp.codproduto, tp.valorunitario, tp.valortotal, tp.situacao, tp.data_comp  
+               FROM tabpedido As tp INNER JOIN tabcliente As tc ON codcliente = id INNER JOIN tabproduto As tpp ON codproduto =idproduto where tc.nome = @nome";
                 command.Parameters.AddWithValue("@nome", nome);
 
                 command.Connection = conexao.Conectar();
@@ -201,9 +201,14 @@ namespace Pedidos.DAO
 
 
                     pedido.NumeroPedido = Convert.ToInt32(reader["idpedido"]);
+                    pedido.codcliente = Convert.ToInt32(reader["codcliente"]);
+                    pedido.NomeCliente = reader["nome"].ToString();
+                    pedido.Quantidade = Convert.ToInt32(reader["quantidade"]);
+                    pedido.NDescricaoProduto = reader["descricao"].ToString();
+
                     pedido.DataCompra = reader["data_comp"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["data_comp"]);
                     pedido.Situacao = reader["situacao"].ToString();
-                    pedido.NomeCliente = reader["nome"].ToString();
+                   
                     pedido.ValorTotal = Convert.ToDouble(reader["valortotal"]);
                     listapedido.Add(pedido);
 

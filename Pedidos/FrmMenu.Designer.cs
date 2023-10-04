@@ -43,8 +43,9 @@
             buscaDeProdutoToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             relatorioToolStripMenuItem = new ToolStripMenuItem();
-            groupBox1 = new GroupBox();
             relatorioDeClienteToolStripMenuItem = new ToolStripMenuItem();
+            groupBox1 = new GroupBox();
+            relatorioDeFornecedorToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -153,12 +154,19 @@
             // 
             // relatorioToolStripMenuItem
             // 
-            relatorioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { relatorioDeClienteToolStripMenuItem });
+            relatorioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { relatorioDeClienteToolStripMenuItem, relatorioDeFornecedorToolStripMenuItem });
             relatorioToolStripMenuItem.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             relatorioToolStripMenuItem.Name = "relatorioToolStripMenuItem";
             relatorioToolStripMenuItem.Size = new Size(77, 20);
             relatorioToolStripMenuItem.Text = "Relatorio";
             relatorioToolStripMenuItem.Click += relatorioToolStripMenuItem_Click;
+            // 
+            // relatorioDeClienteToolStripMenuItem
+            // 
+            relatorioDeClienteToolStripMenuItem.Name = "relatorioDeClienteToolStripMenuItem";
+            relatorioDeClienteToolStripMenuItem.Size = new Size(229, 22);
+            relatorioDeClienteToolStripMenuItem.Text = "Relatorio de Cliente";
+            relatorioDeClienteToolStripMenuItem.Click += relatorioDeClienteToolStripMenuItem_Click;
             // 
             // groupBox1
             // 
@@ -170,12 +178,12 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
-            // relatorioDeClienteToolStripMenuItem
+            // relatorioDeFornecedorToolStripMenuItem
             // 
-            relatorioDeClienteToolStripMenuItem.Name = "relatorioDeClienteToolStripMenuItem";
-            relatorioDeClienteToolStripMenuItem.Size = new Size(201, 22);
-            relatorioDeClienteToolStripMenuItem.Text = "Relatorio de Cliente";
-            relatorioDeClienteToolStripMenuItem.Click += relatorioDeClienteToolStripMenuItem_Click;
+            relatorioDeFornecedorToolStripMenuItem.Name = "relatorioDeFornecedorToolStripMenuItem";
+            relatorioDeFornecedorToolStripMenuItem.Size = new Size(229, 22);
+            relatorioDeFornecedorToolStripMenuItem.Text = "Relatorio de Fornecedor";
+            relatorioDeFornecedorToolStripMenuItem.Click += relatorioDeFornecedorToolStripMenuItem_Click;
             // 
             // FrmMenu
             // 
@@ -213,5 +221,6 @@
         private ToolStripMenuItem buscaDeProdutoToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem relatorioDeClienteToolStripMenuItem;
+        private ToolStripMenuItem relatorioDeFornecedorToolStripMenuItem;
     }
 }

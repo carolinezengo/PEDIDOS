@@ -295,6 +295,66 @@ namespace Pedidos.DAO
 
         }
 
+
+        public List<Fornecedor> ObterTodosNomesFornecedor()
+
+        {
+            List<Fornecedor> listafornecedor = new List<Fornecedor>();
+            listafornecedor = null;
+          Fornecedor  fornecedor = null;
+
+
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select id, nome, cnpj, tel from tabfornecedor");
+
+            SqlCommand cmd = new SqlCommand(sb.ToString());
+
+            try
+            {
+
+                cmd.Connection = conexao.Conectar();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (listafornecedor == null)
+                    {
+                        listafornecedor = new List<Fornecedor>();
+                    }
+                    fornecedor = new Fornecedor();
+
+                    fornecedor.Id = Convert.ToInt32(reader["id"]);
+                    fornecedor.Nome = reader["nome"].ToString();
+                    fornecedor.CNPJ = reader["cnpj"].ToString();
+                    fornecedor.tel = reader["tel"].ToString();
+
+
+
+                    listafornecedor.Add(fornecedor);
+
+                }
+
+
+                return listafornecedor;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
+
+
+
+
+      
+
     }
 }
 
