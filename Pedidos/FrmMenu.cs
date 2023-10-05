@@ -139,5 +139,26 @@ namespace Pedidos
             }
 
         }
+        private DataTable GerarRelatorioProduto()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("idproduto", typeof(int));
+            dt.Columns.Add("descricao");
+            dt.Columns.Add("quantidade");
+            dt.Columns.Add("valor_unitario");
+
+
+
+            return dt;
+        }
+
+        private void relatorioDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dt = GerarRelatorioProduto();
+            using (var frm = new FrmRelatorioProduto(dt))
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

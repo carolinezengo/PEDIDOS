@@ -47,6 +47,21 @@ namespace Pedidos.DAO
 
 
         }
+        public DataTable RelatorioProduto()
+        {
+
+            DataTable dt = new DataTable();
+            command.Connection = conexao.Conectar();
+            SqlDataAdapter relatorio = new SqlDataAdapter("Select idproduto, descricao, quantidade, valor_unitario from tabproduto", command.Connection);
+
+
+            relatorio.Fill(dt);
+            relatorio.Dispose();
+            return dt;
+
+
+
+        }
 
     }
 }
